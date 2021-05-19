@@ -2,19 +2,19 @@ package menu_repo
 
 import "time"
 
-// 左侧菜单栏表
+// Left menu bar table
 //go:generate gormgen -structs Menu -input .
 type Menu struct {
-	Id          int32     // 主键
-	Pid         int32     // 父类ID
-	Name        string    // 菜单名称
-	Link        string    // 链接地址
-	Icon        string    // 图标
-	Level       int32     // 菜单类型 1:一级菜单 2:二级菜单
-	IsUsed      int32     // 是否启用 1:是 -1:否
-	IsDeleted   int32     // 是否删除 1:是 -1:否
-	CreatedAt   time.Time `gorm:"time"` // 创建时间
-	CreatedUser string    // 创建人
-	UpdatedAt   time.Time `gorm:"time"` // 更新时间
-	UpdatedUser string    // 更新人
+	Id          int32     // primary key
+	Pid         int32     // parent class id
+	Name        string    // menu name
+	Link        string    // link address
+	Icon        string    // icon
+	Level       int32     // menu type 1: first level menu 2: second level menu
+	IsUsed      int32     // whether to enable: 1 yes -1 no
+	IsDeleted   int32     // whether to delete: 1 yes -1 no
+	CreatedAt   time.Time `gorm:"time"` // created time
+	CreatedUser string    // created by
+	UpdatedAt   time.Time `gorm:"time"` // updated time
+	UpdatedUser string    // updated by
 }

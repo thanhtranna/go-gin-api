@@ -16,28 +16,28 @@ import (
 )
 
 type emailRequest struct {
-	Host string `form:"host"` // 邮箱服务器
-	Port string `form:"port"` // 端口
-	User string `form:"user"` // 发件人邮箱
-	Pass string `form:"pass"` // 发件人密码
-	To   string `form:"to"`   // 收件人邮箱地址，多个用,分割
+	Host string `form:"host"` // Mailbox server
+	Port string `form:"port"` // Port
+	User string `form:"user"` // sender's mailbox
+	Pass string `form:"pass"` // sender password
+	To   string `form:"to"`   // Recipient's email address, multiple use, split
 }
 
 type emailResponse struct {
-	Email string `json:"email"` // 邮箱地址
+	Email string `json:"email"` // email address
 }
 
-// Email 修改邮件配置
-// @Summary 修改邮件配置
-// @Description 修改邮件配置
+// Email modify mail configuration
+// @Summary modify the mail configuration
+// @Description modify the mail configuration
 // @Tags API.config
 // @Accept multipart/form-data
 // @Produce json
-// @Param host formData string true "邮箱服务器"
-// @Param port formData string true "端口"
-// @Param user formData string true "发件人邮箱"
-// @Param pass formData string true "发件人密码"
-// @Param to formData string true "收件人邮箱地址，多个用,分割"
+// @Param host formData string true "mail server"
+// @Param port formData string true "port"
+// @Param user formData string true "Sender's mailbox"
+// @Param pass formData string true "Sender password"
+// @Param to formData string true "Recipient's email address, multiple use, split"
 // @Success 200 {object} emailResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/config/email [patch]
@@ -60,8 +60,8 @@ func (h *handler) Email() core.HandlerFunc {
 			MailUser: req.User,
 			MailPass: req.Pass,
 			MailTo:   req.To,
-			Subject:  fmt.Sprintf("%s[%s] 邮箱告警人调整通知。", configs.ProjectName(), env.Active().Value()),
-			Body:     fmt.Sprintf("%s[%s] 已添加您为系统告警通知人。", configs.ProjectName(), env.Active().Value()),
+			Subject:  fmt.Sprintf("%s[%s] Email alerter adjustment notification.", configs.ProjectName(), env.Active().Value()),
+			Body:     fmt.Sprintf("%s[%s] You have been added as the system alarm notifier.", configs.ProjectName(), env.Active().Value()),
 		}
 		if err := mail.Send(options); err != nil {
 			c.AbortWithError(errno.NewError(

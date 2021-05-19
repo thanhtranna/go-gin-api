@@ -15,37 +15,37 @@ var _ Handler = (*handler)(nil)
 type Handler interface {
 	i()
 
-	// HashIdsEncode HashIds 加密
+	// HashIdsEncode HashIds encryption
 	// @Tags API.tool
 	// @Router /api/tool/hashids/encode/{id} [get]
 	HashIdsEncode() core.HandlerFunc
 
-	// HashIdsDecode HashIds 解密
+	// HashIdsDecode HashIds decrypt
 	// @Tags API.tool
 	// @Router /api/tool/hashids/decode/{id} [get]
 	HashIdsDecode() core.HandlerFunc
 
-	// SearchCache 查询缓存
+	// SearchCache query cache
 	// @Tags API.tool
 	// @Router /api/tool/cache/search [post]
 	SearchCache() core.HandlerFunc
 
-	// ClearCache 清空缓存
+	// ClearCache clears the cache
 	// @Tags API.tool
 	// @Router /api/tool/cache/clear [patch]
 	ClearCache() core.HandlerFunc
 
-	// Dbs 查询 DB
+	// Dbs query DB
 	// @Tags API.tool
 	// @Router /api/tool/data/dbs [get]
 	Dbs() core.HandlerFunc
 
-	// Tables 查询 Table
+	// Tables query Table
 	// @Tags API.tool
 	// @Router /api/tool/data/tables [post]
 	Tables() core.HandlerFunc
 
-	// SearchMySQL 执行 SQL 语句
+	// SearchMySQL executes SQL statements
 	// @Tags API.tool
 	// @Router /api/tool/data/mysql [post]
 	SearchMySQL() core.HandlerFunc

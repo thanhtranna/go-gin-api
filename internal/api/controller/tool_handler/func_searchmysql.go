@@ -13,20 +13,20 @@ import (
 )
 
 type tableColumn struct {
-	ColumnName    string `json:"column_name"`    // 字段名称
-	ColumnComment string `json:"column_comment"` // 字段注释
+	ColumnName    string `json:"column_name"`    // field name
+	ColumnComment string `json:"column_comment"` // field comment
 }
 
 type searchMySQLRequest struct {
-	DbName    string `form:"db_name"`    // 数据库名称
-	TableName string `form:"table_name"` // 数据表名称
-	SQL       string `form:"sql"`        // SQL 语句
+	DbName    string `form:"db_name"`    // database name
+	TableName string `form:"table_name"` // data table name
+	SQL       string `form:"sql"`        // SQL statement
 }
 
 type searchMySQLResponse struct {
-	Cols     []string                 `json:"cols"`      // 查询后的行
-	ColsInfo []tableColumn            `json:"cols_info"` // 行信息
-	List     []map[string]interface{} `json:"list"`      // 查询后的数据
+	Cols     []string                 `json:"cols"`      // line after query
+	ColsInfo []tableColumn            `json:"cols_info"` // row information
+	List     []map[string]interface{} `json:"list"`      // Query data
 }
 
 var preFilterList = map[string]bool{
@@ -68,15 +68,15 @@ var filterListKeyword = []string{
 	"into",
 }
 
-// SearchMySQL 执行 SQL 语句
-// @Summary 执行 SQL 语句
-// @Description 执行 SQL 语句
+// SearchMySQL executes SQL statements
+// @Summary executes the SQL statement
+// @Description executes the SQL statement
 // @Tags API.tool
 // @Accept multipart/form-data
 // @Produce json
-// @Param db_name formData string true "数据库名称"
-// @Param table_name formData string true "数据表名称"
-// @Param sql formData string true "SQL 语句"
+// @Param db_name formData string true "database name"
+// @Param table_name formData string true "data table name"
+// @Param sql formData string true "SQL statement"
 // @Success 200 {object} searchMySQLResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/tool/data/mysql [post]
@@ -98,7 +98,7 @@ func (h *handler) SearchMySQL() core.HandlerFunc {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.SearchMySQLError,
-				"SQL 语句不能为空！"),
+				"SQL The statement cannot be empty!"),
 			)
 			return
 		}
@@ -107,7 +107,7 @@ func (h *handler) SearchMySQL() core.HandlerFunc {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.SearchMySQLError,
-				"SQL 语句不能以 "+string([]byte(sql)[:6])+" 开头！"),
+				"SQL The statement cannot start with "+string([]byte(sql)[:6])+" beginning!"),
 			)
 			return
 		}
@@ -127,7 +127,7 @@ func (h *handler) SearchMySQL() core.HandlerFunc {
 					c.AbortWithError(errno.NewError(
 						http.StatusBadRequest,
 						code.SearchMySQLError,
-						"SQL 语句存在敏感词： "+f+"！"),
+						"SQL There are sensitive words in the sentence: "+f+"！"),
 					)
 					return
 				}
@@ -139,7 +139,7 @@ func (h *handler) SearchMySQL() core.HandlerFunc {
 			sql += " LIMIT 100"
 		}
 
-		// TODO 后期支持查询多个数据库
+		// TODO Support for querying multiple databases later
 		rows, err := h.db.GetDbR().Raw(sql).Rows()
 		if err != nil {
 			c.AbortWithError(errno.NewError(

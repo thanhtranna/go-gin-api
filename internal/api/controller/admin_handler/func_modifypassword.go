@@ -13,22 +13,22 @@ import (
 )
 
 type modifyPasswordRequest struct {
-	OldPassword string `form:"old_password"` // 旧密码
-	NewPassword string `form:"new_password"` // 新密码
+	OldPassword string `form:"old_password"` // Old Password
+	NewPassword string `form:"new_password"` // New Password
 }
 
 type modifyPasswordResponse struct {
-	Username string `json:"username"` // 用户账号
+	Username string `json:"username"` // Username
 }
 
-// ModifyPassword 修改密码
-// @Summary 修改密码
-// @Description 修改密码
+// ModifyPassword modify password
+// @Summary modify password
+// @Description modify password
 // @Tags API.admin
 // @Accept multipart/form-data
 // @Produce json
-// @Param old_password formData string true "旧密码"
-// @Param new_password formData string true "新密码"
+// @Param old_password formData string true "old password"
+// @Param new_password formData string true "new password"
 // @Success 200 {object} modifyPasswordResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/admin/modify_password [patch]

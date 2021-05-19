@@ -16,37 +16,37 @@ var _ Handler = (*handler)(nil)
 type Handler interface {
 	i()
 
-	// Create 新增调用方
+	// Create new caller
 	// @Tags API.authorized
 	// @Router /api/authorized [post]
 	Create() core.HandlerFunc
 
-	// CreateAPI 授权调用方接口地址
+	// CreateAPI authorized caller interface address
 	// @Tags API.authorized
 	// @Router /api/authorized_api [post]
 	CreateAPI() core.HandlerFunc
 
-	// List 调用方列表
+	// List caller list
 	// @Tags API.authorized
 	// @Router /api/authorized [get]
 	List() core.HandlerFunc
 
-	// ListAPI 调用方接口地址列表
+	// ListAPI caller interface address list
 	// @Tags API.authorized
 	// @Router /api/authorized_api [get]
 	ListAPI() core.HandlerFunc
 
-	// Delete 删除调用方
+	// Delete delete the caller
 	// @Tags API.authorized
 	// @Router /api/authorized/{id} [delete]
 	Delete() core.HandlerFunc
 
-	// DeleteAPI 删除调用方接口地址
+	// DeleteAPI delete the caller interface address
 	// @Tags API.authorized
 	// @Router /api/authorized_api/{id} [delete]
 	DeleteAPI() core.HandlerFunc
 
-	// UpdateUsed 更新调用方为启用/禁用
+	// UpdateUsed update the caller to enable/disable
 	// @Tags API.authorized
 	// @Router /api/authorized/used [patch]
 	UpdateUsed() core.HandlerFunc

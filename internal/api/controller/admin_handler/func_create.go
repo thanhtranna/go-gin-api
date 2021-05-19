@@ -10,26 +10,26 @@ import (
 )
 
 type createRequest struct {
-	Username string `form:"username"` // 用户名
-	Nickname string `form:"nickname"` // 昵称
-	Mobile   string `form:"mobile"`   // 手机号
-	Password string `form:"password"` // 密码
+	Username string `form:"username"` // username
+	Nickname string `form:"nickname"` // Nickname
+	Mobile   string `form:"mobile"`   // mobile phone number
+	Password string `form:"password"` // Password
 }
 
 type createResponse struct {
-	Id int32 `json:"id"` // 主键ID
+	Id int32 `json:"id"` // Primary key ID
 }
 
-// Create 新增管理员
-// @Summary 新增管理员
-// @Description 新增管理员
+// Create new administrator
+// @Summary add administrator
+// @Description add administrator
 // @Tags API.admin
 // @Accept multipart/form-data
 // @Produce json
-// @Param username formData string true "用户名"
-// @Param nickname formData string true "昵称"
-// @Param mobile formData string true "手机号"
-// @Param password formData string true "密码"
+// @Param username formData string true "Username"
+// @Param nickname formData string true "nickname"
+// @Param mobile formData string true "mobile number"
+// @Param password formData string true "password"
 // @Success 200 {object} createResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/admin [post]

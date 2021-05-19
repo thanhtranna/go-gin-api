@@ -1,17 +1,17 @@
-#### go_gin_api.menu 
-左侧菜单栏表
+#### go_gin_api.menu
+Left menu bar table
 
-| 序号 | 名称 | 描述 | 类型 | 键 | 为空 | 额外 | 默认值 |
+| Serial number | name | description | type | key | empty | extra | default value |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| 1 | id | 主键 | int(11) unsigned | PRI | NO | auto_increment |  |
-| 2 | pid | 父类ID | int(11) unsigned |  | NO |  | 0 |
-| 3 | name | 菜单名称 | varchar(32) |  | NO |  |  |
-| 4 | link | 链接地址 | varchar(100) |  | NO |  |  |
-| 5 | icon | 图标 | varchar(60) |  | NO |  |  |
-| 6 | level | 菜单类型 1:一级菜单 2:二级菜单 | tinyint(1) unsigned |  | NO |  | 1 |
-| 7 | is_used | 是否启用 1:是 -1:否 | tinyint(1) |  | NO |  | 1 |
-| 8 | is_deleted | 是否删除 1:是 -1:否 | tinyint(1) |  | NO |  | -1 |
-| 9 | created_at | 创建时间 | timestamp |  | NO |  | CURRENT_TIMESTAMP |
-| 10 | created_user | 创建人 | varchar(60) |  | NO |  |  |
-| 11 | updated_at | 更新时间 | timestamp |  | NO | on update CURRENT_TIMESTAMP | CURRENT_TIMESTAMP |
-| 12 | updated_user | 更新人 | varchar(60) |  | NO |  |  |
+| 1 | id | primary key | int(11) unsigned | PRI | NO | auto_increment | |
+| 2 | pid | parent class id | int(11) unsigned | | NO | | 0 |
+| 3 | name | menu name | varchar(32) | | NO | | |
+| 4 | link | link address | varchar(100) | | NO | | |
+| 5 | icon | icon | varchar(60) | | NO | | |
+| 6 | level | menu type 1: first level menu 2: second level menu | tinyint(1) unsigned | | NO | | 1 |
+| 7 | is_used | whether to enable 1: yes -1: no | tinyint(1) | | NO | | 1 |
+| 8 | is_deleted | whether to delete 1: yes -1: no | tinyint(1) | | NO | | -1 |
+| 9 | created_at | created time | timestamp | | NO | | CURRENT_TIMESTAMP |
+| 10 | created_user | created by | varchar(60) | | NO | | |
+| 11 | updated_at | update time | timestamp | | NO | on update CURRENT_TIMESTAMP | CURRENT_TIMESTAMP |
+| 12 | updated_user | updated by | varchar(60) | | NO | | |

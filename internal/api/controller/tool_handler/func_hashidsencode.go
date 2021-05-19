@@ -11,20 +11,20 @@ import (
 )
 
 type hashIdsEncodeRequest struct {
-	Id int32 `uri:"id"` // 需加密的数字
+	Id int32 `uri:"id"` // Number to be encrypted
 }
 
 type hashIdsEncodeResponse struct {
-	Val string `json:"val"` // 加密后的值
+	Val string `json:"val"` // Encrypted value
 }
 
-// HashIdsEncode HashIds 加密
-// @Summary HashIds 加密
-// @Description HashIds 加密
+// HashIdsEncode HashIds encryption
+// @Summary HashIds encryption
+// @Description HashIds encryption
 // @Tags API.tool
 // @Accept json
 // @Produce json
-// @Param id path string true "需加密的数字"
+// @Param id path string true "number to be encrypted"
 // @Success 200 {object} hashIdsEncodeResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/tool/hashids/encode/{id} [get]

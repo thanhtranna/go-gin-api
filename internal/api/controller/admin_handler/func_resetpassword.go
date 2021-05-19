@@ -13,12 +13,12 @@ type resetPasswordRequest struct {
 }
 
 type resetPasswordResponse struct {
-	Id int32 `json:"id"` // 主键ID
+	Id int32 `json:"id"` // Primary Key ID
 }
 
-// ResetPassword 重置密码
-// @Summary 重置密码
-// @Description 重置密码
+// ResetPassword reset password
+// @Summary reset password
+// @Description reset password
 // @Tags API.admin
 // @Accept json
 // @Produce json

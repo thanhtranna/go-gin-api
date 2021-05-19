@@ -14,24 +14,24 @@ import (
 )
 
 type listRequest struct {
-	Page     int    `form:"page"`      // 第几页
-	PageSize int    `form:"page_size"` // 每页显示条数
-	Username string `form:"username"`  // 用户名
-	Nickname string `form:"nickname"`  // 昵称
-	Mobile   string `form:"mobile"`    // 手机号
+	Page     int    `form:"page"`      // which page
+	PageSize int    `form:"page_size"` // The number of items displayed per page
+	Username string `form:"username"`  // username
+	Nickname string `form:"nickname"`  // Nickname
+	Mobile   string `form:"mobile"`    // mobile phone number
 }
 
 type listData struct {
 	Id          int    `json:"id"`           // ID
 	HashID      string `json:"hashid"`       // hashid
-	Username    string `json:"username"`     // 用户名
-	Nickname    string `json:"nickname"`     // 昵称
-	Mobile      string `json:"mobile"`       // 手机号
-	IsUsed      int    `json:"is_used"`      // 是否启用 1:是 -1:否
-	CreatedAt   string `json:"created_at"`   // 创建时间
-	CreatedUser string `json:"created_user"` // 创建人
-	UpdatedAt   string `json:"updated_at"`   // 更新时间
-	UpdatedUser string `json:"updated_user"` // 更新人
+	Username    string `json:"username"`     // username
+	Nickname    string `json:"nickname"`     // Nickname
+	Mobile      string `json:"mobile"`       // mobile phone number
+	IsUsed      int    `json:"is_used"`      // Whether to enable 1: Yes -1: No
+	CreatedAt   string `json:"created_at"`   // created time
+	CreatedUser string `json:"created_user"` // created by
+	UpdatedAt   string `json:"updated_at"`   // updated time
+	UpdatedUser string `json:"updated_user"` // Updated by
 }
 
 type listResponse struct {
@@ -43,17 +43,17 @@ type listResponse struct {
 	} `json:"pagination"`
 }
 
-// List 管理员列表
-// @Summary 管理员列表
-// @Description 管理员列表
+// List admin list
+// @Summary administrator list
+// @Description admin list
 // @Tags API.admin
 // @Accept json
 // @Produce json
-// @Param page query int false "第几页"
-// @Param page_size query string false "每页显示条数"
-// @Param username query string false "用户名"
-// @Param nickname query string false "昵称"
-// @Param mobile query string false "手机号"
+// @Param page query int false "page number"
+// @Param page_size query string false "Number of items displayed per page"
+// @Param username query string false "Username"
+// @Param nickname query string false "nickname"
+// @Param mobile query string false "mobile phone number"
 // @Success 200 {object} listResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/admin [get]

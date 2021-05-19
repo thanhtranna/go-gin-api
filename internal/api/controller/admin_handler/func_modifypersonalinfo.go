@@ -12,22 +12,22 @@ import (
 )
 
 type modifyPersonalInfoRequest struct {
-	Nickname string `form:"nickname"` // 昵称
-	Mobile   string `form:"mobile"`   // 手机号
+	Nickname string `form:"nickname"` // Nickname
+	Mobile   string `form:"mobile"`   // Mobile phone number
 }
 
 type modifyPersonalInfoResponse struct {
-	Username string `json:"username"` // 用户账号
+	Username string `json:"username"` // User account
 }
 
-// ModifyPersonalInfo 修改个人信息
-// @Summary 修改个人信息
-// @Description 修改个人信息
+// ModifyPersonalInfo modify personal information
+// @Summary modify personal information
+// @Description modify personal information
 // @Tags API.admin
 // @Accept multipart/form-data
 // @Produce json
-// @Param nickname formData string true "昵称"
-// @Param mobile formData string true "手机号"
+// @Param nickname formData string true "nickname"
+// @Param mobile formData string true "mobile number"
 // @Success 200 {object} modifyPersonalInfoResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/admin/modify_password [patch]

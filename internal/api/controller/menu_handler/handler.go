@@ -16,27 +16,27 @@ var _ Handler = (*handler)(nil)
 type Handler interface {
 	i()
 
-	// Create 创建/编辑菜单
+	// Create create/edit menu
 	// @Tags API.menu
 	// @Router /api/menu [post]
 	Create() core.HandlerFunc
 
-	// Detail 菜单详情
+	// Detail menu details
 	// @Tags API.menu
 	// @Router /api/menu/{id} [get]
 	Detail() core.HandlerFunc
 
-	// Delete 删除菜单
+	// Delete delete menu
 	// @Tags API.menu
 	// @Router /api/menu/{id} [delete]
 	Delete() core.HandlerFunc
 
-	// UpdateUsed 更新菜单为启用/禁用
+	// UpdateUsed Update menu is enabled/disabled
 	// @Tags API.menu
 	// @Router /api/menu/used [patch]
 	UpdateUsed() core.HandlerFunc
 
-	// List 菜单列表
+	// List menu list
 	// @Tags API.menu
 	// @Router /api/menu [get]
 	List() core.HandlerFunc

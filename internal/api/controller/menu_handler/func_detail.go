@@ -14,15 +14,15 @@ type detailRequest struct {
 }
 
 type detailResponse struct {
-	Id   int32  `json:"id"`   // 主键ID
-	Name string `json:"name"` // 菜单名称
-	Link string `json:"link"` // 链接地址
-	Icon string `json:"icon"` // 图标
+	Id   int32  `json:"id"`   // Primary key ID
+	Name string `json:"name"` // Menu name
+	Link string `json:"link"` // link address
+	Icon string `json:"icon"` // icon
 }
 
-// Detail 菜单详情
-// @Summary 菜单详情
-// @Description 菜单详情
+// Detail menu details
+// @Summary menu details
+// @Description menu details
 // @Tags API.menu
 // @Accept json
 // @Produce json

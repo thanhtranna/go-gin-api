@@ -8,7 +8,7 @@ package mysql_table
 //`remark` varchar(255) NOT NULL DEFAULT '' COMMENT 'remarks',
 //`is_used` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'enable 1: yes -1: no',
 //`is_deleted` tinyint(1) NOT NULL DEFAULT '-1' COMMENT 'delete 1: yes -1: no',
-//`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'creation time',
+//`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'created time',
 //`created_user` varchar(60) NOT NULL DEFAULT '' COMMENT 'founder',
 //`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
 //`updated_user` varchar(60) NOT NULL DEFAULT '' COMMENT 'updater',
@@ -25,7 +25,7 @@ func CreateAuthorizedTableSql() (sql string) {
 	sql += "`remark` varchar(255) NOT NULL DEFAULT '' COMMENT 'remarks',"
 	sql += "`is_used` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'enable 1: yes -1: no',"
 	sql += "`is_deleted` tinyint(1) NOT NULL DEFAULT '-1' COMMENT 'delete 1: yes -1: no',"
-	sql += "`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'creation time',"
+	sql += "`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'created time',"
 	sql += "`created_user` varchar(60) NOT NULL DEFAULT '' COMMENT 'founder',"
 	sql += "`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',"
 	sql += "`updated_user` varchar(60) NOT NULL DEFAULT '' COMMENT 'updater',"

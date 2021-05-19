@@ -13,16 +13,16 @@ type deleteAPIRequest struct {
 }
 
 type deleteAPIResponse struct {
-	Id int32 `json:"id"` // 主键ID
+	Id int32 `json:"id"` // Primary Key ID
 }
 
-// DeleteAPI 删除调用方接口地址
-// @Summary 删除调用方接口地址
-// @Description 删除调用方接口地址
+// DeleteAPI delete the caller interface address
+// @Summary delete the caller interface address
+// @Description delete the caller interface address
 // @Tags API.authorized
 // @Accept json
 // @Produce json
-// @Param id path string true "主键ID"
+// @Param id path string true "primary key ID"
 // @Success 200 {object} deleteAPIResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/authorized_api/{id} [delete]

@@ -12,14 +12,14 @@ import (
 )
 
 type detailResponse struct {
-	Username string `json:"username"` // 用户名
-	Nickname string `json:"nickname"` // 昵称
-	Mobile   string `json:"mobile"`   // 手机号
+	Username string `json:"username"` // Username
+	Nickname string `json:"nickname"` // Nickname
+	Mobile   string `json:"mobile"`   // Phone number
 }
 
-// Detail 管理员详情
-// @Summary 管理员详情
-// @Description 管理员详情
+// Detail Administrator details
+// @Summary administrator details
+// @Description Administrator details
 // @Tags API.admin
 // @Accept json
 // @Produce json

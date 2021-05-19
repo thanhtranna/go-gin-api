@@ -13,7 +13,7 @@
     "paths": {
         "/api/admin": {
             "get": {
-                "description": "管理员列表",
+                "description": "admin list",
                 "consumes": [
                     "application/json"
                 ],
@@ -23,35 +23,35 @@
                 "tags": [
                     "API.admin"
                 ],
-                "summary": "管理员列表",
+                "summary": "administrator list",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "第几页",
+                        "description": "page number",
                         "name": "page",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "每页显示条数",
+                        "description": "Number of items displayed per page",
                         "name": "page_size",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "用户名",
+                        "description": "Username",
                         "name": "username",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "昵称",
+                        "description": "nickname",
                         "name": "nickname",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "手机号",
+                        "description": "mobile phone number",
                         "name": "mobile",
                         "in": "query"
                     }
@@ -72,7 +72,7 @@
                 }
             },
             "post": {
-                "description": "新增管理员",
+                "description": "add administrator",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -82,32 +82,32 @@
                 "tags": [
                     "API.admin"
                 ],
-                "summary": "新增管理员",
+                "summary": "add administrator",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "用户名",
+                        "description": "Username",
                         "name": "username",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "昵称",
+                        "description": "nickname",
                         "name": "nickname",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "手机号",
+                        "description": "mobile number",
                         "name": "mobile",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "密码",
+                        "description": "password",
                         "name": "password",
                         "in": "formData",
                         "required": true
@@ -131,7 +131,7 @@
         },
         "/api/admin/info": {
             "get": {
-                "description": "管理员详情",
+                "description": "Administrator details",
                 "consumes": [
                     "application/json"
                 ],
@@ -141,7 +141,7 @@
                 "tags": [
                     "API.admin"
                 ],
-                "summary": "管理员详情",
+                "summary": "administrator details",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -160,7 +160,7 @@
         },
         "/api/admin/login": {
             "post": {
-                "description": "管理员登出",
+                "description": "The administrator logs out",
                 "consumes": [
                     "application/json"
                 ],
@@ -170,7 +170,7 @@
                 "tags": [
                     "API.admin"
                 ],
-                "summary": "管理员登出",
+                "summary": "Admin log out",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -189,7 +189,7 @@
         },
         "/api/admin/modify_password": {
             "patch": {
-                "description": "修改密码",
+                "description": "modify password",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -199,18 +199,18 @@
                 "tags": [
                     "API.admin"
                 ],
-                "summary": "修改密码",
+                "summary": "modify password",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "旧密码",
+                        "description": "old password",
                         "name": "old_password",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "新密码",
+                        "description": "new password",
                         "name": "new_password",
                         "in": "formData",
                         "required": true
@@ -234,7 +234,7 @@
         },
         "/api/admin/reset_password/{id}": {
             "patch": {
-                "description": "重置密码",
+                "description": "reset password",
                 "consumes": [
                     "application/json"
                 ],
@@ -244,7 +244,7 @@
                 "tags": [
                     "API.admin"
                 ],
-                "summary": "重置密码",
+                "summary": "reset password",
                 "parameters": [
                     {
                         "type": "string",
@@ -272,7 +272,7 @@
         },
         "/api/admin/used": {
             "patch": {
-                "description": "更新管理员为启用/禁用",
+                "description": "Update the administrator to enable/disable",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -282,7 +282,7 @@
                 "tags": [
                     "API.admin"
                 ],
-                "summary": "更新管理员为启用/禁用",
+                "summary": "Update the administrator to enable/disable",
                 "parameters": [
                     {
                         "type": "string",
@@ -293,7 +293,7 @@
                     },
                     {
                         "type": "integer",
-                        "description": "是否启用 1:是 -1:否",
+                        "description": "Is it enabled 1: Yes -1: No",
                         "name": "used",
                         "in": "formData",
                         "required": true
@@ -317,7 +317,7 @@
         },
         "/api/admin/{id}": {
             "delete": {
-                "description": "删除管理员",
+                "description": "delete the administrator",
                 "consumes": [
                     "application/json"
                 ],
@@ -327,7 +327,7 @@
                 "tags": [
                     "API.admin"
                 ],
-                "summary": "删除管理员",
+                "summary": "delete administrator",
                 "parameters": [
                     {
                         "type": "string",
@@ -355,7 +355,7 @@
         },
         "/api/authorized": {
             "get": {
-                "description": "调用方列表",
+                "description": "caller list",
                 "consumes": [
                     "application/json"
                 ],
@@ -365,41 +365,41 @@
                 "tags": [
                     "API.authorized"
                 ],
-                "summary": "调用方列表",
+                "summary": "caller list",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "第几页",
+                        "description": "page number",
                         "name": "page",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "每页显示条数",
+                        "description": "Number of items displayed per page",
                         "name": "page_size",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "调用方key",
+                        "description": "caller key",
                         "name": "business_key",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "调用方secret",
+                        "description": "caller secret",
                         "name": "business_secret",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "调用方对接人",
+                        "description": "caller docking person",
                         "name": "business_developer",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "备注",
+                        "description": "Remarks",
                         "name": "remark",
                         "in": "path"
                     }
@@ -420,7 +420,7 @@
                 }
             },
             "post": {
-                "description": "新增调用方",
+                "description": "add caller",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -430,25 +430,25 @@
                 "tags": [
                     "API.authorized"
                 ],
-                "summary": "新增调用方",
+                "summary": "add caller",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "调用方key",
+                        "description": "caller key",
                         "name": "business_key",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "调用方对接人",
+                        "description": "caller docking person",
                         "name": "business_developer",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "备注",
+                        "description": "Remarks",
                         "name": "remark",
                         "in": "formData",
                         "required": true
@@ -472,7 +472,7 @@
         },
         "/api/authorized/used": {
             "patch": {
-                "description": "更新调用方为启用/禁用",
+                "description": "updates the caller to enable/disable",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -482,7 +482,7 @@
                 "tags": [
                     "API.authorized"
                 ],
-                "summary": "更新调用方为启用/禁用",
+                "summary": "Update the caller to enable/disable",
                 "parameters": [
                     {
                         "type": "string",
@@ -493,7 +493,7 @@
                     },
                     {
                         "type": "integer",
-                        "description": "是否启用 1:是 -1:否",
+                        "description": "Is it enabled 1: Yes -1: No",
                         "name": "used",
                         "in": "formData",
                         "required": true
@@ -517,7 +517,7 @@
         },
         "/api/authorized/{id}": {
             "delete": {
-                "description": "删除调用方",
+                "description": "delete the caller",
                 "consumes": [
                     "application/json"
                 ],
@@ -527,7 +527,7 @@
                 "tags": [
                     "API.authorized"
                 ],
-                "summary": "删除调用方",
+                "summary": "delete the caller",
                 "parameters": [
                     {
                         "type": "string",
@@ -555,7 +555,7 @@
         },
         "/api/authorized_api": {
             "get": {
-                "description": "调用方接口地址列表",
+                "description": "caller interface address list",
                 "consumes": [
                     "application/json"
                 ],
@@ -565,11 +565,11 @@
                 "tags": [
                     "API.authorized"
                 ],
-                "summary": "调用方接口地址列表",
+                "summary": "caller interface address list",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "调用方key",
+                        "description": "caller key",
                         "name": "business_key",
                         "in": "query"
                     }
@@ -590,7 +590,7 @@
                 }
             },
             "post": {
-                "description": "授权调用方接口地址",
+                "description": "authorized caller interface address",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -600,7 +600,7 @@
                 "tags": [
                     "API.authorized"
                 ],
-                "summary": "授权调用方接口地址",
+                "summary": "authorized caller interface address",
                 "parameters": [
                     {
                         "type": "string",
@@ -611,14 +611,14 @@
                     },
                     {
                         "type": "string",
-                        "description": "请求方法",
+                        "description": "request method",
                         "name": "method",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "请求地址",
+                        "description": "request address",
                         "name": "api",
                         "in": "formData",
                         "required": true
@@ -642,7 +642,7 @@
         },
         "/api/authorized_api/{id}": {
             "delete": {
-                "description": "删除调用方接口地址",
+                "description": "delete the caller interface address",
                 "consumes": [
                     "application/json"
                 ],
@@ -652,11 +652,11 @@
                 "tags": [
                     "API.authorized"
                 ],
-                "summary": "删除调用方接口地址",
+                "summary": "delete the caller interface address",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "主键ID",
+                        "description": "primary key ID",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -680,7 +680,7 @@
         },
         "/api/config/email": {
             "patch": {
-                "description": "修改邮件配置",
+                "description": "modify the mail configuration",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -690,39 +690,39 @@
                 "tags": [
                     "API.config"
                 ],
-                "summary": "修改邮件配置",
+                "summary": "modify the mail configuration",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "邮箱服务器",
+                        "description": "mail server",
                         "name": "host",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "端口",
+                        "description": "port",
                         "name": "port",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "发件人邮箱",
+                        "description": "Sender's mailbox",
                         "name": "user",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "发件人密码",
+                        "description": "Sender password",
                         "name": "pass",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "收件人邮箱地址，多个用,分割",
+                        "description": "Recipient's email address, multiple use, split",
                         "name": "to",
                         "in": "formData",
                         "required": true
@@ -746,7 +746,7 @@
         },
         "/api/menu": {
             "get": {
-                "description": "菜单列表",
+                "description": "menu list",
                 "consumes": [
                     "application/json"
                 ],
@@ -756,7 +756,7 @@
                 "tags": [
                     "API.menu"
                 ],
-                "summary": "菜单列表",
+                "summary": "menu list",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -773,7 +773,7 @@
                 }
             },
             "post": {
-                "description": "创建/编辑菜单",
+                "description": "create/edit menu",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -783,10 +783,10 @@
                 "tags": [
                     "API.menu"
                 ],
-                "summary": "创建/编辑菜单",
+                "summary": "create/edit menu",
                 "parameters": [
                     {
-                        "description": "请求信息",
+                        "description": "Request information",
                         "name": "Request",
                         "in": "body",
                         "required": true,
@@ -813,7 +813,7 @@
         },
         "/api/menu/used": {
             "patch": {
-                "description": "更新菜单为启用/禁用",
+                "description": "Update the menu to enable/disable",
                 "consumes": [
                     "application/json"
                 ],
@@ -823,7 +823,7 @@
                 "tags": [
                     "API.menu"
                 ],
-                "summary": "更新菜单为启用/禁用",
+                "summary": "Update the menu to enable/disable",
                 "parameters": [
                     {
                         "type": "string",
@@ -834,7 +834,7 @@
                     },
                     {
                         "type": "integer",
-                        "description": "是否启用 1:是 -1:否",
+                        "description": "Is it enabled 1: Yes -1: No",
                         "name": "used",
                         "in": "formData",
                         "required": true
@@ -858,7 +858,7 @@
         },
         "/api/menu/{id}": {
             "get": {
-                "description": "菜单详情",
+                "description": "menu details",
                 "consumes": [
                     "application/json"
                 ],
@@ -868,7 +868,7 @@
                 "tags": [
                     "API.menu"
                 ],
-                "summary": "菜单详情",
+                "summary": "menu details",
                 "parameters": [
                     {
                         "type": "string",
@@ -894,7 +894,7 @@
                 }
             },
             "delete": {
-                "description": "删除菜单",
+                "description": "delete menu",
                 "consumes": [
                     "application/json"
                 ],
@@ -904,7 +904,7 @@
                 "tags": [
                     "API.menu"
                 ],
-                "summary": "删除菜单",
+                "summary": "delete menu",
                 "parameters": [
                     {
                         "type": "string",
@@ -932,7 +932,7 @@
         },
         "/api/tool/cache/clear": {
             "patch": {
-                "description": "清空缓存",
+                "description": "Clear the cache",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -942,7 +942,7 @@
                 "tags": [
                     "API.tool"
                 ],
-                "summary": "清空缓存",
+                "summary": "Clear the cache",
                 "parameters": [
                     {
                         "type": "string",
@@ -970,7 +970,7 @@
         },
         "/api/tool/cache/search": {
             "post": {
-                "description": "查询缓存",
+                "description": "query cache",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -980,7 +980,7 @@
                 "tags": [
                     "API.tool"
                 ],
-                "summary": "查询缓存",
+                "summary": "query cache",
                 "parameters": [
                     {
                         "type": "string",
@@ -1008,7 +1008,7 @@
         },
         "/api/tool/data/dbs": {
             "get": {
-                "description": "查询 DB",
+                "description": "query DB",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -1018,7 +1018,7 @@
                 "tags": [
                     "API.tool"
                 ],
-                "summary": "查询 DB",
+                "summary": "query DB",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -1037,7 +1037,7 @@
         },
         "/api/tool/data/mysql": {
             "post": {
-                "description": "执行 SQL 语句",
+                "description": "executes the SQL statement",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -1047,25 +1047,25 @@
                 "tags": [
                     "API.tool"
                 ],
-                "summary": "执行 SQL 语句",
+                "summary": "executes the SQL statement",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "数据库名称",
+                        "description": "database name",
                         "name": "db_name",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "数据表名称",
+                        "description": "data table name",
                         "name": "table_name",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "SQL 语句",
+                        "description": "SQL statement",
                         "name": "sql",
                         "in": "formData",
                         "required": true
@@ -1089,7 +1089,7 @@
         },
         "/api/tool/data/tables": {
             "post": {
-                "description": "查询 Table",
+                "description": "query Table",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -1099,11 +1099,11 @@
                 "tags": [
                     "API.tool"
                 ],
-                "summary": "查询 Table",
+                "summary": "query Table",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "数据库名称",
+                        "description": "database name",
                         "name": "db_name",
                         "in": "formData",
                         "required": true
@@ -1127,7 +1127,7 @@
         },
         "/api/tool/hashids/decode/{id}": {
             "get": {
-                "description": "HashIds 解密",
+                "description": "HashIds decrypt",
                 "consumes": [
                     "application/json"
                 ],
@@ -1137,11 +1137,11 @@
                 "tags": [
                     "API.tool"
                 ],
-                "summary": "HashIds 解密",
+                "summary": "HashIds decrypt",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "需解密的密文",
+                        "description": "ciphertext to be decrypted",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -1165,7 +1165,7 @@
         },
         "/api/tool/hashids/encode/{id}": {
             "get": {
-                "description": "HashIds 加密",
+                "description": "HashIds encryption",
                 "consumes": [
                     "application/json"
                 ],
@@ -1175,11 +1175,11 @@
                 "tags": [
                     "API.tool"
                 ],
-                "summary": "HashIds 加密",
+                "summary": "HashIds encryption",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "需加密的数字",
+                        "description": "number to be encrypted",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -1207,7 +1207,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary key ID",
                     "type": "integer"
                 }
             }
@@ -1216,7 +1216,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary key ID",
                     "type": "integer"
                 }
             }
@@ -1225,15 +1225,15 @@
             "type": "object",
             "properties": {
                 "mobile": {
-                    "description": "手机号",
+                    "description": "Phone number",
                     "type": "string"
                 },
                 "nickname": {
-                    "description": "昵称",
+                    "description": "Nickname",
                     "type": "string"
                 },
                 "username": {
-                    "description": "用户名",
+                    "description": "Username",
                     "type": "string"
                 }
             }
@@ -1242,11 +1242,11 @@
             "type": "object",
             "properties": {
                 "created_at": {
-                    "description": "创建时间",
+                    "description": "created time",
                     "type": "string"
                 },
                 "created_user": {
-                    "description": "创建人",
+                    "description": "created by",
                     "type": "string"
                 },
                 "hashid": {
@@ -1258,27 +1258,27 @@
                     "type": "integer"
                 },
                 "is_used": {
-                    "description": "是否启用 1:是 -1:否",
+                    "description": "Whether to enable 1: Yes -1: No",
                     "type": "integer"
                 },
                 "mobile": {
-                    "description": "手机号",
+                    "description": "mobile phone number",
                     "type": "string"
                 },
                 "nickname": {
-                    "description": "昵称",
+                    "description": "Nickname",
                     "type": "string"
                 },
                 "updated_at": {
-                    "description": "更新时间",
+                    "description": "updated time",
                     "type": "string"
                 },
                 "updated_user": {
-                    "description": "更新人",
+                    "description": "Updated by",
                     "type": "string"
                 },
                 "username": {
-                    "description": "用户名",
+                    "description": "username",
                     "type": "string"
                 }
             }
@@ -1312,7 +1312,7 @@
             "type": "object",
             "properties": {
                 "token": {
-                    "description": "用户身份标识",
+                    "description": "User token",
                     "type": "string"
                 }
             }
@@ -1321,7 +1321,7 @@
             "type": "object",
             "properties": {
                 "username": {
-                    "description": "用户账号",
+                    "description": "User account",
                     "type": "string"
                 }
             }
@@ -1330,7 +1330,7 @@
             "type": "object",
             "properties": {
                 "username": {
-                    "description": "用户账号",
+                    "description": "Username",
                     "type": "string"
                 }
             }
@@ -1339,7 +1339,7 @@
             "type": "object",
             "properties": {
                 "username": {
-                    "description": "用户账号",
+                    "description": "User account",
                     "type": "string"
                 }
             }
@@ -1348,7 +1348,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary Key ID",
                     "type": "integer"
                 }
             }
@@ -1357,7 +1357,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary Key ID",
                     "type": "integer"
                 }
             }
@@ -1366,7 +1366,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary Key ID",
                     "type": "integer"
                 }
             }
@@ -1375,7 +1375,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary Key ID",
                     "type": "integer"
                 }
             }
@@ -1384,7 +1384,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary Key ID",
                     "type": "integer"
                 }
             }
@@ -1393,7 +1393,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary key ID",
                     "type": "integer"
                 }
             }
@@ -1402,11 +1402,11 @@
             "type": "object",
             "properties": {
                 "api": {
-                    "description": "调用方对接人",
+                    "description": "caller docking person",
                     "type": "string"
                 },
                 "business_key": {
-                    "description": "调用方key",
+                    "description": "caller key",
                     "type": "string"
                 },
                 "hash_id": {
@@ -1414,7 +1414,7 @@
                     "type": "string"
                 },
                 "method": {
-                    "description": "调用方secret",
+                    "description": "caller secret",
                     "type": "string"
                 }
             }
@@ -1434,23 +1434,23 @@
             "type": "object",
             "properties": {
                 "business_developer": {
-                    "description": "调用方对接人",
+                    "description": "caller docking person",
                     "type": "string"
                 },
                 "business_key": {
-                    "description": "调用方key",
+                    "description": "caller key",
                     "type": "string"
                 },
                 "business_secret": {
-                    "description": "调用方secret",
+                    "description": "caller secret",
                     "type": "string"
                 },
                 "created_at": {
-                    "description": "创建时间",
+                    "description": "created time",
                     "type": "string"
                 },
                 "created_user": {
-                    "description": "创建人",
+                    "description": "created by",
                     "type": "string"
                 },
                 "hashid": {
@@ -1462,19 +1462,19 @@
                     "type": "integer"
                 },
                 "is_used": {
-                    "description": "是否启用 1:是 -1:否",
+                    "description": "Whether to enable 1: Yes -1: No",
                     "type": "integer"
                 },
                 "remark": {
-                    "description": "备注",
+                    "description": "Remark",
                     "type": "string"
                 },
                 "updated_at": {
-                    "description": "更新时间",
+                    "description": "updated time",
                     "type": "string"
                 },
                 "updated_user": {
-                    "description": "更新人",
+                    "description": "Updated by",
                     "type": "string"
                 }
             }
@@ -1508,7 +1508,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary Key ID",
                     "type": "integer"
                 }
             }
@@ -1517,11 +1517,11 @@
             "type": "object",
             "properties": {
                 "code": {
-                    "description": "业务码",
+                    "description": "business code",
                     "type": "integer"
                 },
                 "message": {
-                    "description": "描述信息",
+                    "description": "description information",
                     "type": "string"
                 }
             }
@@ -1530,7 +1530,7 @@
             "type": "object",
             "properties": {
                 "email": {
-                    "description": "邮箱地址",
+                    "description": "email address",
                     "type": "string"
                 }
             }
@@ -1539,7 +1539,7 @@
             "type": "object",
             "properties": {
                 "icon": {
-                    "description": "图标",
+                    "description": "icon",
                     "type": "string"
                 },
                 "id": {
@@ -1547,19 +1547,19 @@
                     "type": "string"
                 },
                 "level": {
-                    "description": "菜单类型 1:一级菜单 2:二级菜单",
+                    "description": "Menu type 1: Level 1 menu 2: Level 2 menu",
                     "type": "integer"
                 },
                 "link": {
-                    "description": "链接地址",
+                    "description": "link address",
                     "type": "string"
                 },
                 "name": {
-                    "description": "菜单名称",
+                    "description": "Menu name",
                     "type": "string"
                 },
                 "pid": {
-                    "description": "父类ID",
+                    "description": "Parent class ID",
                     "type": "integer"
                 }
             }
@@ -1568,7 +1568,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary Key ID",
                     "type": "integer"
                 }
             }
@@ -1577,7 +1577,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary Key ID",
                     "type": "integer"
                 }
             }
@@ -1586,19 +1586,19 @@
             "type": "object",
             "properties": {
                 "icon": {
-                    "description": "图标",
+                    "description": "icon",
                     "type": "string"
                 },
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary key ID",
                     "type": "integer"
                 },
                 "link": {
-                    "description": "链接地址",
+                    "description": "link address",
                     "type": "string"
                 },
                 "name": {
-                    "description": "菜单名称",
+                    "description": "Menu name",
                     "type": "string"
                 }
             }
@@ -1611,7 +1611,7 @@
                     "type": "string"
                 },
                 "icon": {
-                    "description": "图标",
+                    "description": "icon",
                     "type": "string"
                 },
                 "id": {
@@ -1619,19 +1619,19 @@
                     "type": "integer"
                 },
                 "is_used": {
-                    "description": "是否启用 1=启用 -1=禁用",
+                    "description": "Whether to enable 1=Enable -1=Disable",
                     "type": "integer"
                 },
                 "link": {
-                    "description": "链接地址",
+                    "description": "link address",
                     "type": "string"
                 },
                 "name": {
-                    "description": "菜单名称",
+                    "description": "Menu name",
                     "type": "string"
                 },
                 "pid": {
-                    "description": "父类ID",
+                    "description": "Parent class ID",
                     "type": "integer"
                 }
             }
@@ -1651,7 +1651,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "description": "主键ID",
+                    "description": "Primary Key ID",
                     "type": "integer"
                 }
             }
@@ -1660,7 +1660,7 @@
             "type": "object",
             "properties": {
                 "db_name": {
-                    "description": "数据库名称",
+                    "description": "Database name",
                     "type": "string"
                 }
             }
@@ -1669,7 +1669,7 @@
             "type": "object",
             "properties": {
                 "list": {
-                    "description": "数据库列表",
+                    "description": "Database list",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/tool_handler.dbData"
@@ -1681,7 +1681,7 @@
             "type": "object",
             "properties": {
                 "val": {
-                    "description": "解密后的值",
+                    "description": "Decrypted value",
                     "type": "integer"
                 }
             }
@@ -1690,7 +1690,7 @@
             "type": "object",
             "properties": {
                 "val": {
-                    "description": "加密后的值",
+                    "description": "Encrypted value",
                     "type": "string"
                 }
             }
@@ -1699,11 +1699,11 @@
             "type": "object",
             "properties": {
                 "ttl": {
-                    "description": "过期时间",
+                    "description": "Expiration time",
                     "type": "string"
                 },
                 "val": {
-                    "description": "查询后的值",
+                    "description": "value after query",
                     "type": "string"
                 }
             }
@@ -1712,21 +1712,21 @@
             "type": "object",
             "properties": {
                 "cols": {
-                    "description": "查询后的行",
+                    "description": "line after query",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "cols_info": {
-                    "description": "行信息",
+                    "description": "row information",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/tool_handler.tableColumn"
                     }
                 },
                 "list": {
-                    "description": "查询后的数据",
+                    "description": "Query data",
                     "type": "array",
                     "items": {
                         "type": "object",
@@ -1739,11 +1739,11 @@
             "type": "object",
             "properties": {
                 "column_comment": {
-                    "description": "字段注释",
+                    "description": "field comment",
                     "type": "string"
                 },
                 "column_name": {
-                    "description": "字段名称",
+                    "description": "field name",
                     "type": "string"
                 }
             }
@@ -1752,11 +1752,11 @@
             "type": "object",
             "properties": {
                 "table_comment": {
-                    "description": "数据表备注",
+                    "description": "Data table comment",
                     "type": "string"
                 },
                 "table_name": {
-                    "description": "数据表名称",
+                    "description": "data table name",
                     "type": "string"
                 }
             }
@@ -1765,7 +1765,7 @@
             "type": "object",
             "properties": {
                 "list": {
-                    "description": "数据表列表",
+                    "description": "Data sheet list",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/tool_handler.tableData"

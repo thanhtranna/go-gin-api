@@ -13,12 +13,12 @@ type deleteRequest struct {
 }
 
 type deleteResponse struct {
-	Id int32 `json:"id"` // 主键ID
+	Id int32 `json:"id"` // Primary Key ID
 }
 
-// Delete 删除菜单
-// @Summary 删除菜单
-// @Description 删除菜单
+// Delete delete menu
+// @Summary delete menu
+// @Description delete menu
 // @Tags API.menu
 // @Accept json
 // @Produce json

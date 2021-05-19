@@ -10,25 +10,25 @@ import (
 )
 
 type tablesRequest struct {
-	DbName string `form:"db_name"` // 数据库名称
+	DbName string `form:"db_name"` // database name
 }
 
 type tablesResponse struct {
-	List []tableData `json:"list"` // 数据表列表
+	List []tableData `json:"list"` // Data sheet list
 }
 
 type tableData struct {
-	Name    string `json:"table_name"`    // 数据表名称
-	Comment string `json:"table_comment"` // 数据表备注
+	Name    string `json:"table_name"`    // data table name
+	Comment string `json:"table_comment"` // Data table comment
 }
 
-// Tables 查询 Table
-// @Summary 查询 Table
-// @Description 查询 Table
+// Tables query Table
+// @Summary query Table
+// @Description query Table
 // @Tags API.tool
 // @Accept multipart/form-data
 // @Produce json
-// @Param db_name formData string true "数据库名称"
+// @Param db_name formData string true "database name"
 // @Success 200 {object} tablesResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/tool/data/tables [post]
@@ -47,7 +47,7 @@ func (h *handler) Tables() core.HandlerFunc {
 
 		sqlTables := fmt.Sprintf("SELECT `table_name`,`table_comment` FROM `information_schema`.`tables` WHERE `table_schema`= '%s'", req.DbName)
 
-		// TODO 后期支持查询多个数据库
+		// TODO Support for querying multiple databases later
 		rows, err := h.db.GetDbR().Raw(sqlTables).Rows()
 		if err != nil {
 			c.AbortWithError(errno.NewError(

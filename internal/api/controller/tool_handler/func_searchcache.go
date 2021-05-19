@@ -14,13 +14,13 @@ type searchCacheRequest struct {
 }
 
 type searchCacheResponse struct {
-	Val string `json:"val"` // 查询后的值
-	TTL string `json:"ttl"` // 过期时间
+	Val string `json:"val"` // value after query
+	TTL string `json:"ttl"` // Expiration time
 }
 
-// SearchCache 查询缓存
-// @Summary 查询缓存
-// @Description 查询缓存
+// SearchCache query cache
+// @Summary query cache
+// @Description query cache
 // @Tags API.tool
 // @Accept multipart/form-data
 // @Produce json
@@ -41,7 +41,7 @@ func (h *handler) SearchCache() core.HandlerFunc {
 			return
 		}
 
-		if b := h.cache.Exists(req.RedisKey); b != true {
+		if b := h.cache.Exists(req.RedisKey); !b {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.SearchRedisEmpty,

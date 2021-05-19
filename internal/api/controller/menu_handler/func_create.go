@@ -13,24 +13,24 @@ import (
 
 type createRequest struct {
 	Id    string `form:"id"`    // ID
-	Pid   int32  `form:"pid"`   // 父类ID
-	Name  string `form:"name"`  // 菜单名称
-	Link  string `form:"link"`  // 链接地址
-	Icon  string `form:"icon"`  // 图标
-	Level int32  `form:"level"` // 菜单类型 1:一级菜单 2:二级菜单
+	Pid   int32  `form:"pid"`   // Parent class ID
+	Name  string `form:"name"`  // Menu name
+	Link  string `form:"link"`  // link address
+	Icon  string `form:"icon"`  // icon
+	Level int32  `form:"level"` // Menu type 1: Level 1 menu 2: Level 2 menu
 }
 
 type createResponse struct {
-	Id int32 `json:"id"` // 主键ID
+	Id int32 `json:"id"` // Primary Key ID
 }
 
-// Create 创建/编辑菜单
-// @Summary 创建/编辑菜单
-// @Description 创建/编辑菜单
+// Create create/edit menu
+// @Summary create/edit menu
+// @Description create/edit menu
 // @Tags API.menu
 // @Accept multipart/form-data
 // @Produce json
-// @Param Request body createRequest true "请求信息"
+// @Param Request body createRequest true "Request information"
 // @Success 200 {object} createResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/menu [post]
@@ -47,7 +47,7 @@ func (h *handler) Create() core.HandlerFunc {
 			return
 		}
 
-		if req.Id != "" { // 编辑功能
+		if req.Id != "" { // Edit function
 			ids, err := h.hashids.HashidsDecode(req.Id)
 			if err != nil {
 				c.AbortWithError(errno.NewError(
@@ -78,7 +78,7 @@ func (h *handler) Create() core.HandlerFunc {
 			res.Id = id
 			c.Payload(res)
 
-		} else { // 新增功能
+		} else { // New features
 
 			pid := req.Level
 			level := 2

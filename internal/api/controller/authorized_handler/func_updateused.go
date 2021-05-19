@@ -9,22 +9,22 @@ import (
 )
 
 type updateUsedRequest struct {
-	Id   string `form:"id"`   // 主键ID
-	Used int32  `form:"used"` // 是否启用 1:是 -1:否
+	Id   string `form:"id"`   // Primary key ID
+	Used int32  `form:"used"` // Whether to enable 1: Yes -1: No
 }
 
 type updateUsedResponse struct {
-	Id int32 `json:"id"` // 主键ID
+	Id int32 `json:"id"` // Primary Key ID
 }
 
-// UpdateUsed 更新调用方为启用/禁用
-// @Summary 更新调用方为启用/禁用
-// @Description 更新调用方为启用/禁用
+// UpdateUsed update the caller to enable/disable
+// @Summary Update the caller to enable/disable
+// @Description updates the caller to enable/disable
 // @Tags API.authorized
 // @Accept multipart/form-data
 // @Produce json
 // @Param id formData string true "Hashid"
-// @Param used formData int true "是否启用 1:是 -1:否"
+// @Param used formData int true "Is it enabled 1: Yes -1: No"
 // @Success 200 {object} updateUsedResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/authorized/used [patch]

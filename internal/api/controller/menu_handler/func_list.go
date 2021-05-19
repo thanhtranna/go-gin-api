@@ -15,20 +15,20 @@ import (
 type listData struct {
 	Id     int32  `json:"id"`      // ID
 	HashID string `json:"hashid"`  // hashid
-	Pid    int32  `json:"pid"`     // 父类ID
-	Name   string `json:"name"`    // 菜单名称
-	Link   string `json:"link"`    // 链接地址
-	Icon   string `json:"icon"`    // 图标
-	IsUsed int32  `json:"is_used"` // 是否启用 1=启用 -1=禁用
+	Pid    int32  `json:"pid"`     // Parent class ID
+	Name   string `json:"name"`    // Menu name
+	Link   string `json:"link"`    // link address
+	Icon   string `json:"icon"`    // icon
+	IsUsed int32  `json:"is_used"` // Whether to enable 1=Enable -1=Disable
 }
 
 type listResponse struct {
 	List []listData `json:"list"`
 }
 
-// List 菜单列表
-// @Summary 菜单列表
-// @Description 菜单列表
+// List menu list
+// @Summary menu list
+// @Description menu list
 // @Tags API.menu
 // @Accept json
 // @Produce json

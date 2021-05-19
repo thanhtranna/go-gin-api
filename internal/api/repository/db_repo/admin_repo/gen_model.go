@@ -2,18 +2,18 @@ package admin_repo
 
 import "time"
 
-// 管理员表
+// Administrator table
 //go:generate gormgen -structs Admin -input .
 type Admin struct {
-	Id          int32     // 主键
-	Username    string    // 用户名
-	Password    string    // 密码
-	Nickname    string    // 昵称
-	Mobile      string    // 手机号
-	IsUsed      int32     // 是否启用 1:是  -1:否
-	IsDeleted   int32     // 是否删除 1:是  -1:否
-	CreatedAt   time.Time `gorm:"time"` // 创建时间
-	CreatedUser string    // 创建人
-	UpdatedAt   time.Time `gorm:"time"` // 更新时间
-	UpdatedUser string    // 更新人
+	Id          int32     // primary key
+	Username    string    // username
+	Password    string    // password
+	Nickname    string    // nickname
+	Mobile      string    // phone number
+	IsUsed      int32     // whether to enable 1: Yes -1: No
+	IsDeleted   int32     // whether to delete 1: yes -1: no
+	CreatedAt   time.Time `gorm:"time"` // created time
+	CreatedUser string    // created by
+	UpdatedAt   time.Time `gorm:"time"` // updated time
+	UpdatedUser string    // updated by
 }

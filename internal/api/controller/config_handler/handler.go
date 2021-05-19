@@ -13,7 +13,7 @@ var _ Handler = (*handler)(nil)
 type Handler interface {
 	i()
 
-	// Email 修改邮件配置
+	// Email modify mail configuration
 	// @Tags API.config
 	// @Router /api/config/email [patch]
 	Email() core.HandlerFunc

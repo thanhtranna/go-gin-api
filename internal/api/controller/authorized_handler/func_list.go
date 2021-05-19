@@ -14,26 +14,26 @@ import (
 )
 
 type listRequest struct {
-	Page              int    `form:"page"`               // 第几页
-	PageSize          int    `form:"page_size"`          // 每页显示条数
-	BusinessKey       string `form:"business_key"`       // 调用方key
-	BusinessSecret    string `form:"business_secret"`    // 调用方secret
-	BusinessDeveloper string `form:"business_developer"` // 调用方对接人
-	Remark            string `form:"remark"`             // 备注
+	Page              int    `form:"page"`               // which page
+	PageSize          int    `form:"page_size"`          // The number of items displayed per page
+	BusinessKey       string `form:"business_key"`       // caller key
+	BusinessSecret    string `form:"business_secret"`    // caller secret
+	BusinessDeveloper string `form:"business_developer"` // caller docking person
+	Remark            string `form:"remark"`             // Remark
 }
 
 type listData struct {
 	Id                int    `json:"id"`                 // ID
 	HashID            string `json:"hashid"`             // hashid
-	BusinessKey       string `json:"business_key"`       // 调用方key
-	BusinessSecret    string `json:"business_secret"`    // 调用方secret
-	BusinessDeveloper string `json:"business_developer"` // 调用方对接人
-	Remark            string `json:"remark"`             // 备注
-	IsUsed            int    `json:"is_used"`            // 是否启用 1:是 -1:否
-	CreatedAt         string `json:"created_at"`         // 创建时间
-	CreatedUser       string `json:"created_user"`       // 创建人
-	UpdatedAt         string `json:"updated_at"`         // 更新时间
-	UpdatedUser       string `json:"updated_user"`       // 更新人
+	BusinessKey       string `json:"business_key"`       // caller key
+	BusinessSecret    string `json:"business_secret"`    // caller secret
+	BusinessDeveloper string `json:"business_developer"` // caller docking person
+	Remark            string `json:"remark"`             // Remark
+	IsUsed            int    `json:"is_used"`            // Whether to enable 1: Yes -1: No
+	CreatedAt         string `json:"created_at"`         // created time
+	CreatedUser       string `json:"created_user"`       // created by
+	UpdatedAt         string `json:"updated_at"`         // updated time
+	UpdatedUser       string `json:"updated_user"`       // Updated by
 }
 
 type listResponse struct {
@@ -45,18 +45,18 @@ type listResponse struct {
 	} `json:"pagination"`
 }
 
-// List 调用方列表
-// @Summary 调用方列表
-// @Description 调用方列表
+// List caller list
+// @Summary caller list
+// @Description caller list
 // @Tags API.authorized
 // @Accept json
 // @Produce json
-// @Param page query int false "第几页"
-// @Param page_size query string false "每页显示条数"
-// @Param business_key query string false "调用方key"
-// @Param business_secret query string false "调用方secret"
-// @Param business_developer query string false "调用方对接人"
-// @Param remark path string false "备注"
+// @Param page query int false "page number"
+// @Param page_size query string false "Number of items displayed per page"
+// @Param business_key query string false "caller key"
+// @Param business_secret query string false "caller secret"
+// @Param business_developer query string false "caller docking person"
+// @Param remark path string false "Remarks"
 // @Success 200 {object} listResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/authorized [get]

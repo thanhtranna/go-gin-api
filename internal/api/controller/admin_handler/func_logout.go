@@ -14,12 +14,12 @@ import (
 )
 
 type logoutResponse struct {
-	Username string `json:"username"` // 用户账号
+	Username string `json:"username"` // User account
 }
 
-// Logout 管理员登出
-// @Summary 管理员登出
-// @Description 管理员登出
+// Logout The administrator logs out
+// @Summary Admin log out
+// @Description The administrator logs out
 // @Tags API.admin
 // @Accept json
 // @Produce json

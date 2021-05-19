@@ -1,9 +1,9 @@
 ## controller
 
-控制器层。
+Controller layer.
 
-主要接收参数、验证参数、调用 `service` 层的业务逻辑处理，最后返回数据。
+Mainly receive parameters, verify parameters, call the business logic processing of the `service` layer, and finally return data.
 
-命名规范：
+Naming conventions:
 
-- 包名以 `_handler` 结尾。
+-The package name ends with `_handler`.

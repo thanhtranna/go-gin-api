@@ -6,16 +6,16 @@ import (
 )
 
 type dbsResponse struct {
-	List []dbData `json:"list"` // 数据库列表
+	List []dbData `json:"list"` // Database list
 }
 
 type dbData struct {
-	DbName string `json:"db_name"` // 数据库名称
+	DbName string `json:"db_name"` // Database name
 }
 
-// Dbs 查询 DB
-// @Summary 查询 DB
-// @Description 查询 DB
+// Dbs query DB
+// @Summary query DB
+// @Description query DB
 // @Tags API.tool
 // @Accept multipart/form-data
 // @Produce json
@@ -26,7 +26,7 @@ func (h *handler) Dbs() core.HandlerFunc {
 	return func(c core.Context) {
 		res := new(dbsResponse)
 
-		// TODO 后期支持查询多个数据库
+		// TODO supports querying multiple databases later
 		data := dbData{
 			DbName: configs.Get().MySQL.Read.Name,
 		}

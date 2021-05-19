@@ -9,20 +9,20 @@ import (
 )
 
 type hashIdsDecodeRequest struct {
-	Id string `uri:"id"` // 需解密的密文
+	Id string `uri:"id"` // Ciphertext to be decrypted
 }
 
 type hashIdsDecodeResponse struct {
-	Val int `json:"val"` // 解密后的值
+	Val int `json:"val"` // Decrypted value
 }
 
-// HashIdsDecode HashIds 解密
-// @Summary HashIds 解密
-// @Description HashIds 解密
+// HashIdsDecode HashIds decrypt
+// @Summary HashIds decrypt
+// @Description HashIds decrypt
 // @Tags API.tool
 // @Accept json
 // @Produce json
-// @Param id path string true "需解密的密文"
+// @Param id path string true "ciphertext to be decrypted"
 // @Success 200 {object} hashIdsDecodeResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/tool/hashids/decode/{id} [get]

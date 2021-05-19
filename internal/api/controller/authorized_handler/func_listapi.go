@@ -18,22 +18,22 @@ type listAPIRequest struct {
 
 type listAPIData struct {
 	HashId      string `json:"hash_id"`      // hashID
-	BusinessKey string `json:"business_key"` // 调用方key
-	Method      string `json:"method"`       // 调用方secret
-	API         string `json:"api"`          // 调用方对接人
+	BusinessKey string `json:"business_key"` // caller key
+	Method      string `json:"method"`       // caller secret
+	API         string `json:"api"`          // caller docking person
 }
 
 type listAPIResponse struct {
 	List []listAPIData `json:"list"`
 }
 
-// ListAPI 调用方接口地址列表
-// @Summary 调用方接口地址列表
-// @Description 调用方接口地址列表
+// ListAPI caller interface address list
+// @Summary caller interface address list
+// @Description caller interface address list
 // @Tags API.authorized
 // @Accept json
 // @Produce json
-// @Param business_key query string false "调用方key"
+// @Param business_key query string false "caller key"
 // @Success 200 {object} listAPIResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/authorized_api [get]
@@ -62,7 +62,7 @@ func (h *handler) ListAPI() core.HandlerFunc {
 
 		id := int32(ids[0])
 
-		// 通过 id 查询出 business_key
+		// Query business_key by id
 		authorizedInfo, err := h.authorizedService.Detail(c, id)
 		if err != nil {
 			c.AbortWithError(errno.NewError(

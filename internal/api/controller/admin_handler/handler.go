@@ -16,52 +16,52 @@ var _ Handler = (*handler)(nil)
 type Handler interface {
 	i()
 
-	// Login 管理员登录
+	// Login administrator login
 	// @Tags API.admin
 	// @Router /api/admin/login [post]
 	Login() core.HandlerFunc
 
-	// Logout 管理员登出
+	// Logout administrator logout
 	// @Tags API.admin
 	// @Router /api/admin/logout [post]
 	Logout() core.HandlerFunc
 
-	// ModifyPassword 修改密码
+	// ModifyPassword change password
 	// @Tags API.admin
 	// @Router /api/admin/modify_password [patch]
 	ModifyPassword() core.HandlerFunc
 
-	// Detail 个人信息
+	// Detail get personal information
 	// @Tags API.admin
 	// @Router /api/admin/info [get]
 	Detail() core.HandlerFunc
 
-	// ModifyPersonalInfo 修改个人信息
+	// ModifyPersonalInfo edit personal information
 	// @Tags API.admin
 	// @Router /api/admin/modify_personal_info [patch]
 	ModifyPersonalInfo() core.HandlerFunc
 
-	// Create 新增管理员
+	// Create add manager
 	// @Tags API.admin
 	// @Router /api/admin [post]
 	Create() core.HandlerFunc
 
-	// List 管理员列表
+	// List administrator list
 	// @Tags API.admin
 	// @Router /api/admin [get]
 	List() core.HandlerFunc
 
-	// Delete 删除管理员
+	// Delete delete administrator
 	// @Tags API.admin
 	// @Router /api/admin/{id} [delete]
 	Delete() core.HandlerFunc
 
-	// UpdateUsed 更新管理员为启用/禁用
+	// UpdateUsed update administrator to enable/disable
 	// @Tags API.admin
 	// @Router /api/admin/used [patch]
 	UpdateUsed() core.HandlerFunc
 
-	// ResetPassword 重置密码
+	// ResetPassword reset password
 	// @Tags API.admin
 	// @Router /api/admin/reset_password/{id} [patch]
 	ResetPassword() core.HandlerFunc

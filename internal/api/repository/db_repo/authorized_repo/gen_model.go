@@ -2,18 +2,18 @@ package authorized_repo
 
 import "time"
 
-// 已授权的调用方表
+// Authorized caller table
 //go:generate gormgen -structs Authorized -input .
 type Authorized struct {
-	Id                int32     // 主键
-	BusinessKey       string    // 调用方key
-	BusinessSecret    string    // 调用方secret
-	BusinessDeveloper string    // 调用方对接人
-	Remark            string    // 备注
-	IsUsed            int32     // 是否启用 1:是  -1:否
-	IsDeleted         int32     // 是否删除 1:是  -1:否
-	CreatedAt         time.Time `gorm:"time"` // 创建时间
-	CreatedUser       string    // 创建人
-	UpdatedAt         time.Time `gorm:"time"` // 更新时间
-	UpdatedUser       string    // 更新人
+	Id                int32     // primary key
+	BusinessKey       string    // caller key
+	BusinessSecret    string    // caller secret
+	BusinessDeveloper string    // caller developer
+	Remark            string    // remarks
+	IsUsed            int32     // whether to enable 1: yes -1: no
+	IsDeleted         int32     // whether to delete 1: yes -1: no
+	CreatedAt         time.Time `gorm:"time"` // created time
+	CreatedUser       string    // created by
+	UpdatedAt         time.Time `gorm:"time"` // updated time
+	UpdatedUser       string    // updated by
 }

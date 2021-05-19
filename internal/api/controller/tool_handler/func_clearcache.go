@@ -14,12 +14,12 @@ type clearCacheRequest struct {
 }
 
 type clearCacheResponse struct {
-	Bool bool `json:"bool"` // 删除结果
+	Bool bool `json:"bool"` // Delete result
 }
 
-// ClearCache 清空缓存
-// @Summary 清空缓存
-// @Description 清空缓存
+// ClearCache clears the cache
+// @Summary Clear the cache
+// @Description Clear the cache
 // @Tags API.tool
 // @Accept multipart/form-data
 // @Produce json
@@ -40,7 +40,7 @@ func (h *handler) ClearCache() core.HandlerFunc {
 			return
 		}
 
-		if b := h.cache.Exists(req.RedisKey); b != true {
+		if b := h.cache.Exists(req.RedisKey); !b {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.SearchRedisEmpty,
@@ -50,7 +50,7 @@ func (h *handler) ClearCache() core.HandlerFunc {
 		}
 
 		b := h.cache.Del(req.RedisKey, cache.WithTrace(c.Trace()))
-		if b != true {
+		if !b {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.ClearRedisError,

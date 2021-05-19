@@ -2,34 +2,34 @@ definitions:
   admin_handler.createResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary key ID
         type: integer
     type: object
   admin_handler.deleteResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary key ID
         type: integer
     type: object
   admin_handler.detailResponse:
     properties:
       mobile:
-        description: 手机号
+        description: Phone number
         type: string
       nickname:
-        description: 昵称
+        description: Nickname
         type: string
       username:
-        description: 用户名
+        description: Username
         type: string
     type: object
   admin_handler.listData:
     properties:
       created_at:
-        description: 创建时间
+        description: created time
         type: string
       created_user:
-        description: 创建人
+        description: created by
         type: string
       hashid:
         description: hashid
@@ -38,22 +38,22 @@ definitions:
         description: ID
         type: integer
       is_used:
-        description: 是否启用 1:是 -1:否
+        description: 'Whether to enable 1: Yes -1: No'
         type: integer
       mobile:
-        description: 手机号
+        description: mobile phone number
         type: string
       nickname:
-        description: 昵称
+        description: Nickname
         type: string
       updated_at:
-        description: 更新时间
+        description: updated time
         type: string
       updated_user:
-        description: 更新人
+        description: Updated by
         type: string
       username:
-        description: 用户名
+        description: username
         type: string
     type: object
   admin_handler.listResponse:
@@ -75,76 +75,76 @@ definitions:
   admin_handler.loginResponse:
     properties:
       token:
-        description: 用户身份标识
+        description: User token
         type: string
     type: object
   admin_handler.logoutResponse:
     properties:
       username:
-        description: 用户账号
+        description: User account
         type: string
     type: object
   admin_handler.modifyPasswordResponse:
     properties:
       username:
-        description: 用户账号
+        description: Username
         type: string
     type: object
   admin_handler.modifyPersonalInfoResponse:
     properties:
       username:
-        description: 用户账号
+        description: User account
         type: string
     type: object
   admin_handler.resetPasswordResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary Key ID
         type: integer
     type: object
   admin_handler.updateUsedResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary Key ID
         type: integer
     type: object
   authorized_handler.createAPIResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary Key ID
         type: integer
     type: object
   authorized_handler.createResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary Key ID
         type: integer
     type: object
   authorized_handler.deleteAPIResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary Key ID
         type: integer
     type: object
   authorized_handler.deleteResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary key ID
         type: integer
     type: object
   authorized_handler.listAPIData:
     properties:
       api:
-        description: 调用方对接人
+        description: caller docking person
         type: string
       business_key:
-        description: 调用方key
+        description: caller key
         type: string
       hash_id:
         description: hashID
         type: string
       method:
-        description: 调用方secret
+        description: caller secret
         type: string
     type: object
   authorized_handler.listAPIResponse:
@@ -157,19 +157,19 @@ definitions:
   authorized_handler.listData:
     properties:
       business_developer:
-        description: 调用方对接人
+        description: caller docking person
         type: string
       business_key:
-        description: 调用方key
+        description: caller key
         type: string
       business_secret:
-        description: 调用方secret
+        description: caller secret
         type: string
       created_at:
-        description: 创建时间
+        description: created time
         type: string
       created_user:
-        description: 创建人
+        description: created by
         type: string
       hashid:
         description: hashid
@@ -178,16 +178,16 @@ definitions:
         description: ID
         type: integer
       is_used:
-        description: 是否启用 1:是 -1:否
+        description: 'Whether to enable 1: Yes -1: No'
         type: integer
       remark:
-        description: 备注
+        description: Remark
         type: string
       updated_at:
-        description: 更新时间
+        description: updated time
         type: string
       updated_user:
-        description: 更新人
+        description: Updated by
         type: string
     type: object
   authorized_handler.listResponse:
@@ -209,70 +209,70 @@ definitions:
   authorized_handler.updateUsedResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary Key ID
         type: integer
     type: object
   code.Failure:
     properties:
       code:
-        description: 业务码
+        description: business code
         type: integer
       message:
-        description: 描述信息
+        description: description information
         type: string
     type: object
   config_handler.emailResponse:
     properties:
       email:
-        description: 邮箱地址
+        description: email address
         type: string
     type: object
   menu_handler.createRequest:
     properties:
       icon:
-        description: 图标
+        description: icon
         type: string
       id:
         description: ID
         type: string
       level:
-        description: 菜单类型 1:一级菜单 2:二级菜单
+        description: 'Menu type 1: Level 1 menu 2: Level 2 menu'
         type: integer
       link:
-        description: 链接地址
+        description: link address
         type: string
       name:
-        description: 菜单名称
+        description: Menu name
         type: string
       pid:
-        description: 父类ID
+        description: Parent class ID
         type: integer
     type: object
   menu_handler.createResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary Key ID
         type: integer
     type: object
   menu_handler.deleteResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary Key ID
         type: integer
     type: object
   menu_handler.detailResponse:
     properties:
       icon:
-        description: 图标
+        description: icon
         type: string
       id:
-        description: 主键ID
+        description: Primary key ID
         type: integer
       link:
-        description: 链接地址
+        description: link address
         type: string
       name:
-        description: 菜单名称
+        description: Menu name
         type: string
     type: object
   menu_handler.listData:
@@ -281,22 +281,22 @@ definitions:
         description: hashid
         type: string
       icon:
-        description: 图标
+        description: icon
         type: string
       id:
         description: ID
         type: integer
       is_used:
-        description: 是否启用 1=启用 -1=禁用
+        description: Whether to enable 1=Enable -1=Disable
         type: integer
       link:
-        description: 链接地址
+        description: link address
         type: string
       name:
-        description: 菜单名称
+        description: Menu name
         type: string
       pid:
-        description: 父类ID
+        description: Parent class ID
         type: integer
     type: object
   menu_handler.listResponse:
@@ -309,19 +309,19 @@ definitions:
   menu_handler.updateUsedResponse:
     properties:
       id:
-        description: 主键ID
+        description: Primary Key ID
         type: integer
     type: object
   tool_handler.dbData:
     properties:
       db_name:
-        description: 数据库名称
+        description: Database name
         type: string
     type: object
   tool_handler.dbsResponse:
     properties:
       list:
-        description: 数据库列表
+        description: Database list
         items:
           $ref: '#/definitions/tool_handler.dbData'
         type: array
@@ -329,38 +329,38 @@ definitions:
   tool_handler.hashIdsDecodeResponse:
     properties:
       val:
-        description: 解密后的值
+        description: Decrypted value
         type: integer
     type: object
   tool_handler.hashIdsEncodeResponse:
     properties:
       val:
-        description: 加密后的值
+        description: Encrypted value
         type: string
     type: object
   tool_handler.searchCacheResponse:
     properties:
       ttl:
-        description: 过期时间
+        description: Expiration time
         type: string
       val:
-        description: 查询后的值
+        description: value after query
         type: string
     type: object
   tool_handler.searchMySQLResponse:
     properties:
       cols:
-        description: 查询后的行
+        description: line after query
         items:
           type: string
         type: array
       cols_info:
-        description: 行信息
+        description: row information
         items:
           $ref: '#/definitions/tool_handler.tableColumn'
         type: array
       list:
-        description: 查询后的数据
+        description: Query data
         items:
           additionalProperties: true
           type: object
@@ -369,25 +369,25 @@ definitions:
   tool_handler.tableColumn:
     properties:
       column_comment:
-        description: 字段注释
+        description: field comment
         type: string
       column_name:
-        description: 字段名称
+        description: field name
         type: string
     type: object
   tool_handler.tableData:
     properties:
       table_comment:
-        description: 数据表备注
+        description: Data table comment
         type: string
       table_name:
-        description: 数据表名称
+        description: data table name
         type: string
     type: object
   tool_handler.tablesResponse:
     properties:
       list:
-        description: 数据表列表
+        description: Data sheet list
         items:
           $ref: '#/definitions/tool_handler.tableData'
         type: array
@@ -405,25 +405,25 @@ paths:
     get:
       consumes:
       - application/json
-      description: 管理员列表
+      description: admin list
       parameters:
-      - description: 第几页
+      - description: page number
         in: query
         name: page
         type: integer
-      - description: 每页显示条数
+      - description: Number of items displayed per page
         in: query
         name: page_size
         type: string
-      - description: 用户名
+      - description: Username
         in: query
         name: username
         type: string
-      - description: 昵称
+      - description: nickname
         in: query
         name: nickname
         type: string
-      - description: 手机号
+      - description: mobile phone number
         in: query
         name: mobile
         type: string
@@ -438,30 +438,30 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 管理员列表
+      summary: administrator list
       tags:
       - API.admin
     post:
       consumes:
       - multipart/form-data
-      description: 新增管理员
+      description: add administrator
       parameters:
-      - description: 用户名
+      - description: Username
         in: formData
         name: username
         required: true
         type: string
-      - description: 昵称
+      - description: nickname
         in: formData
         name: nickname
         required: true
         type: string
-      - description: 手机号
+      - description: mobile number
         in: formData
         name: mobile
         required: true
         type: string
-      - description: 密码
+      - description: password
         in: formData
         name: password
         required: true
@@ -477,14 +477,14 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 新增管理员
+      summary: add administrator
       tags:
       - API.admin
   /api/admin/{id}:
     delete:
       consumes:
       - application/json
-      description: 删除管理员
+      description: delete the administrator
       parameters:
       - description: hashId
         in: path
@@ -502,14 +502,14 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 删除管理员
+      summary: delete administrator
       tags:
       - API.admin
   /api/admin/info:
     get:
       consumes:
       - application/json
-      description: 管理员详情
+      description: Administrator details
       produces:
       - application/json
       responses:
@@ -521,14 +521,14 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 管理员详情
+      summary: administrator details
       tags:
       - API.admin
   /api/admin/login:
     post:
       consumes:
       - application/json
-      description: 管理员登出
+      description: The administrator logs out
       produces:
       - application/json
       responses:
@@ -540,21 +540,21 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 管理员登出
+      summary: Admin log out
       tags:
       - API.admin
   /api/admin/modify_password:
     patch:
       consumes:
       - multipart/form-data
-      description: 修改密码
+      description: modify password
       parameters:
-      - description: 旧密码
+      - description: old password
         in: formData
         name: old_password
         required: true
         type: string
-      - description: 新密码
+      - description: new password
         in: formData
         name: new_password
         required: true
@@ -570,14 +570,14 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 修改密码
+      summary: modify password
       tags:
       - API.admin
   /api/admin/reset_password/{id}:
     patch:
       consumes:
       - application/json
-      description: 重置密码
+      description: reset password
       parameters:
       - description: hashId
         in: path
@@ -595,21 +595,21 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 重置密码
+      summary: reset password
       tags:
       - API.admin
   /api/admin/used:
     patch:
       consumes:
       - multipart/form-data
-      description: 更新管理员为启用/禁用
+      description: Update the administrator to enable/disable
       parameters:
       - description: Hashid
         in: formData
         name: id
         required: true
         type: string
-      - description: 是否启用 1:是 -1:否
+      - description: 'Is it enabled 1: Yes -1: No'
         in: formData
         name: used
         required: true
@@ -625,36 +625,36 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 更新管理员为启用/禁用
+      summary: Update the administrator to enable/disable
       tags:
       - API.admin
   /api/authorized:
     get:
       consumes:
       - application/json
-      description: 调用方列表
+      description: caller list
       parameters:
-      - description: 第几页
+      - description: page number
         in: query
         name: page
         type: integer
-      - description: 每页显示条数
+      - description: Number of items displayed per page
         in: query
         name: page_size
         type: string
-      - description: 调用方key
+      - description: caller key
         in: query
         name: business_key
         type: string
-      - description: 调用方secret
+      - description: caller secret
         in: query
         name: business_secret
         type: string
-      - description: 调用方对接人
+      - description: caller docking person
         in: query
         name: business_developer
         type: string
-      - description: 备注
+      - description: Remarks
         in: path
         name: remark
         type: string
@@ -669,25 +669,25 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 调用方列表
+      summary: caller list
       tags:
       - API.authorized
     post:
       consumes:
       - multipart/form-data
-      description: 新增调用方
+      description: add caller
       parameters:
-      - description: 调用方key
+      - description: caller key
         in: formData
         name: business_key
         required: true
         type: string
-      - description: 调用方对接人
+      - description: caller docking person
         in: formData
         name: business_developer
         required: true
         type: string
-      - description: 备注
+      - description: Remarks
         in: formData
         name: remark
         required: true
@@ -703,14 +703,14 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 新增调用方
+      summary: add caller
       tags:
       - API.authorized
   /api/authorized/{id}:
     delete:
       consumes:
       - application/json
-      description: 删除调用方
+      description: delete the caller
       parameters:
       - description: hashId
         in: path
@@ -728,21 +728,21 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 删除调用方
+      summary: delete the caller
       tags:
       - API.authorized
   /api/authorized/used:
     patch:
       consumes:
       - multipart/form-data
-      description: 更新调用方为启用/禁用
+      description: updates the caller to enable/disable
       parameters:
       - description: Hashid
         in: formData
         name: id
         required: true
         type: string
-      - description: 是否启用 1:是 -1:否
+      - description: 'Is it enabled 1: Yes -1: No'
         in: formData
         name: used
         required: true
@@ -758,16 +758,16 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 更新调用方为启用/禁用
+      summary: Update the caller to enable/disable
       tags:
       - API.authorized
   /api/authorized_api:
     get:
       consumes:
       - application/json
-      description: 调用方接口地址列表
+      description: caller interface address list
       parameters:
-      - description: 调用方key
+      - description: caller key
         in: query
         name: business_key
         type: string
@@ -782,25 +782,25 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 调用方接口地址列表
+      summary: caller interface address list
       tags:
       - API.authorized
     post:
       consumes:
       - multipart/form-data
-      description: 授权调用方接口地址
+      description: authorized caller interface address
       parameters:
       - description: HashID
         in: formData
         name: id
         required: true
         type: string
-      - description: 请求方法
+      - description: request method
         in: formData
         name: method
         required: true
         type: string
-      - description: 请求地址
+      - description: request address
         in: formData
         name: api
         required: true
@@ -816,16 +816,16 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 授权调用方接口地址
+      summary: authorized caller interface address
       tags:
       - API.authorized
   /api/authorized_api/{id}:
     delete:
       consumes:
       - application/json
-      description: 删除调用方接口地址
+      description: delete the caller interface address
       parameters:
-      - description: 主键ID
+      - description: primary key ID
         in: path
         name: id
         required: true
@@ -841,36 +841,36 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 删除调用方接口地址
+      summary: delete the caller interface address
       tags:
       - API.authorized
   /api/config/email:
     patch:
       consumes:
       - multipart/form-data
-      description: 修改邮件配置
+      description: modify the mail configuration
       parameters:
-      - description: 邮箱服务器
+      - description: mail server
         in: formData
         name: host
         required: true
         type: string
-      - description: 端口
+      - description: port
         in: formData
         name: port
         required: true
         type: string
-      - description: 发件人邮箱
+      - description: Sender's mailbox
         in: formData
         name: user
         required: true
         type: string
-      - description: 发件人密码
+      - description: Sender password
         in: formData
         name: pass
         required: true
         type: string
-      - description: 收件人邮箱地址，多个用,分割
+      - description: Recipient's email address, multiple use, split
         in: formData
         name: to
         required: true
@@ -886,14 +886,14 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 修改邮件配置
+      summary: modify the mail configuration
       tags:
       - API.config
   /api/menu:
     get:
       consumes:
       - application/json
-      description: 菜单列表
+      description: menu list
       produces:
       - application/json
       responses:
@@ -905,15 +905,15 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 菜单列表
+      summary: menu list
       tags:
       - API.menu
     post:
       consumes:
       - multipart/form-data
-      description: 创建/编辑菜单
+      description: create/edit menu
       parameters:
-      - description: 请求信息
+      - description: Request information
         in: body
         name: Request
         required: true
@@ -930,14 +930,14 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 创建/编辑菜单
+      summary: create/edit menu
       tags:
       - API.menu
   /api/menu/{id}:
     delete:
       consumes:
       - application/json
-      description: 删除菜单
+      description: delete menu
       parameters:
       - description: hashId
         in: path
@@ -955,13 +955,13 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 删除菜单
+      summary: delete menu
       tags:
       - API.menu
     get:
       consumes:
       - application/json
-      description: 菜单详情
+      description: menu details
       parameters:
       - description: hashId
         in: path
@@ -979,21 +979,21 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 菜单详情
+      summary: menu details
       tags:
       - API.menu
   /api/menu/used:
     patch:
       consumes:
       - application/json
-      description: 更新菜单为启用/禁用
+      description: Update the menu to enable/disable
       parameters:
       - description: Hashid
         in: formData
         name: id
         required: true
         type: string
-      - description: 是否启用 1:是 -1:否
+      - description: 'Is it enabled 1: Yes -1: No'
         in: formData
         name: used
         required: true
@@ -1009,14 +1009,14 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 更新菜单为启用/禁用
+      summary: Update the menu to enable/disable
       tags:
       - API.menu
   /api/tool/cache/clear:
     patch:
       consumes:
       - multipart/form-data
-      description: 清空缓存
+      description: Clear the cache
       parameters:
       - description: Redis Key
         in: formData
@@ -1034,14 +1034,14 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 清空缓存
+      summary: Clear the cache
       tags:
       - API.tool
   /api/tool/cache/search:
     post:
       consumes:
       - multipart/form-data
-      description: 查询缓存
+      description: query cache
       parameters:
       - description: Redis Key
         in: formData
@@ -1059,14 +1059,14 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 查询缓存
+      summary: query cache
       tags:
       - API.tool
   /api/tool/data/dbs:
     get:
       consumes:
       - multipart/form-data
-      description: 查询 DB
+      description: query DB
       produces:
       - application/json
       responses:
@@ -1078,26 +1078,26 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 查询 DB
+      summary: query DB
       tags:
       - API.tool
   /api/tool/data/mysql:
     post:
       consumes:
       - multipart/form-data
-      description: 执行 SQL 语句
+      description: executes the SQL statement
       parameters:
-      - description: 数据库名称
+      - description: database name
         in: formData
         name: db_name
         required: true
         type: string
-      - description: 数据表名称
+      - description: data table name
         in: formData
         name: table_name
         required: true
         type: string
-      - description: SQL 语句
+      - description: SQL statement
         in: formData
         name: sql
         required: true
@@ -1113,16 +1113,16 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 执行 SQL 语句
+      summary: executes the SQL statement
       tags:
       - API.tool
   /api/tool/data/tables:
     post:
       consumes:
       - multipart/form-data
-      description: 查询 Table
+      description: query Table
       parameters:
-      - description: 数据库名称
+      - description: database name
         in: formData
         name: db_name
         required: true
@@ -1138,16 +1138,16 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: 查询 Table
+      summary: query Table
       tags:
       - API.tool
   /api/tool/hashids/decode/{id}:
     get:
       consumes:
       - application/json
-      description: HashIds 解密
+      description: HashIds decrypt
       parameters:
-      - description: 需解密的密文
+      - description: ciphertext to be decrypted
         in: path
         name: id
         required: true
@@ -1163,16 +1163,16 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: HashIds 解密
+      summary: HashIds decrypt
       tags:
       - API.tool
   /api/tool/hashids/encode/{id}:
     get:
       consumes:
       - application/json
-      description: HashIds 加密
+      description: HashIds encryption
       parameters:
-      - description: 需加密的数字
+      - description: number to be encrypted
         in: path
         name: id
         required: true
@@ -1188,7 +1188,7 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: HashIds 加密
+      summary: HashIds encryption
       tags:
       - API.tool
 swagger: "2.0"

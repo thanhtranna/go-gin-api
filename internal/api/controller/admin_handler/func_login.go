@@ -16,22 +16,22 @@ import (
 )
 
 type loginRequest struct {
-	Username string `form:"username"` // 用户名
-	Password string `form:"password"` // 密码
+	Username string `form:"username"` // Username
+	Password string `form:"password"` // Password
 }
 
 type loginResponse struct {
-	Token string `json:"token"` // 用户身份标识
+	Token string `json:"token"` // User token
 }
 
-// Login 管理员登录
-// @Summary 管理员登录
-// @Description 管理员登录
+// Login Administrator login
+// @Summary Administrator login
+// @Description Administrator login
 // @Tags API.admin
 // @Accept multipart/form-data
 // @Produce json
-// @Param username formData string true "用户名"
-// @Param password formData string true "密码"
+// @Param username formData string true "Username"
+// @Param password formData string true "password"
 // @Success 200 {object} loginResponse
 // @Failure 400 {object} code.Failure
 // @Router /api/admin/login [post]
@@ -67,17 +67,17 @@ func (h *handler) Login() core.HandlerFunc {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.AdminLoginError,
-				code.Text(code.AdminLoginError)).WithErr(errors.New("未查询出符合条件的用户")),
+				code.Text(code.AdminLoginError)).WithErr(errors.New("No eligible users found")),
 			)
 			return
 		}
 
 		token := password.GenerateLoginToken(info.Id)
 
-		// 用户信息
+		// User Info
 		adminJsonInfo, _ := json.Marshal(info)
 
-		// 记录 Redis 中
+		// Save into Redis
 		err = h.cache.Set(h.adminService.CacheKeyPrefix()+token, string(adminJsonInfo), time.Hour*24, cache.WithTrace(c.Trace()))
 		if err != nil {
 			c.AbortWithError(errno.NewError(
