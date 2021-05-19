@@ -1,0 +1,36 @@
+package authorized_handler
+
+import (
+	"go.uber.org/zap"
+
+	"github.com/xinliangnote/go-gin-api/internal/pkg/cache"
+	"github.com/xinliangnote/go-gin-api/internal/pkg/core"
+	"github.com/xinliangnote/go-gin-api/internal/pkg/db"
+)
+
+var _ Handler = (*handler)(nil)
+
+type Handler interface {
+	i()
+
+	AddView() core.HandlerFunc
+	ApiView() core.HandlerFunc
+	ListView() core.HandlerFunc
+	DemoView() core.HandlerFunc
+}
+
+type handler struct {
+	db     db.Repo
+	logger *zap.Logger
+	cache  cache.Repo
+}
+
+func New(logger *zap.Logger, db db.Repo, cache cache.Repo) Handler {
+	return &handler{
+		logger: logger,
+		cache:  cache,
+		db:     db,
+	}
+}
+
+func (h *handler) i() {}
