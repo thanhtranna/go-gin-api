@@ -14,22 +14,22 @@ import (
 var _ Middleware = (*middleware)(nil)
 
 type Middleware interface {
-	// i 为了避免被其他包实现
+	// i In order to avoid being implemented by other packages
 	i()
 
-	// JWT 中间件
+	// JWT Middleware
 	Jwt(ctx core.Context) (userId int64, userName string, err errno.Error)
 
-	// Resubmit 中间件
+	// Resubmit Middleware
 	Resubmit() core.HandlerFunc
 
-	// DisableLog 不记录日志
+	// DisableLog Don't use log
 	DisableLog() core.HandlerFunc
 
-	// Signature 签名验证，对用签名算法 pkg/signature
+	// Signature Signature verification, use signature algorithm pkg/signature
 	Signature() core.HandlerFunc
 
-	// Token 签名验证，对登录用户的验证
+	// Token Signature verification, verification of logged-in users
 	Token(ctx core.Context) (userId int64, userName string, err errno.Error)
 }
 

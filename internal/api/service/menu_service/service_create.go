@@ -6,11 +6,11 @@ import (
 )
 
 type CreateMenuData struct {
-	Pid   int32  // 父类ID
-	Name  string // 菜单名称
-	Link  string // 链接地址
-	Icon  string // 图标
-	Level int32  // 菜单类型 1:一级菜单 2:二级菜单
+	Pid   int32  // Parent class ID
+	Name  string // Menu name
+	Link  string // link address
+	Icon  string // icon
+	Level int32  // Menu type 1: Level 1 menu 2: Level 2 menu
 }
 
 func (s *service) Create(ctx core.Context, menuData *CreateMenuData) (id int32, err error) {

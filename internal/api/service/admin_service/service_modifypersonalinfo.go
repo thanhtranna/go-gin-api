@@ -6,8 +6,8 @@ import (
 )
 
 type ModifyData struct {
-	Nickname string // 昵称
-	Mobile   string // 手机号
+	Nickname string // Nickname
+	Mobile   string // phone number
 }
 
 func (s *service) ModifyPersonalInfo(ctx core.Context, id int32, modifyData *ModifyData) (err error) {

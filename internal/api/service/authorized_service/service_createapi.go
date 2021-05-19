@@ -7,9 +7,9 @@ import (
 )
 
 type CreateAuthorizedAPIData struct {
-	BusinessKey string `json:"business_key"` // 调用方key
-	Method      string `json:"method"`       // 请求方法
-	API         string `json:"api"`          // 请求地址
+	BusinessKey string `json:"business_key"` // Caller key
+	Method      string `json:"method"`       // Request method
+	API         string `json:"api"`          // Request address
 }
 
 func (s *service) CreateAPI(ctx core.Context, authorizedAPIData *CreateAuthorizedAPIData) (id int32, err error) {

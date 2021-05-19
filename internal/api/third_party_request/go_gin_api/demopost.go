@@ -9,16 +9,16 @@ import (
 	"github.com/pkg/errors"
 )
 
-// 接口地址
+// interface address
 var demoPostApi = "http://127.0.0.1:9999/demo/post/"
 
-// 接口返回结构
+// Interface return structure
 type demoPostResponse struct {
 	Name string `json:"name"`
 	Job  string `json:"job"`
 }
 
-// 发起请求
+// Initiate a request
 func DemoPost(name string, opts ...httpclient.Option) (res *demoPostResponse, err error) {
 	api := demoPostApi
 	params := url.Values{}
@@ -37,7 +37,7 @@ func DemoPost(name string, opts ...httpclient.Option) (res *demoPostResponse, er
 	return res, nil
 }
 
-// 设置重试规则
+// Set retry rules
 func DemoPostRetryVerify(body []byte) (shouldRetry bool) {
 	if len(body) == 0 {
 		return true
@@ -46,7 +46,7 @@ func DemoPostRetryVerify(body []byte) (shouldRetry bool) {
 	return false
 }
 
-// 设置告警规则
+// Set alarm rules
 func DemoPostAlarmVerify(body []byte) (shouldAlarm bool) {
 	if len(body) == 0 {
 		return true
@@ -55,7 +55,7 @@ func DemoPostAlarmVerify(body []byte) (shouldAlarm bool) {
 	return false
 }
 
-// 设置 Mock 数据
+// Set up mock data
 func DemoPostMock() (body []byte) {
 	res := new(demoPostResponse)
 	res.Name = "BB"

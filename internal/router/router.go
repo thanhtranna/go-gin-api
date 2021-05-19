@@ -42,24 +42,24 @@ func NewHTTPServer(logger *zap.Logger) (*Server, error) {
 	openBrowserUri := "http://127.0.0.1" + configs.ProjectPort()
 
 	_, ok := file.IsExists(configs.ProjectInstallFile())
-	if !ok { // 未安装
+	if !ok { // Not Installed
 		openBrowserUri += "/install"
-	} else { // 已安装
-		// 初始化 DB
+	} else { // It has been installed
+		// Initialize DB
 		dbRepo, err := db.New()
 		if err != nil {
 			logger.Fatal("new db err", zap.Error(err))
 		}
 		r.db = dbRepo
 
-		// 初始化 Cache
+		// Initialize Cache
 		cacheRepo, err := cache.New()
 		if err != nil {
 			logger.Fatal("new cache err", zap.Error(err))
 		}
 		r.cache = cacheRepo
 
-		// 初始化 gRPC client
+		// Initialize gRPC client
 		gRPCRepo, err := grpc.New()
 		if err != nil {
 			logger.Fatal("new grpc err", zap.Error(err))
@@ -82,13 +82,13 @@ func NewHTTPServer(logger *zap.Logger) (*Server, error) {
 	r.mux = mux
 	r.middles = middleware.New(logger, r.cache, r.db)
 
-	// 设置 WEB 路由
+	// Setup WEB routing
 	setWebRouter(r)
 
-	// 设置 API 路由
+	// Setup API routing
 	setApiRouter(r)
 
-	// 设置 GraphQL 路由
+	// Setup GraphQL routing
 	setGraphQLRouter(r)
 
 	s := new(Server)

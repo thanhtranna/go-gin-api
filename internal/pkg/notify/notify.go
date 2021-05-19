@@ -8,7 +8,7 @@ import (
 	"go.uber.org/zap"
 )
 
-// OnPanicNotify 发生 panic 时进行通知
+// OnPanicNotify notify when a panic occurs
 func OnPanicNotify(ctx core.Context, err interface{}, stackInfo string) {
 	cfg := configs.Get().Mail
 	if cfg.Host == "" || cfg.Port == 0 || cfg.User == "" || cfg.Pass == "" || cfg.To == "" {

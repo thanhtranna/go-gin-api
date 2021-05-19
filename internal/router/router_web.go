@@ -12,7 +12,6 @@ import (
 )
 
 func setWebRouter(r *resource) {
-
 	installHandler := install_handler.New(r.logger)
 	indexHandler := index_handler.New(r.logger, r.db, r.cache)
 	dashboardHandler := dashboard_handler.New(r.logger, r.db, r.cache)
@@ -24,35 +23,35 @@ func setWebRouter(r *resource) {
 
 	web := r.mux.Group("", r.middles.DisableLog())
 	{
-		// 首页
+		// Home page
 		web.GET("", indexHandler.View())
 
-		// 安装
+		// Installation
 		web.GET("/install", installHandler.View())
 		web.POST("/install/execute", installHandler.Execute())
 		web.POST("/install/restart", installHandler.Restart())
 
-		// 仪表盘
+		// Dash board
 		web.GET("/dashboard", dashboardHandler.View())
 
-		// 配置信息
+		// Configuration information
 		web.GET("/config/email", configInfoHandler.EmailView())
 		web.GET("/config/code", configInfoHandler.CodeView())
 
-		// 代码生成工具
+		// Code generation tool
 		web.GET("/gormgen", genCodeHandler.GormView())
 		web.POST("/gormgen_exec", genCodeHandler.GormExecute())
 
 		web.GET("/handlergen", genCodeHandler.HandlerView())
 		web.POST("/handlergen_exec", genCodeHandler.HandlerExecute())
 
-		// 调用方
+		// Caller
 		web.GET("/authorized/list", authorizedHandler.ListView())
 		web.GET("/authorized/add", authorizedHandler.AddView())
 		web.GET("/authorized/api/:id", authorizedHandler.ApiView())
 		web.GET("/authorized/demo", authorizedHandler.DemoView())
 
-		// 管理员
+		// Administrator
 		web.GET("/admin/list", adminHandler.ListView())
 		web.GET("/admin/add", adminHandler.AddView())
 		web.GET("/admin/modify_password", adminHandler.ModifyPasswordView())
@@ -60,11 +59,10 @@ func setWebRouter(r *resource) {
 		web.GET("/login", adminHandler.LoginView())
 		web.GET("/admin/menu", adminHandler.MenuView())
 
-		// 工具箱
+		// Toolbox
 		web.GET("/tool/hashids", toolHandler.HashIdsView())
 		web.GET("/tool/logs", toolHandler.LogsView())
 		web.GET("/tool/cache", toolHandler.CacheView())
 		web.GET("/tool/data", toolHandler.DataView())
-
 	}
 }

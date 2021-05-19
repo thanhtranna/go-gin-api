@@ -18,7 +18,7 @@ func (m *middleware) Jwt(ctx core.Context) (userId int64, userName string, err e
 		err = errno.NewError(
 			http.StatusUnauthorized,
 			code.AuthorizationError,
-			code.Text(code.AuthorizationError)).WithErr(errors.New("Header 中缺少 Authorization 参数"))
+			code.Text(code.AuthorizationError)).WithErr(errors.New("The Authorization parameter is missing in the header"))
 
 		return
 	}

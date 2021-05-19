@@ -18,7 +18,7 @@ func (m *middleware) Token(ctx core.Context) (userId int64, userName string, err
 		err = errno.NewError(
 			http.StatusUnauthorized,
 			code.AuthorizationError,
-			code.Text(code.AuthorizationError)).WithErr(errors.New("Header 中缺少 Token 参数"))
+			code.Text(code.AuthorizationError)).WithErr(errors.New("Missing Token parameter in Header"))
 
 		return
 	}
@@ -27,7 +27,7 @@ func (m *middleware) Token(ctx core.Context) (userId int64, userName string, err
 		err = errno.NewError(
 			http.StatusUnauthorized,
 			code.AuthorizationError,
-			code.Text(code.AuthorizationError)).WithErr(errors.New("请先登录"))
+			code.Text(code.AuthorizationError)).WithErr(errors.New("Please log in first"))
 
 		return
 	}
@@ -43,8 +43,8 @@ func (m *middleware) Token(ctx core.Context) (userId int64, userName string, err
 	}
 
 	type userInfo struct {
-		Id       int64  `json:"id"`       // 用户ID
-		Username string `json:"username"` // 用户名
+		Id       int64  `json:"id"`       // User ID
+		Username string `json:"username"` // username
 	}
 
 	var userData userInfo

@@ -11,7 +11,7 @@ import (
 
 var _ Service = (*service)(nil)
 
-// 定义缓存前缀
+// Define cache prefix
 var cacheKeyPrefix = configs.ProjectName() + ":authorized:"
 
 type Service interface {

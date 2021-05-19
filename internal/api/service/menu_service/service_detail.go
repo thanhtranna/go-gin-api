@@ -7,8 +7,8 @@ import (
 )
 
 type SearchOneData struct {
-	Id     int32 // 用户ID
-	IsUsed int32 // 是否启用 1:是  -1:否
+	Id     int32 // User ID
+	IsUsed int32 // Whether to enable 1: yes -1: no
 }
 
 func (s *service) Detail(ctx core.Context, searchOneData *SearchOneData) (info *menu_repo.Menu, err error) {

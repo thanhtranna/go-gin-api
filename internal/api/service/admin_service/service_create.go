@@ -7,10 +7,10 @@ import (
 )
 
 type CreateAdminData struct {
-	Username string // 用户名
-	Nickname string // 昵称
-	Mobile   string // 手机号
-	Password string // 密码
+	Username string // Username
+	Nickname string // Nickname
+	Mobile   string // Mobile phone number
+	Password string // Password
 }
 
 func (s *service) Create(ctx core.Context, adminData *CreateAdminData) (id int32, err error) {

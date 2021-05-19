@@ -56,93 +56,93 @@ var _ Context = (*context)(nil)
 type Context interface {
 	init()
 
-	// ShouldBindQuery 反序列化 querystring
-	// tag: `form:"xxx"` (注：不要写成 query)
+	// ShouldBindQuery deserialize querystring
+	// tag: `form:"xxx"` (Note: Do not write query)
 	ShouldBindQuery(obj interface{}) error
 
-	// ShouldBindPostForm 反序列化 postform (querystring会被忽略)
+	// ShouldBindPostForm Deserialize postform (querystring will be ignored)
 	// tag: `form:"xxx"`
 	ShouldBindPostForm(obj interface{}) error
 
-	// ShouldBindForm 同时反序列化 querystring 和 postform;
-	// 当 querystring 和 postform 存在相同字段时，postform 优先使用。
+	// ShouldBindForm deserialize querystring and postform at the same time;
+	// When querystring and postform have the same fields, postform is used first.
 	// tag: `form:"xxx"`
 	ShouldBindForm(obj interface{}) error
 
-	// ShouldBindJSON 反序列化 postjson
+	// ShouldBindJSON deserialize postjson
 	// tag: `json:"xxx"`
 	ShouldBindJSON(obj interface{}) error
 
-	// ShouldBindURI 反序列化 path 参数(如路由路径为 /user/:name)
+	// ShouldBindURI deserialize the path parameter (for example, the routing path is /user/:name)
 	// tag: `uri:"xxx"`
 	ShouldBindURI(obj interface{}) error
 
-	// Redirect 重定向
+	// Redirect redirect
 	Redirect(code int, location string)
 
-	// Trace 获取 Trace 对象
+	// Trace get trace object
 	Trace() Trace
 	setTrace(trace Trace)
 	disableTrace()
 
-	// Logger 获取 Logger 对象
+	// Logger get logger object
 	Logger() *zap.Logger
 	setLogger(logger *zap.Logger)
 
-	// Payload 正确返回
+	// Payload return correctly
 	Payload(payload interface{})
 	getPayload() interface{}
 
-	// GraphPayload GraphQL返回值 与 api 返回结构不同
+	// GraphPayload GraphQL return value is different from api return structure
 	GraphPayload(payload interface{})
 	getGraphPayload() interface{}
 
-	// HTML 返回界面
+	// HTML back to the interface
 	HTML(name string, obj interface{})
 
-	// AbortWithError 错误返回
+	// AbortWithError error return
 	AbortWithError(err errno.Error)
 	abortError() errno.Error
 
-	// Header 获取 Header 对象
+	// Header get header object
 	Header() http.Header
-	// GetHeader 获取 Header
+	// GetHeader get header
 	GetHeader(key string) string
-	// SetHeader 设置 Header
+	// SetHeader set header
 	SetHeader(key, value string)
 
-	// UserID 获取 JWT 中 UserID
+	// UserID get userId in JWT
 	UserID() int64
 	setUserID(userID int64)
 
-	// UserName 获取 JWT 中 UserName
+	// UserName get userName in JWT
 	UserName() string
 	setUserName(userName string)
 
-	// Alias 设置路由别名 for metrics uri
+	// Alias set routing alias for metrics uri
 	Alias() string
 	setAlias(path string)
 
-	// RequestInputParams 获取所有参数
+	// RequestInputParams get all parameters
 	RequestInputParams() url.Values
-	// RequestPostFormParams  获取 PostForm 参数
+	// RequestPostFormParams  get PostForm parameters
 	RequestPostFormParams() url.Values
-	// Request 获取 Request 对象
+	// Request get Request object
 	Request() *http.Request
-	// RawData 获取 Request.Body
+	// RawData get Request.Body
 	RawData() []byte
-	// Method 获取 Request.Method
+	// Method get Request.Method
 	Method() string
-	// Host 获取 Request.Host
+	// Host get Request.Host
 	Host() string
-	// Path 获取 请求的路径 Request.URL.Path (不附带 querystring)
+	// Path get the requested path Request.URL.Path (without querystring)
 	Path() string
-	// URI 获取 unescape 后的 Request.URL.RequestURI()
+	// URI Request.URL.RequestURI() after getting unescape
 	URI() string
-	// RequestContext 获取请求的 context (当 client 关闭后，会自动 canceled)
+	// RequestContext get the requested context (when the client is closed, it will be automatically canceled)
 	RequestContext() StdContext
 
-	// ResponseWriter 获取 ResponseWriter 对象
+	// ResponseWriter obtain a ResponseWriter object
 	ResponseWriter() gin.ResponseWriter
 }
 
@@ -162,42 +162,42 @@ func (c *context) init() {
 		panic(err)
 	}
 
-	c.ctx.Set(_BodyName, body)                                   // cache body是为了trace使用
+	c.ctx.Set(_BodyName, body)                                   // cache the body is used for trace
 	c.ctx.Request.Body = ioutil.NopCloser(bytes.NewBuffer(body)) // re-construct req body
 }
 
-// ShouldBindQuery 反序列化querystring
-// tag: `form:"xxx"` (注：不要写成query)
+// ShouldBindQuery deserialize querystring
+// tag: `form:"xxx"` (Note: Do not write query)
 func (c *context) ShouldBindQuery(obj interface{}) error {
 	return c.ctx.ShouldBindWith(obj, binding.Query)
 }
 
-// ShouldBindPostForm 反序列化 postform (querystring 会被忽略)
+// ShouldBindPostForm deserialize postform (querystring will be ignored)
 // tag: `form:"xxx"`
 func (c *context) ShouldBindPostForm(obj interface{}) error {
 	return c.ctx.ShouldBindWith(obj, binding.FormPost)
 }
 
-// ShouldBindForm 同时反序列化querystring和postform;
-// 当querystring和postform存在相同字段时，postform优先使用。
+// ShouldBindForm deserialize querystring and postform at the same time;
+// When querystring and postform have the same field, postform is used first.
 // tag: `form:"xxx"`
 func (c *context) ShouldBindForm(obj interface{}) error {
 	return c.ctx.ShouldBindWith(obj, binding.Form)
 }
 
-// ShouldBindJSON 反序列化postjson
+// ShouldBindJSON deserialize postjson
 // tag: `json:"xxx"`
 func (c *context) ShouldBindJSON(obj interface{}) error {
 	return c.ctx.ShouldBindWith(obj, binding.JSON)
 }
 
-// ShouldBindURI 反序列化path参数(如路由路径为 /user/:name)
+// ShouldBindURI deserialize the path parameter (for example, the routing path is /user/:name)
 // tag: `uri:"xxx"`
 func (c *context) ShouldBindURI(obj interface{}) error {
 	return c.ctx.ShouldBindUri(obj)
 }
 
-// Redirect 重定向
+// Redirect redirect
 func (c *context) Redirect(code int, location string) {
 	c.ctx.Redirect(code, location)
 }
@@ -337,19 +337,19 @@ func (c *context) setAlias(path string) {
 	}
 }
 
-// RequestInputParams 获取所有参数
+// RequestInputParams get all parameters
 func (c *context) RequestInputParams() url.Values {
 	_ = c.ctx.Request.ParseForm()
 	return c.ctx.Request.Form
 }
 
-// RequestPostFormParams 获取 PostForm 参数
+// RequestPostFormParams get PostForm parameters
 func (c *context) RequestPostFormParams() url.Values {
 	_ = c.ctx.Request.ParseForm()
 	return c.ctx.Request.PostForm
 }
 
-// Request 获取 Request
+// Request get Request
 func (c *context) Request() *http.Request {
 	return c.ctx.Request
 }
@@ -363,28 +363,28 @@ func (c *context) RawData() []byte {
 	return body.([]byte)
 }
 
-// Method 请求的method
+// Method requested method
 func (c *context) Method() string {
 	return c.ctx.Request.Method
 }
 
-// Host 请求的host
+// Host requested host
 func (c *context) Host() string {
 	return c.ctx.Request.Host
 }
 
-// Path 请求的路径(不附带querystring)
+// Path the requested path (without querystring)
 func (c *context) Path() string {
 	return c.ctx.Request.URL.Path
 }
 
-// URI unescape后的uri
+// URI uri after unescape
 func (c *context) URI() string {
 	uri, _ := url.QueryUnescape(c.ctx.Request.URL.RequestURI())
 	return uri
 }
 
-// RequestContext (包装 Trace + Logger) 获取请求的 context (当client关闭后，会自动canceled)
+// RequestContext (Package Trace + Logger) Get the requested context (when the client is closed, it will be automatically cancelled)
 func (c *context) RequestContext() StdContext {
 	return StdContext{
 		//c.ctx.Request.Context(),
@@ -394,7 +394,7 @@ func (c *context) RequestContext() StdContext {
 	}
 }
 
-// ResponseWriter 获取 ResponseWriter
+// ResponseWriter get ResponseWriter
 func (c *context) ResponseWriter() gin.ResponseWriter {
 	return c.ctx.Writer
 }

@@ -34,7 +34,7 @@ func New(dbAddr, dbUser, dbPass, dbName string) (Repo, error) {
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true,
 		},
-		//Logger: logger.Default.LogMode(logger.Info), // 日志配置
+		//Logger: logger.Default.LogMode(logger.Info), // Log configuration
 	})
 
 	if err != nil {

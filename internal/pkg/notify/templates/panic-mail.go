@@ -27,7 +27,7 @@ const PanicMail = `
                 <!-- Logo -->
                 <tr>
                     <td style="padding: 25px 0; text-align: center;">
-                        系统异常
+                        System abnormal
                     </td>
                 </tr>
 
@@ -46,7 +46,7 @@ const PanicMail = `
 
                                     <!-- Intro -->
                                     <p style="margin-top: 0; color: #74787E; line-height: 1.5em;">
-                                        您收到此电子邮件，请紧急安排处理。
+                                        You have received this email, please arrange for it urgently.
                                     </p>
 
                                     <!-- Action Button -->

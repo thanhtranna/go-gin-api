@@ -17,7 +17,7 @@ func TestDemoGet(t *testing.T) {
 		//httpclient.WithLogger(ctx.Logger()),
 		httpclient.WithHeader("Authorization", demoGetAuthorization),
 		httpclient.WithOnFailedRetry(3, time.Second*1, DemoGetRetryVerify),
-		httpclient.WithOnFailedAlarm("接口告警", new(third_party_request.AlarmEmail), DemoGetAlarmVerify),
+		httpclient.WithOnFailedAlarm("Interface alarm", new(third_party_request.AlarmEmail), DemoGetAlarmVerify),
 		httpclient.WithMock(DemoGetMock),
 	)
 

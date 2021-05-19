@@ -17,7 +17,7 @@ func TestDemoPost(t *testing.T) {
 		//httpclient.WithLogger(ctx.Logger()),
 		httpclient.WithHeader("Authorization", demoPostAuthorization),
 		httpclient.WithOnFailedRetry(3, time.Second*1, DemoPostRetryVerify),
-		httpclient.WithOnFailedAlarm("接口告警", new(third_party_request.AlarmEmail), DemoPostAlarmVerify),
+		httpclient.WithOnFailedAlarm("Interface alarm", new(third_party_request.AlarmEmail), DemoPostAlarmVerify),
 		httpclient.WithMock(DemoPostMock),
 	)
 

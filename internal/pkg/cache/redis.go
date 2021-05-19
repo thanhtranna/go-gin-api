@@ -208,7 +208,7 @@ func (c *cacheRepo) Close() error {
 	return c.client.Close()
 }
 
-// WithTrace 设置trace信息
+// WithTrace Set trace information
 func WithTrace(t Trace) Option {
 	return func(opt *option) {
 		if t != nil {

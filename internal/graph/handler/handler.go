@@ -45,7 +45,7 @@ func (g *gql) i() {}
 
 func (g *gql) Query() core.HandlerFunc {
 
-	// 定义扩展字段
+	// Define extension fields
 	extensions := make(map[string]interface{})
 
 	h := handler.New(generated.NewExecutableSchema(
@@ -56,14 +56,14 @@ func (g *gql) Query() core.HandlerFunc {
 		KeepAlivePingInterval: 10 * time.Second,
 	})
 
-	// 设置 transport
+	// Set transport
 	h.AddTransport(transport.Options{})
 	h.AddTransport(transport.GET{})
 	h.AddTransport(transport.POST{})
 
 	h.SetQueryCache(lru.New(1000))
 
-	// 启用侧边栏文档
+	// Enable sidebar documents
 	h.Use(extension.Introspection{})
 
 	h.Use(extension.AutomaticPersistedQuery{
@@ -74,11 +74,11 @@ func (g *gql) Query() core.HandlerFunc {
 		var responses interface{}
 
 		defer func() {
-			// 设置 core log
+			// Setup core log
 			c.GraphPayload(responses)
 		}()
 
-		// 设置 core trace_id
+		// Setup core trace_id
 		extensions["trace_id"] = c.Trace().ID()
 
 		h.AroundResponses(func(ctx context.Context, next graphql.ResponseHandler) *graphql.Response {
@@ -88,7 +88,7 @@ func (g *gql) Query() core.HandlerFunc {
 			return resp
 		})
 
-		// 设置 core context
+		// Setup core context
 		coreContext := context.WithValue(c.Request().Context(), resolvers.CoreContextKey, c)
 		h.ServeHTTP(c.ResponseWriter(), c.Request().WithContext(coreContext))
 	}

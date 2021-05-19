@@ -11,21 +11,21 @@ import (
 	"github.com/xinliangnote/go-gin-api/internal/pkg/core"
 )
 
-// 定义缓存结构
+// Define the cache structure
 type CacheAuthorizedData struct {
-	Key    string         `json:"key"`     // 调用方 key
-	Secret string         `json:"secret"`  // 调用方 secret
-	IsUsed int32          `json:"is_used"` // 调用方启用状态 1=启用 -1=禁用
-	Apis   []cacheApiData `json:"apis"`    // 调用方授权的 Apis
+	Key    string         `json:"key"`     // caller key
+	Secret string         `json:"secret"`  // caller secret
+	IsUsed int32          `json:"is_used"` // Caller enabled state 1=enabled -1=disabled
+	Apis   []cacheApiData `json:"apis"`    // Apis authorized by the caller
 }
 
 type cacheApiData struct {
-	Method string `json:"method"` // 请求方式
-	Api    string `json:"api"`    // 请求地址
+	Method string `json:"method"` // request method
+	Api    string `json:"api"`    // request address
 }
 
 func (s *service) DetailByKey(ctx core.Context, key string) (cacheData *CacheAuthorizedData, err error) {
-	// 查询缓存
+	// Query cache
 	cacheKey := cacheKeyPrefix + key
 	value, err := s.cache.Get(cacheKey, cache.WithTrace(ctx.RequestContext().Trace))
 
@@ -34,7 +34,7 @@ func (s *service) DetailByKey(ctx core.Context, key string) (cacheData *CacheAut
 		return
 	}
 
-	// 查询调用方信息
+	// Query caller information
 	authorizedInfo, err := authorized_repo.NewQueryBuilder().
 		WhereIsDeleted(db_repo.EqualPredicate, -1).
 		WhereBusinessKey(db_repo.EqualPredicate, key).
@@ -44,7 +44,7 @@ func (s *service) DetailByKey(ctx core.Context, key string) (cacheData *CacheAut
 		return nil, err
 	}
 
-	// 查询调用方授权 API 信息
+	// Query caller authorized API information
 	authorizedApiInfo, err := authorized_api_repo.NewQueryBuilder().
 		WhereIsDeleted(db_repo.EqualPredicate, -1).
 		WhereBusinessKey(db_repo.EqualPredicate, key).
@@ -55,7 +55,7 @@ func (s *service) DetailByKey(ctx core.Context, key string) (cacheData *CacheAut
 		return nil, err
 	}
 
-	// 设置缓存 data
+	// Set cache data
 	cacheData = new(CacheAuthorizedData)
 	cacheData.Key = key
 	cacheData.Secret = authorizedInfo.BusinessSecret

@@ -6,9 +6,9 @@ import (
 )
 
 type UpdateMenuData struct {
-	Name string // 菜单名称
-	Link string // 链接地址
-	Icon string // 图标
+	Name string // Menu name
+	Link string // link address
+	Icon string // icon
 }
 
 func (s *service) Modify(ctx core.Context, id int32, menuData *UpdateMenuData) (err error) {

@@ -1,11 +1,11 @@
-## 执行命令
+## Excuting an order
 
 ```$xslt
-// test_handler 为 ./internal/api/controller/ 中的包名
+// test_handler is the package name in ./internal/api/controller/
 ./scripts/handlergen.sh test_handler
 ```
 
-## 模板文件参考
+## Template file reference
 
 ```go
 package test_handler
@@ -22,25 +22,25 @@ import (
 var _ Handler = (*handler)(nil)
 
 type Handler interface {
-	// i 为了避免被其他包实现
+	// i in order to avoid being implemented by other packages
 	i()
 
-	// Create 创建用户
+	// Create create user
 	// @Tags Test
 	// @Router /test/create [post]
 	Create() core.HandlerFunc
 
-	// Update 编辑用户
+	// Update edit user
 	// @Tags Test
 	// @Router /test/update [post]
 	Update() core.HandlerFunc
 
-	// Delete 删除用户
+	// Delete delete user
 	// @Tags Test
 	// @Router /test/delete [post]
 	Delete() core.HandlerFunc
 
-	// Detail 用户详情
+	// Detail user detail
 	// @Tags Test
 	// @Router /test/detail [post]
 	Detail() core.HandlerFunc
@@ -64,13 +64,13 @@ func (h *handler) i() {}
 
 ```
 
-以上会生成 4 个文件
+The above will generate 4 files
 - func_create.go
 - func_update.go
 - func_delete.go
 - func_detail.go
 
-## func_create.go 参考
+## func_create.go reference
 
 ```go
 package test_handler
@@ -83,13 +83,13 @@ type createRequest struct{}
 
 type createResponse struct{}
 
-// Create 创建用户
-// @Summary 创建用户
-// @Description 创建用户
+// Create Create user
+// @Summary create user
+// @Description creates a user
 // @Tags Test
 // @Accept json
 // @Produce json
-// @Param Request body createRequest true "请求信息"
+// @Param Request body createRequest true "request information"
 // @Success 200 {object} createResponse
 // @Failure 400 {object} code.Failure
 // @Router /test/create [post]

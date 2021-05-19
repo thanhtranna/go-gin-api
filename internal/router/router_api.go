@@ -10,7 +10,6 @@ import (
 )
 
 func setApiRouter(r *resource) {
-
 	// admin
 	adminHandler := admin_handler.New(r.logger, r.db, r.cache)
 
@@ -65,6 +64,5 @@ func setApiRouter(r *resource) {
 		// config
 		configHandler := config_handler.New(r.logger, r.db, r.cache)
 		api.PATCH("/config/email", configHandler.Email())
-
 	}
 }

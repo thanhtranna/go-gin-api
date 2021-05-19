@@ -24,7 +24,7 @@ func (op *TracePlugin) Name() string {
 }
 
 func (op *TracePlugin) Initialize(db *gorm.DB) (err error) {
-	// 开始前
+	// Before starting
 	_ = db.Callback().Create().Before("gorm:before_create").Register(callBackBeforeName, before)
 	_ = db.Callback().Query().Before("gorm:query").Register(callBackBeforeName, before)
 	_ = db.Callback().Delete().Before("gorm:before_delete").Register(callBackBeforeName, before)
@@ -32,7 +32,7 @@ func (op *TracePlugin) Initialize(db *gorm.DB) (err error) {
 	_ = db.Callback().Row().Before("gorm:row").Register(callBackBeforeName, before)
 	_ = db.Callback().Raw().Before("gorm:raw").Register(callBackBeforeName, before)
 
-	// 结束后
+	// After the end
 	_ = db.Callback().Create().After("gorm:after_create").Register(callBackAfterName, after)
 	_ = db.Callback().Query().After("gorm:after_query").Register(callBackAfterName, after)
 	_ = db.Callback().Delete().After("gorm:after_delete").Register(callBackAfterName, after)

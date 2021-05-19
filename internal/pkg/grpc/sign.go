@@ -7,7 +7,7 @@ import (
 	"encoding/base64"
 )
 
-// 演示 sign 使用，实际情况中以 gRPC server 约定的签名算法为准
+// Demonstrate the use of sign, the actual situation is subject to the signature algorithm agreed by the gRPC server
 
 const (
 	// ProxyAuthorization used by signature, both gateway and grpc

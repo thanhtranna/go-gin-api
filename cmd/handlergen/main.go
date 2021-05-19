@@ -17,7 +17,7 @@ import (
 var handlerName string
 
 func init() {
-	handler := flag.String("handler", "", "请输入需要生成的 handler 名称\n")
+	handler := flag.String("handler", "", "Please enter the name of the handler to be generated\n")
 	flag.Parse()
 
 	handlerName = strings.ToLower(*handler)
@@ -33,7 +33,7 @@ func main() {
 
 	files, _ := ioutil.ReadDir(filePath)
 	if len(files) > 1 {
-		log.Fatalf("请先确保 %s 目录中，有且仅有 handler.go 一个文件。", filePath)
+		log.Fatalf("Please make sure that there is only one file handler.go in the %s directory.", filePath)
 	}
 
 	dst.Inspect(parsedFile, func(n dst.Node) bool {
@@ -74,7 +74,7 @@ func main() {
 					funcContent += fmt.Sprintf("\n\ntype %sRequest struct {}\n\n", Lcfirst(v.Names[0].String()))
 					funcContent += fmt.Sprintf("type %sResponse struct {}\n\n", Lcfirst(v.Names[0].String()))
 
-					// 首行注释
+					// First line comment
 					funcContent += fmt.Sprintf("%s\n", v.Decorations().Start.All()[0])
 
 					nameArr := strings.Split(v.Decorations().Start.All()[0], v.Names[0].String())
@@ -84,7 +84,7 @@ func main() {
 					funcContent += fmt.Sprintf("%s \n", v.Decorations().Start.All()[1])
 					funcContent += fmt.Sprintf("// @Accept json \n")
 					funcContent += fmt.Sprintf("// @Produce json \n")
-					funcContent += fmt.Sprintf("// @Param Request body %sRequest true \"请求信息\" \n", Lcfirst(v.Names[0].String()))
+					funcContent += fmt.Sprintf("// @Param Request body %sRequest true \"request information\" \n", Lcfirst(v.Names[0].String()))
 					funcContent += fmt.Sprintf("// @Success 200 {object} %sResponse \n", Lcfirst(v.Names[0].String()))
 					funcContent += fmt.Sprintf("// @Failure 400 {object} code.Failure \n")
 					// Router

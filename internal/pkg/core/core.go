@@ -52,35 +52,35 @@ type option struct {
 	enableOpenBrowser string
 }
 
-// OnPanicNotify 发生panic时通知用
+// OnPanicNotify used for notification when panic occurs
 type OnPanicNotify func(ctx Context, err interface{}, stackInfo string)
 
-// RecordMetrics 记录prometheus指标用
-// 如果使用AliasForRecordMetrics配置了别名，uri将被替换为别名。
+// RecordMetrics is used to record prometheus metrics
+// If the alias is configured using AliasForRecordMetrics, the uri will be replaced with the alias.
 type RecordMetrics func(method, uri string, success bool, httpCode, businessCode int, costSeconds float64, traceId string)
 
-// WithDisablePProf 禁用 pprof
+// WithDisablePProf disable pprof
 func WithDisablePProf() Option {
 	return func(opt *option) {
 		opt.disablePProf = true
 	}
 }
 
-// WithDisableSwagger 禁用 swagger
+// WithDisableSwagger disable swagger
 func WithDisableSwagger() Option {
 	return func(opt *option) {
 		opt.disableSwagger = true
 	}
 }
 
-// WithDisableproPrometheus 禁用prometheus
+// WithDisableproPrometheus disable prometheus
 func WithDisableproPrometheus() Option {
 	return func(opt *option) {
 		opt.disablePrometheus = true
 	}
 }
 
-// WithPanicNotify 设置panic时的通知回调
+// WithPanicNotify notification callback when panic is set
 func WithPanicNotify(notify OnPanicNotify) Option {
 	return func(opt *option) {
 		opt.panicNotify = notify
@@ -88,21 +88,21 @@ func WithPanicNotify(notify OnPanicNotify) Option {
 	}
 }
 
-// WithRecordMetrics 设置记录prometheus记录指标回调
+// WithRecordMetrics set record prometheus record indicator callback
 func WithRecordMetrics(record RecordMetrics) Option {
 	return func(opt *option) {
 		opt.recordMetrics = record
 	}
 }
 
-// WithEnableOpenBrowser 启动后在浏览器中打开 uri
+// WithEnableOpenBrowser open the uri in the browser after startup
 func WithEnableOpenBrowser(uri string) Option {
 	return func(opt *option) {
 		opt.enableOpenBrowser = uri
 	}
 }
 
-// WithEnableCors 开启CORS
+// WithEnableCors enable CORS
 func WithEnableCors() Option {
 	return func(opt *option) {
 		opt.enableCors = true
@@ -121,15 +121,15 @@ func DisableTrace(ctx Context) {
 	ctx.disableTrace()
 }
 
-// AliasForRecordMetrics 对请求uri起个别名，用于prometheus记录指标。
-// 如：Get /user/:username 这样的uri，因为username会有非常多的情况，这样记录prometheus指标会非常的不有好。
+// AliasForRecordMetrics gives the request uri an alias for prometheus to record metrics.
+// Such as: Get /user/:username uri, because username will have a lot of situations, so recording prometheus metrics will be very bad.
 func AliasForRecordMetrics(path string) HandlerFunc {
 	return func(ctx Context) {
 		ctx.setAlias(path)
 	}
 }
 
-// WrapAuthHandler 用来处理 Auth 的入口，在之后的handler中只需 ctx.UserID() ctx.UserName() 即可。
+// WrapAuthHandler is used to process the Auth entry, and only ctx.UserID() ctx.UserName() is needed in the subsequent handlers.
 func WrapAuthHandler(handler func(Context) (userID int64, userName string, err errno.Error)) HandlerFunc {
 	return func(ctx Context) {
 		userID, userName, err := handler(ctx)
@@ -142,7 +142,7 @@ func WrapAuthHandler(handler func(Context) (userID int64, userName string, err e
 	}
 }
 
-// RouterGroup 包装gin的RouterGroup
+// RouterGroup RouterGroup that wraps gin
 type RouterGroup interface {
 	Group(string, ...HandlerFunc) RouterGroup
 	IRoutes
@@ -150,7 +150,7 @@ type RouterGroup interface {
 
 var _ IRoutes = (*router)(nil)
 
-// IRoutes 包装gin的IRoutes
+// IRoutes IRoutes wrapping gin
 type IRoutes interface {
 	Any(string, ...HandlerFunc)
 	GET(string, ...HandlerFunc)
@@ -258,7 +258,7 @@ func New(logger *zap.Logger, options ...Option) (Mux, error) {
 	mux.engine.StaticFS("bootstrap", http.Dir("./assets/bootstrap"))
 	mux.engine.LoadHTMLGlob("./assets/templates/**/*")
 
-	// withoutLogPaths 这些请求，默认不记录日志
+	// withoutLogPaths these requests are not logged by default
 	withoutTracePaths := map[string]bool{
 		"/metrics": true,
 
@@ -325,7 +325,7 @@ func New(logger *zap.Logger, options ...Option) (Mux, error) {
 		fmt.Println(color.Green("* [register open browser '" + opt.enableOpenBrowser + "']"))
 	}
 
-	// recover两次，防止处理时发生panic，尤其是在OnPanicNotify中。
+	// Recover twice to prevent panic during processing, especially in OnPanicNotify.
 	mux.engine.Use(func(ctx *gin.Context) {
 		defer func() {
 			if err := recover(); err != nil {
@@ -510,7 +510,7 @@ func New(logger *zap.Logger, options ...Option) (Mux, error) {
 	mux.engine.NoRoute(wrapHandlers(DisableTrace)...)
 	system := mux.Group("/system")
 	{
-		// 健康检查
+		// health examination
 		system.GET("/health", func(ctx Context) {
 			resp := &struct {
 				Timestamp   time.Time `json:"timestamp"`

@@ -44,7 +44,7 @@ func (r *Resolver) Query() generated.QueryResolver {
 	return &queryResolver{r}
 }
 
-// getCoreContextByCtx 获取 core context
+// getCoreContextByCtx Obtain core context
 func (r *Resolver) getCoreContextByCtx(ctx context.Context) core.Context {
 	return ctx.Value(CoreContextKey).(core.Context)
 }

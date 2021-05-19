@@ -40,11 +40,11 @@ var (
 )
 
 func init() {
-	addr := flag.String("addr", "", "请输入 db 地址，例如：127.0.0.1:3306\n")
-	user := flag.String("user", "", "请输入 db 用户名\n")
-	pass := flag.String("pass", "", "请输入 db 密码\n")
-	name := flag.String("name", "", "请输入 db 名称\n")
-	table := flag.String("tables", "*", "请输入 table 名称，默认为“*”，多个可用“,”分割\n")
+	addr := flag.String("addr", "", "Please enter the db address, for example：127.0.0.1:3306\n")
+	user := flag.String("user", "", "Please enter db username\n")
+	pass := flag.String("pass", "", "Please enter the db password\n")
+	name := flag.String("name", "", "Please enter the db name\n")
+	table := flag.String("tables", "*", "Please enter the table name, the default is '*', multiple ', ' can be used to separate\n")
 
 	flag.Parse()
 
@@ -56,7 +56,7 @@ func init() {
 }
 
 func main() {
-	// 初始化 DB
+	// Initialization DB
 	db, err := mysql.New(dbAddr, dbUser, dbPass, dbName)
 	if err != nil {
 		log.Fatal("new db err", err)
@@ -107,7 +107,7 @@ func main() {
 			tableContent += table.Comment.String + "\n"
 		}
 		tableContent += "\n" +
-			"| 序号 | 名称 | 描述 | 类型 | 键 | 为空 | 额外 | 默认值 |\n" +
+			"| Serial number | Name | Description | Types of | Key | Empty | Extra | Default |\n" +
 			"| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |\n"
 
 		columnInfo, columnInfoErr := queryTableColumn(db.GetDb(), dbName, table.Name)
@@ -199,7 +199,7 @@ func queryTables(db *gorm.DB, dbName string, tableName string) ([]tableInfo, err
 }
 
 func queryTableColumn(db *gorm.DB, dbName string, tableName string) ([]tableColumn, error) {
-	// 定义承载列信息的切片
+	// Define a slice that carries column information
 	var columns []tableColumn
 
 	sqlTableColumn := fmt.Sprintf("SELECT `ORDINAL_POSITION`,`COLUMN_NAME`,`COLUMN_TYPE`,`DATA_TYPE`,`COLUMN_KEY`,`IS_NULLABLE`,`EXTRA`,`COLUMN_COMMENT`,`COLUMN_DEFAULT` FROM `information_schema`.`columns` WHERE `table_schema`= '%s' AND `table_name`= '%s' ORDER BY `ORDINAL_POSITION` ASC",

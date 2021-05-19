@@ -1,15 +1,15 @@
-## 执行命令
-在根目录下执行脚本：`./scripts/gormgen.sh addr user pass name tables`；
-- addr：数据库地址，例如：127.0.0.1:3306
-- user：账号，例如：root
-- pass：密码，例如：root
-- name：数据库名称，例如：go_gin_api
-- tables：表名，默认为 *，多个表名可用“,”分割，例如：user_demo
+## Excuting an order
+Execute the script in the root directory: `./scripts/gormgen.sh addr user pass name tables`;
+-addr: database address, for example: 127.0.0.1:3306
+-user: account, for example: root
+-pass: password, for example: root
+-name: database name, for example: go_gin_api
+-tables: table name, the default is *, multiple table names can be separated by ",", for example: user_demo
 
-例如：
+E.g:
 ```
 ./scripts/gormgen.sh 127.0.0.1:3306 root root go_gin_api user_demo
 ```
 
-## 参考
+## Reference
 - https://github.com/MohamedBassem/gormgen

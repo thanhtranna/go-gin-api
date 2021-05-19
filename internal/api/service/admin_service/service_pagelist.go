@@ -7,11 +7,11 @@ import (
 )
 
 type SearchData struct {
-	Page     int    // 第几页
-	PageSize int    // 每页显示条数
-	Username string // 用户名
-	Nickname string // 昵称
-	Mobile   string // 手机号
+	Page     int    // Which page
+	PageSize int    // The number of items displayed per page
+	Username string // Username
+	Nickname string // Nickname
+	Mobile   string // phone number
 }
 
 func (s *service) PageList(ctx core.Context, searchData *SearchData) (listData []*admin_repo.Admin, err error) {

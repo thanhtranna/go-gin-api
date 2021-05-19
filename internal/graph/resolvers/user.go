@@ -13,7 +13,7 @@ func (r *queryResolver) BySex(ctx context.Context, sex string) ([]*model.User, e
 		return nil, errors.New("sex required")
 	}
 
-	//模拟数据
+	// Simulation data
 	var users []*model.User
 	users = append(users, &model.User{ID: "1", Name: "Tom", Sex: sex, Mobile: "13266666666"})
 	users = append(users, &model.User{ID: "1", Name: "Jack", Sex: sex, Mobile: "13288888888"})
@@ -30,14 +30,14 @@ func (r *mutationResolver) UpdateUserMobile(ctx context.Context, data model.Upda
 		return nil, errors.New("mobile required")
 	}
 
-	//模拟数据
+	// Simulation data
 	user := new(model.User)
 	user.ID = data.ID
 	user.Mobile = data.Mobile
-	user.Sex = "男"
+	user.Sex = "male"
 	user.Name = "Jack"
 
-	//操作数据库
+	// Operational database
 	//userData, err := r.userService.GetUserByUserName(r.getCoreContextByCtx(ctx), "test_user")
 	//if err != nil {
 	//	return nil, err

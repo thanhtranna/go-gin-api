@@ -1,10 +1,9 @@
 ## service
 
-业务逻辑层。
+Business logic layer.
 
-处于 `controller` 层和 `repository` 层之间，依赖接口开发。
+Located between the `controller` layer and the `repository` layer, it relies on interface development.
 
-命令规范：
+Command specification:
 
-- 包名以 `_service` 结尾。
- 
+-The package name ends with `_service`.

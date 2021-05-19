@@ -10,9 +10,9 @@ import (
 )
 
 type CreateAuthorizedData struct {
-	BusinessKey       string `json:"business_key"`       // 调用方key
-	BusinessDeveloper string `json:"business_developer"` // 调用方对接人
-	Remark            string `json:"remark"`             // 备注
+	BusinessKey       string `json:"business_key"`       // caller key
+	BusinessDeveloper string `json:"business_developer"` // caller developer
+	Remark            string `json:"remark"`             // Remark
 }
 
 func (s *service) Create(ctx core.Context, authorizedData *CreateAuthorizedData) (id int32, err error) {

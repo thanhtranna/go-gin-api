@@ -14,7 +14,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-const ttl = time.Minute * 2 // 签名超时时间 2 分钟
+const ttl = time.Minute * 2 // Signature timeout 2 minutes
 
 var whiteListPath = map[string]bool{
 	"/login/web": true,
@@ -22,35 +22,35 @@ var whiteListPath = map[string]bool{
 
 func (m *middleware) Signature() core.HandlerFunc {
 	return func(c core.Context) {
-		// 签名信息
+		// Signature information
 		authorization := c.GetHeader("Authorization")
 		if authorization == "" {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.SignatureError,
-				code.Text(code.SignatureError)).WithErr(errors.New("Header 中缺少 Authorization 参数")),
+				code.Text(code.SignatureError)).WithErr(errors.New("The Authorization parameter is missing in the header")),
 			)
 			return
 		}
 
-		// 时间信息
+		// Time information
 		date := c.GetHeader("Authorization-Date")
 		if date == "" {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.SignatureError,
-				code.Text(code.SignatureError)).WithErr(errors.New("Header 中缺少 Date 参数")),
+				code.Text(code.SignatureError)).WithErr(errors.New("Date parameter missing in header")),
 			)
 			return
 		}
 
-		// 通过签名信息获取 key
+		// Obtain the key from the signature information
 		authorizationSplit := strings.Split(authorization, " ")
 		if len(authorizationSplit) < 2 {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.SignatureError,
-				code.Text(code.SignatureError)).WithErr(errors.New("Header 中 Authorization 格式错误")),
+				code.Text(code.SignatureError)).WithErr(errors.New("Authorization format error in header")),
 			)
 			return
 		}
@@ -67,12 +67,12 @@ func (m *middleware) Signature() core.HandlerFunc {
 			return
 		}
 
-		// 验证 cache 是否被调用
+		// Verify that cache is called
 		if data.IsUsed == -1 {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.SignatureError,
-				code.Text(code.SignatureError)).WithErr(errors.New(key + " 已被禁止调用")),
+				code.Text(code.SignatureError)).WithErr(errors.New(key + " has been banned")),
 			)
 			return
 		}
@@ -81,13 +81,13 @@ func (m *middleware) Signature() core.HandlerFunc {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.SignatureError,
-				code.Text(code.SignatureError)).WithErr(errors.New(key + " 未进行接口授权")),
+				code.Text(code.SignatureError)).WithErr(errors.New(key + " no interface authorization")),
 			)
 			return
 		}
 
 		if !whiteListPath[c.Path()] {
-			// 验证 c.Method() + c.Path() 是否授权
+			// Verify that c.Method() + c.Path() is authorized
 			table := urltable.NewTable()
 			for _, v := range data.Apis {
 				_ = table.Append(v.Method + v.Api)
@@ -97,7 +97,7 @@ func (m *middleware) Signature() core.HandlerFunc {
 				c.AbortWithError(errno.NewError(
 					http.StatusBadRequest,
 					code.SignatureError,
-					code.Text(code.SignatureError)).WithErr(errors.New(c.Method() + c.Path() + " 未进行接口授权")),
+					code.Text(code.SignatureError)).WithErr(errors.New(c.Method() + c.Path() + " no interface authorization")),
 				)
 				return
 			}
@@ -117,7 +117,7 @@ func (m *middleware) Signature() core.HandlerFunc {
 			c.AbortWithError(errno.NewError(
 				http.StatusBadRequest,
 				code.SignatureError,
-				code.Text(code.SignatureError)).WithErr(errors.New("Header 中 Authorization 信息错误")),
+				code.Text(code.SignatureError)).WithErr(errors.New("Authorization information in the header is wrong")),
 			)
 			return
 		}

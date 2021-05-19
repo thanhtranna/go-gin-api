@@ -20,7 +20,7 @@ type clientConn struct {
 
 func New() (ClientConn, error) {
 
-	// TODO 需从配置文件中获取
+	// TODO Need to be obtained from the configuration file
 	//target := "127.0.0.1:9988"
 	//secret := "abcdef"
 	//

@@ -3,7 +3,7 @@
 ```cassandraql
 1.
 query {
-  bySex(sex: "男") {
+  bySex(sex: "male") {
     id
     name
     sex

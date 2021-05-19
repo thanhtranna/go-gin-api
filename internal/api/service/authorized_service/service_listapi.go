@@ -7,7 +7,7 @@ import (
 )
 
 type SearchAPIData struct {
-	BusinessKey string `json:"business_key"` // 调用方key
+	BusinessKey string `json:"business_key"` // Caller key
 }
 
 func (s *service) ListAPI(ctx core.Context, searchAPIData *SearchAPIData) (listData []*authorized_api_repo.AuthorizedApi, err error) {

@@ -10,7 +10,7 @@ const (
 	subsystem = "go_gin_api"
 )
 
-// metricsRequestsTotal metrics for request total 计数器（Counter）
+// metricsRequestsTotal metrics for request total counter（Counter）
 var metricsRequestsTotal = prometheus.NewCounterVec(
 	prometheus.CounterOpts{
 		Namespace: namespace,
@@ -21,7 +21,7 @@ var metricsRequestsTotal = prometheus.NewCounterVec(
 	[]string{"method", "path"},
 )
 
-// metricsRequestsCost metrics for requests cost 累积直方图（Histogram）
+// metricsRequestsCost metrics for requests cost cumulative histogram (Histogram)
 var metricsRequestsCost = prometheus.NewHistogramVec(
 	prometheus.HistogramOpts{
 		Namespace: namespace,
@@ -36,7 +36,7 @@ func init() {
 	prometheus.MustRegister(metricsRequestsTotal, metricsRequestsCost)
 }
 
-// RecordMetrics 记录指标
+// RecordMetrics record index
 func RecordMetrics(method, uri string, success bool, httpCode, businessCode int, costSeconds float64, traceId string) {
 	metricsRequestsTotal.With(prometheus.Labels{
 		"method": method,

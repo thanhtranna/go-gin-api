@@ -7,12 +7,12 @@ import (
 )
 
 type SearchOneData struct {
-	Id       int32  // 用户ID
-	Username string // 用户名
-	Nickname string // 昵称
-	Mobile   string // 手机号
-	Password string // 密码
-	IsUsed   int32  // 是否启用 1:是  -1:否
+	Id       int32  // User ID
+	Username string // Username
+	Nickname string // Nickname
+	Mobile   string // phone number
+	Password string // password
+	IsUsed   int32  // Whether to enable 1: yes -1: no
 }
 
 func (s *service) Detail(ctx core.Context, searchOneData *SearchOneData) (info *admin_repo.Admin, err error) {
