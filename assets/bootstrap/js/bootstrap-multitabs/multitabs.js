@@ -546,11 +546,11 @@ if (typeof jQuery === "undefined") {
         },
         
         /**
-         * 左侧导航变化
+         * Left navigation changes
          */
         activeMenu: function(navTab) {
-            // 点击选项卡时，左侧菜单栏跟随变化
-            var $navObj       = $("a[href$='" + $(navTab).data('url') + "']"),   // 当前url对应的左侧导航对象
+            // When you click on a tab, the left menu bar follows the changes
+            var $navObj       = $("a[href$='" + $(navTab).data('url') + "']"),   // The left navigation object corresponding to the current url
                 $navHasSubnav = $navObj.parents('.nav-item'),
                 $viSubHeight  = $navHasSubnav.siblings().find('.nav-subnav:visible').outerHeight();
             
@@ -568,7 +568,7 @@ if (typeof jQuery === "undefined") {
             $navObj.parent('li').addClass('active');
             $navHasSubnav.first().addClass('active');
             
-            // 当前菜单无子菜单
+            // The current menu has no submenu
             if (!$navObj.parents('.nav-item').first().is('.nav-item-has-subnav')) {
                 var hht = 48 * ( $navObj.parents('.nav-item').first().prevAll().length - 1 );
                 $('.lyear-layout-sidebar-info').animate({scrollTop: hht}, 300);
@@ -592,7 +592,7 @@ if (typeof jQuery === "undefined") {
                     if ($navHasSubnav.length == 1) {
                         $scrollBox.animate({scrollTop: scrollHeight}, 300);
                     } else {
-                        // 子菜单操作
+                        // Submenu operation
                         if (typeof($viSubHeight) != 'undefined' && $viSubHeight != null) {
                             scrollHeight = thisScroll + thisSubHeight - $viSubHeight;
                             $scrollBox.animate({scrollTop: scrollHeight}, 300);
@@ -754,7 +754,7 @@ if (typeof jQuery === "undefined") {
                 });
             }
             
-            // 右键菜单
+            // Right click menu
             handler($el.nav, 'contextmenu', '.mt-nav-tab', function (event) {
                 event.preventDefault();
                 var menu     = $('<ul class="dropdown-menu" role="menu" id="contextify-menu"/>'),
@@ -765,7 +765,7 @@ if (typeof jQuery === "undefined") {
                     param    = $navTab.length ? self._getParam($navTab) : {};
                 
                 var menuData = [
-                  {text: '刷新', onclick: function(){
+                  {text: 'Refresh', onclick: function(){
                       var tempTabPane = $($tabPane);
                       
                       if (tempTabPane.is('iframe')) {
@@ -791,7 +791,7 @@ if (typeof jQuery === "undefined") {
                 var param = self._getParam($navTab);
                 if (param.type !== 'main') {
                     menuData.push(
-                        {text: '关闭', onclick: function(){
+                        {text: 'Close', onclick: function(){
                             self.close($navTab);
                             menu.hide();
                             return false;
@@ -800,7 +800,7 @@ if (typeof jQuery === "undefined") {
                 }
                 
                 menuData.push(
-                    {text: '关闭其他', onclick: function(){
+                    {text: 'Close other', onclick: function(){
                        self.closeOthers($navTab.data('index'));
                        menu.hide();
                        return false;
@@ -848,7 +848,7 @@ if (typeof jQuery === "undefined") {
                 });
             });
             
-            // 双击事件
+            // Double-click event
             handler($el.nav, 'dblclick', '.mt-nav-tab', function (event) {
                 if (options.dbclickRefresh === true) {
                     var $this    = $(this),
@@ -1215,13 +1215,13 @@ if (typeof jQuery === "undefined") {
     $.fn.multitabs.defaults = {
         selector: '.multitabs', // selector text to trigger multitabs.
         iframe: false, // Global iframe mode, default is false, is the auto mode (for the self page, use ajax, and the external, use iframe)
-        cache: false, // 是否缓存当前打开的tab
+        cache: false, // Whether to cache the currently opened tab
         class: '', // class for whole multitabs
         type: 'info', // change the info content name, is not necessary to change.
         init: [],
-        isNewTab: false, // 是否以新tab标签打开，为true时，每次点击都会打开新的tab
-        refresh: 'no', // iframe中页面是否刷新，'no'：'从不刷新'，'nav'：'点击菜单刷新'，'all'：'菜单和tab点击都刷新'
-        dbclickRefresh: false, // 双击刷新开启最好不要和refresh:'all'同时使用
+        isNewTab: false, // Whether to open as a new tab, when true, a new tab will be opened every time you click
+        refresh: 'no', // Whether the page in the iframe is refreshed,'no':'never refresh','nav':'click the menu to refresh','all':'click to refresh both menu and tab'
+        dbclickRefresh: false, // It is best not to use refresh:'all' at the same time when double-clicking to refresh is enabled.
         nav: {
             backgroundColor: '#f5f5f5', //default nav-bar background color
             class: '', //class of nav
@@ -1253,9 +1253,9 @@ if (typeof jQuery === "undefined") {
             nav: {
                 title: 'Tab', //default tab's tittle
                 dropdown: '<i class="mdi mdi-menu"></i>', //right tools dropdown name
-                showActivedTab: '显示当前选项卡', //show active tab
-                closeAllTabs: '关闭所有标签页', //close all tabs
-                closeOtherTabs: '关闭其他标签页', //close other tabs
+                showActivedTab: 'Show current tab', //show active tab
+                closeAllTabs: 'Close all tabs', //close all tabs
+                closeOtherTabs: 'Close other tabs', //close other tabs
             }
         }
     };

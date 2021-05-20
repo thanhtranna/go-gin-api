@@ -6,19 +6,19 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/go-redis/redis/v7"
-	"github.com/spf13/cast"
-	"github.com/spf13/viper"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
-	"gorm.io/gorm/schema"
-
 	"github.com/xinliangnote/go-gin-api/configs"
 	"github.com/xinliangnote/go-gin-api/internal/api/code"
 	"github.com/xinliangnote/go-gin-api/internal/pkg/core"
 	"github.com/xinliangnote/go-gin-api/internal/web/controller/install_handler/mysql_table"
 	"github.com/xinliangnote/go-gin-api/pkg/env"
 	"github.com/xinliangnote/go-gin-api/pkg/errno"
+
+	"github.com/go-redis/redis/v7"
+	"github.com/spf13/cast"
+	"github.com/spf13/viper"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+	"gorm.io/gorm/schema"
 )
 
 type initExecuteRequest struct {

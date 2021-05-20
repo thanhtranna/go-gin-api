@@ -10,12 +10,12 @@ function GenerateAuthorization(path, method, params) {
     let secret = "12878dd962115106db6d";
 
     let date = new Date();
-    let datetime = date.getFullYear() + "-" // "年"
-        + ((date.getMonth() + 1) > 10 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1)) + "-" // "月"
-        + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " " // "日"
-        + (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":" // "小时"
-        + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) + ":" // "分钟"
-        + (date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()); // "秒"
+    let datetime = date.getFullYear() + "-" // "Year"
+        + ((date.getMonth() + 1) > 10 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1)) + "-" // "Month"
+        + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " " // "Day"
+        + (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":" // "Hour"
+        + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) + ":" // "Minute"
+        + (date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()); // "Second"
 
     let sortParamsEncode = decodeURIComponent(jQuery.param(ksort(params)));
     let encryptStr = path + "|" + method.toUpperCase() + "|" + sortParamsEncode + "|" + datetime;
@@ -44,8 +44,8 @@ function AjaxError(response) {
     let errCode = response.status;
     let errMsg = response.responseText;
 
-    if (errCode === 401) { // 跳转到登录页
-        // 关闭当前界面
+    if (errCode === 401) { // Jump to login page
+        // Close the current interface
         parent.window.close();
         window.open("/login");
         return;
@@ -58,10 +58,10 @@ function AjaxError(response) {
     }
 
     $.alert({
-        title: '错误提示',
+        title: 'Error message',
         icon: 'mdi mdi-alert',
         type: 'red',
-        content: '错误码：' + errCode + '<br/>' + '错误信息：' + errMsg,
+        content: 'Error code:' + errCode +'<br/>' +'Error message:' + errMsg,
     });
 }
 

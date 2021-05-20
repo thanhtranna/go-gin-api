@@ -1,9 +1,9 @@
 package install_handler
 
 import (
-	"go.uber.org/zap"
-
 	"github.com/xinliangnote/go-gin-api/internal/pkg/core"
+
+	"go.uber.org/zap"
 )
 
 var _ Handler = (*handler)(nil)

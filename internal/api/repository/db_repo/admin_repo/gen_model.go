@@ -2,7 +2,7 @@ package admin_repo
 
 import "time"
 
-// Administrator table
+// administrator table
 //go:generate gormgen -structs Admin -input .
 type Admin struct {
 	Id          int32     // primary key
@@ -10,10 +10,10 @@ type Admin struct {
 	Password    string    // password
 	Nickname    string    // nickname
 	Mobile      string    // phone number
-	IsUsed      int32     // whether to enable 1: Yes -1: No
-	IsDeleted   int32     // whether to delete 1: yes -1: no
+	IsUsed      int32     // is used 1: yes -1: no
+	IsDeleted   int32     // delete 1: yes -1: no
 	CreatedAt   time.Time `gorm:"time"` // created time
-	CreatedUser string    // created by
-	UpdatedAt   time.Time `gorm:"time"` // updated time
-	UpdatedUser string    // updated by
+	CreatedUser string    // founder
+	UpdatedAt   time.Time `gorm:"time"` // update time
+	UpdatedUser string    // updater
 }

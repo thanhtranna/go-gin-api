@@ -1,11 +1,11 @@
 package third_party_request
 
 import (
-	"github.com/pkg/errors"
-
 	"github.com/xinliangnote/go-gin-api/configs"
 	"github.com/xinliangnote/go-gin-api/pkg/httpclient"
 	"github.com/xinliangnote/go-gin-api/pkg/mail"
+
+	"github.com/pkg/errors"
 )
 
 // Implement AlarmObject alarm

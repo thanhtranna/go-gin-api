@@ -1,11 +1,11 @@
 package index_handler
 
 import (
-	"go.uber.org/zap"
-
 	"github.com/xinliangnote/go-gin-api/internal/pkg/cache"
 	"github.com/xinliangnote/go-gin-api/internal/pkg/core"
 	"github.com/xinliangnote/go-gin-api/internal/pkg/db"
+
+	"go.uber.org/zap"
 )
 
 var _ Handler = (*handler)(nil)

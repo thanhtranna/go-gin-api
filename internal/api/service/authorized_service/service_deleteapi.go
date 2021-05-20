@@ -1,12 +1,12 @@
 package authorized_service
 
 import (
-	"gorm.io/gorm"
-
 	"github.com/xinliangnote/go-gin-api/internal/api/repository/db_repo"
 	"github.com/xinliangnote/go-gin-api/internal/api/repository/db_repo/authorized_api_repo"
 	"github.com/xinliangnote/go-gin-api/internal/pkg/cache"
 	"github.com/xinliangnote/go-gin-api/internal/pkg/core"
+
+	"gorm.io/gorm"
 )
 
 func (s *service) DeleteAPI(ctx core.Context, id int32) (err error) {
