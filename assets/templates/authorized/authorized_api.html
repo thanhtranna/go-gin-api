@@ -16,17 +16,17 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">接口授权</div>
+                    <div class="card-title">Interface authorization</div>
                 </div>
                 <div class="card-body">
 
                     <div class="alert alert-warning" role="alert">
-                        接口地址支持通配符(*)，其中 * 表示 1 级，** 表示 n 级。
+                        The interface address supports wildcards (*), where * means level 1 and ** means level n.
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <label class="input-group-text" for="request_method">选择请求方式</label>
+                            <label class="input-group-text" for="request_method">Choose request method</label>
                         </div>
                         <select class="custom-select" id="request_method">
                             <option value="GET">GET</option>
@@ -39,16 +39,16 @@
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">输入接口地址</span>
+                            <span class="input-group-text" id="inputGroup-sizing-default">Enter the interface address</span>
                         </div>
                         <input type="text" class="form-control" maxlength="60" id="request_api"
-                               placeholder="接口地址">
+                               placeholder="Interface address">
                     </div>
 
-                    <button type="button" id="btnOk" class="btn btn-primary">确认</button>
+                    <button type="button" id="btnOk" class="btn btn-primary">Confirm</button>
                     <button type="button" id="btnLoading" class="btn btn-primary" disabled style="display: none">
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                        执行中...
+                            Executing...
                     </button>
 
                 </div>
@@ -58,7 +58,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <header class="card-header">
-                    <div class="card-title">已授权接口</div>
+                    <div class="card-title">Authorized interface</div>
                 </header>
                 <div class="card-body apis">
 
@@ -84,7 +84,7 @@
                 limitReachedClass: "badge badge-warning"
             });
 
-        // 加载列表页数据
+        // Load list page data
         getListData();
 
         function getListData() {
@@ -124,8 +124,8 @@
                             $(".apis").append(p);
                         })
                     } else {
-                        // 数据为空
-                        const p = '<p>暂无授权接口</p>';
+                        // Data is empty
+                        const p = '<p>No authorized interface</p>';
                         $(".apis").append(p);
                     }
                 },
@@ -141,20 +141,20 @@
             const requestApi = $("#request_api").val();
             if (requestMethod === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请选择请求方式。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please select the request method.',
                 });
                 return false;
             }
 
             if (requestApi === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入请求地址。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please enter the request address.',
                 });
                 return false;
             }
@@ -178,13 +178,13 @@
                     $("#btnOk").show();
 
                     $.alert({
-                        title: '操作成功',
+                        title: 'Successful operation',
                         icon: 'mdi mdi-check-decagram',
                         type: 'green',
-                        content: '接口：' + requestApi + ' 授权完成。',
+                        content: 'Interface:' + requestApi + 'Authorization is complete.',
                         buttons: {
                             okay: {
-                                text: '关闭',
+                                text: 'Close',
                                 action: function () {
                                     location.reload();
                                 }
@@ -206,14 +206,14 @@
             const api = $(this).attr('data-api');
 
             $.confirm({
-                title: '谨慎操作',
-                content: '确认要 <strong style="color: red">取消授权</strong> 吗？',
+                title: 'Proceed with caution',
+                content: 'Are you sure you want to <strong style="color: red">cancel authorization</strong>?',
                 icon: 'mdi mdi-alert',
                 animation: 'scale',
                 closeAnimation: 'zoom',
                 buttons: {
                     okay: {
-                        text: '确认',
+                        text: 'Confirm',
                         keys: ['enter'],
                         btnClass: 'btn-orange',
                         action: function () {
@@ -226,13 +226,13 @@
                                 },
                                 function () {
                                     $.alert({
-                                        title: '操作成功',
+                                        title: 'Successful operation',
                                         icon: 'mdi mdi-check-decagram',
                                         type: 'green',
-                                        content: '接口：' + api + ' 已取消授权。',
+                                        content: 'Interface:' + api +'Authorization has been cancelled.',
                                         buttons: {
                                             okay: {
-                                                text: '关闭',
+                                                text: 'Close',
                                                 action: function () {
                                                     location.reload();
                                                 }
@@ -247,7 +247,7 @@
                         }
                     },
                     cancel: {
-                        text: '取消',
+                        text: 'Cancel',
                         keys: ['ctrl', 'shift'],
                     }
                 }

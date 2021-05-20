@@ -13,22 +13,22 @@
   <div class="row">
     <div class="col-lg-6">
       <div class="card">
-        <header class="card-header"><div class="card-title"> <code>gormgen</code> 代码生成工具</div></header>
+        <header class="card-header"><div class="card-title"> <code>gormgen</code> Code generation tool</div></header>
         <div class="card-body">
           <div class="form-group">
-            <label for="tableSelect">选择数据表，可进行多选：</label>
+            <label for="tableSelect">Select the data table, multiple selections are possible：</label>
             <select multiple="" class="form-control" id="tableSelect" style="height: 260px;">
               {{range .}}
-                <option value="{{ .Name }}">{{ .Name }} -- 备注：{{ .Comment }}</option>
+                <option value="{{ .Name }}">{{ .Name }} -- Remarks: {{ .Comment }}</option>
               {{end}}
             </select>
           </div>
 
           <p>
-            <button type="button" id="btnOk" class="btn btn-primary">确认</button>
+            <button type="button" id="btnOk" class="btn btn-primary">Confirm</button>
             <button type="button" id="btnLoading" class="btn btn-primary" disabled style="display: none">
               <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-              执行中...
+                Executing...
             </button>
           </p>
 
@@ -38,7 +38,7 @@
 
     <div class="col-lg-6">
       <div class="card">
-        <header class="card-header"><div class="card-title">执行结果</div></header>
+        <header class="card-header"><div class="card-title">Results of the</div></header>
         <div class="card-body">
           <pre id="resultDiv"></pre>
         </div>
@@ -59,10 +59,10 @@
 
       if (options.length < 1) {
         $.alert({
-          title: '温馨提示',
-          icon: 'mdi mdi-alert',
-          type: 'orange',
-          content: '请选择数据表。',
+          title:'Warm reminder',
+          icon:'mdi mdi-alert',
+          type:'orange',
+          content:'Please select a data sheet.',
         });
         return false;
       }
@@ -72,7 +72,7 @@
       $("#btnLoading").show();
 
       for (var i = 0; i < options.length; i++) {
-        tables.push(options.eq(i).val()); // 将所有的值赋给数组
+        tables.push(options.eq(i).val()); // Assign all values to the array
       }
 
       $.post("/gormgen_exec",{tables:tables.join(',')},function (data) {

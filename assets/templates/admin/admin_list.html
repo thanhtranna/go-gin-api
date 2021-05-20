@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-toolbar d-flex flex-column flex-md-row">
                     <div class="toolbar-btn-action">
-                        <a class="btn btn-primary m-r-5" href="/admin/add"><i class="mdi mdi-plus"></i> 新增</a>
+                        <a class="btn btn-primary m-r-5" href="/admin/add"><i class="mdi mdi-plus"></i> Add</a>
                     </div>
                 </div>
 
@@ -26,14 +26,14 @@
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th>编号</th>
-                                <th>用户名</th>
-                                <th>昵称</th>
-                                <th>手机号</th>
-                                <th>创建日期</th>
-                                <th>更新日期</th>
-                                <th style="text-align: center; ">状态</th>
-                                <th style="text-align: center; ">操作</th>
+                                <th>Number</th>
+                                <th>Username</th>
+                                <th>nickname</th>
+                                <th>Mobile phone number</th>
+                                <th>Created date</th>
+                                <th>Update date</th>
+                                <th style="text-align: center; ">Status</th>
+                                <th style="text-align: center; ">Operation</th>
                             </tr>
                             </thead>
                             <tbody class="tbody">
@@ -59,7 +59,7 @@
 <script type="text/javascript" src="../../bootstrap/js/jquery.pagination.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        // 加载列表页数据
+        // Load list page data
         getPageListData();
 
         function getPageListData(page = 0, page_size = 0) {
@@ -79,18 +79,18 @@
                 function () {},
                 function (data) {
                     if (data.list.length > 0) {
-                        var totalNum = data.pagination.total; //总条数
-                        var pageNum = Math.ceil(totalNum / data.pagination.pre_page_count); //分页的总页数
+                        var totalNum = data.pagination.total; // Total number
+                        var pageNum = Math.ceil(totalNum / data.pagination.pre_page_count); // Total number of pages pagination
 
                         $("#paginationDiv").pagination({
                             current: data.pagination.current_page,
                             pageCount: pageNum,
                             coping: true,
-                            homePage: '首页',
-                            endPage: '末页',
-                            mode: 'fixed',
-                            prevContent: '上一页',
-                            nextContent: '下一页',
+                            homePage:'Home',
+                            endPage:'Last Page',
+                            mode:'fixed',
+                            prevContent:'Previous page',
+                            nextContent:'Next Page',
                             activeCls: 'pageActive',
                             prevCls: 'pagePrev',
                             nextCls: 'pageNext',
@@ -105,13 +105,13 @@
                             var optionUsedName = "";
 
                             if (value.is_used === 1) {
-                                optionUsedName = '禁用';
-                                showUsedBadge = '<span class="badge badge-success">启用</span></td>'
+                                optionUsedName = 'Disable';
+                                showUsedBadge = '<span class="badge badge-success">Enable</span></td>'
                             }
 
                             if (value.is_used === -1) {
-                                optionUsedName = '启用';
-                                showUsedBadge = '<span class="badge badge-danger">禁用</span></td>'
+                                optionUsedName = 'Enable';
+                                showUsedBadge = '<span class="badge badge-danger">Disable</span></td>'
                             }
 
                             const tr = '<tr>\n' +
@@ -130,10 +130,10 @@
                                 '                                           data-toggle="tooltip" data-original-title="' + optionUsedName + '">' + optionUsedName + '</a>\n' +
                                 '    <a class="btn btn-xs btn-default btn-resetPassword" href="#!" title=""\n' +
                                 '                                           data-id="' + value.hashid + '"' +
-                                '                                           data-toggle="tooltip" data-original-title="重置密码">重置密码</a>\n' +
+                                '                                           data-toggle="tooltip" data-original-title="Reset Password">Reset Password</a>\n' +
                                 '    <a class="btn btn-xs btn-default btn-confirm" href="#!" title=""\n' +
                                 '                                           data-id="' + value.hashid + '"' +
-                                '                                           data-toggle="tooltip" data-original-title="删除">删除</a>\n' +
+                                '                                           data-toggle="tooltip" data-original-title="Delete">Delete</a>\n' +
                                 '</div>\n' +
                                 '</td>\n' +
                                 '</tr>';
@@ -141,8 +141,8 @@
                             $(".tbody").append(tr);
                         })
                     } else {
-                        // 数据为空
-                        const tr = '<tr><td colspan="8" style="text-align: center">暂无数据</td></tr>';
+                        // Data is empty
+                        const tr = '<tr><td colspan="8" style="text-align: center">No data</td></tr>';
                         $(".tbody").append(tr);
                     }
                 },
@@ -153,19 +153,19 @@
             );
         }
 
-        // 启用/禁用
+        // Enable/disable
         $(document).on('click', '.btn-option', function () {
             const id = $(this).attr('data-id');
             const isUsed = $(this).attr('data-is-used');
 
             var tipMessage = "";
             var wantUsed = 0;
-            if (isUsed === "1") { // 1=当前为启用状态，需要改成禁用
-                tipMessage = "禁用";
+            if (isUsed === "1") { // 1=Currently it is enabled and needs to be changed to disabled
+                tipMessage = "Disable";
                 wantUsed = -1;
             }
-            if (isUsed === "-1") { // -1=当前为禁用状态，需要改成启用
-                tipMessage = "启用";
+            if (isUsed === "-1") { // -1=Currently disabled, need to be changed to enable
+                tipMessage = "Enable";
                 wantUsed = 1;
             }
 
@@ -175,14 +175,14 @@
             };
 
             $.confirm({
-                title: '谨慎操作',
-                content: '确认要 <strong style="color: red">' + tipMessage + '</strong> 吗？',
+                title:'Operate with caution',
+                content:'Are you sure you want to <strong style="color: red">' + tipMessage +'</strong>?',
                 icon: 'mdi mdi-alert',
                 animation: 'scale',
                 closeAnimation: 'zoom',
                 buttons: {
                     okay: {
-                        text: '确认',
+                        text: 'Confirm',
                         keys: ['enter'],
                         btnClass: 'btn-orange',
                         action: function () {
@@ -193,13 +193,13 @@
                                 function () {},
                                 function (data) {
                                     $.alert({
-                                        title: '操作成功',
+                                        title: 'Successful operation',
                                         icon: 'mdi mdi-check-decagram',
                                         type: 'green',
-                                        content: '编号：' + data.id + ' 已' + tipMessage + '。',
+                                        content:'Number:' + data.id + 'already' + tipMessage +'.',
                                         buttons: {
                                             okay: {
-                                                text: '关闭',
+                                                text: 'Close',
                                                 action: function () {
                                                     location.reload();
                                                 }
@@ -214,26 +214,26 @@
                         }
                     },
                     cancel: {
-                        text: '取消',
+                        text: 'Cancel',
                         keys: ['ctrl', 'shift'],
                     }
                 }
             });
         });
 
-        // 重置密码
+        // Reset Password
         $(document).on('click', '.btn-resetPassword', function () {
             const id = $(this).attr('data-id');
 
             $.confirm({
-                title: '谨慎操作',
-                content: '确认要 <strong style="color: red">重置密码</strong> 吗？' + '<hr>' + '重置后密码为：123456',
+                title: 'Proceed with caution',
+                content: 'Are you sure you want to <strong style="color: red">reset your password</strong>? '+'<hr>' +'Password after reset is: 123456',
                 icon: 'mdi mdi-alert',
                 animation: 'scale',
                 closeAnimation: 'zoom',
                 buttons: {
                     okay: {
-                        text: '确认',
+                        text: 'Confirm',
                         keys: ['enter'],
                         btnClass: 'btn-orange',
                         action: function () {
@@ -244,13 +244,13 @@
                                 function () {},
                                 function (data) {
                                     $.alert({
-                                        title: '操作成功',
-                                        icon: 'mdi mdi-check-decagram',
-                                        type: 'green',
-                                        content: '编号：' + data.id + ' 密码重置完成。',
+                                        title:'Operation successful',
+                                        icon:'mdi mdi-check-decagram',
+                                        type:'green',
+                                        content:'Number:' + data.id + 'Password reset is complete.',
                                         buttons: {
                                             okay: {
-                                                text: '关闭',
+                                                text: 'Close',
                                                 action: function () {
                                                     location.reload();
                                                 }
@@ -265,26 +265,26 @@
                         }
                     },
                     cancel: {
-                        text: '取消',
+                        text: 'Cancel',
                         keys: ['ctrl', 'shift'],
                     }
                 }
             });
         });
 
-        // 删除
+        // Delete
         $(document).on('click', '.btn-confirm', function () {
             const id = $(this).attr('data-id');
 
             $.confirm({
-                title: '谨慎操作',
-                content: '确认要 <strong style="color: red">删除</strong> 吗？',
+                title:'Operate with caution',
+                content:'Are you sure you want to <strong style="color: red">delete</strong>?',
                 icon: 'mdi mdi-alert',
                 animation: 'scale',
                 closeAnimation: 'zoom',
                 buttons: {
                     okay: {
-                        text: '确认',
+                        text: 'Confirm',
                         keys: ['enter'],
                         btnClass: 'btn-orange',
                         action: function () {
@@ -295,13 +295,13 @@
                                 function () {},
                                 function (data) {
                                     $.alert({
-                                        title: '操作成功',
-                                        icon: 'mdi mdi-check-decagram',
-                                        type: 'green',
-                                        content: '编号：' + data.id + ' 已删除。',
+                                        title:'Operation successful',
+                                        icon:'mdi mdi-check-decagram',
+                                        type:'green',
+                                        content:'Number:' + data.id + 'has been deleted.',
                                         buttons: {
                                             okay: {
-                                                text: '关闭',
+                                                text: 'Close',
                                                 action: function () {
                                                     location.reload();
                                                 }
@@ -316,7 +316,7 @@
                         }
                     },
                     cancel: {
-                        text: '取消',
+                        text: 'Cancel',
                         keys: ['ctrl', 'shift'],
                     }
                 }

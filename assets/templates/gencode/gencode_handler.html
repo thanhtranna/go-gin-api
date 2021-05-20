@@ -13,18 +13,18 @@
   <div class="row">
     <div class="col-lg-6">
       <div class="card">
-        <header class="card-header"><div class="card-title"> <code>handlergen</code> 代码生成工具</div></header>
+        <header class="card-header"><div class="card-title"> <code>handlergen</code> Code generation tool</div></header>
         <div class="card-body">
           <div class="form-group">
-            <label for="exampleFormControlInput1">handler 名称，例如：<code>user_handler</code></label>
-            <input type="text" class="form-control" id="handlerName" placeholder="请输入 handler 名称">
+            <label for="exampleFormControlInput1">handler name, for example：<code>user_handler</code></label>
+            <input type="text" class="form-control" id="handlerName" placeholder="Please enter the handler name">
           </div>
 
           <p>
-            <button type="button" id="btnOk" class="btn btn-primary">确认</button>
+            <button type="button" id="btnOk" class="btn btn-primary">Confirm</button>
             <button type="button" id="btnLoading" class="btn btn-primary" disabled style="display: none">
               <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-              执行中...
+              Executing...
             </button>
           </p>
 
@@ -34,7 +34,7 @@
 
     <div class="col-lg-6">
       <div class="card">
-        <header class="card-header"><div class="card-title">执行结果</div></header>
+        <header class="card-header"><div class="card-title">Results of the</div></header>
         <div class="card-body">
           <pre id="resultDiv"></pre>
         </div>
@@ -53,10 +53,10 @@
       var handlerName = $("#handlerName").val();
       if (!handlerName) {
         $.alert({
-          title: '温馨提示',
-          icon: 'mdi mdi-alert',
-          type: 'orange',
-          content: '请输入 handler 名称。',
+          title:'Warm reminder',
+          icon:'mdi mdi-alert',
+          type:'orange',
+          content:'Please enter the handler name.',
         });
         return false;
       }

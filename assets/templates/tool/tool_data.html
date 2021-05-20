@@ -16,7 +16,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">查询数据</div>
+                    <div class="card-title">Query data</div>
                     <ul class="card-actions">
                         <li><a href="#!" class="card-btn-slide"><i class="mdi mdi-chevron-up"></i></a></li>
                     </ul>
@@ -32,7 +32,7 @@
                         <div class="tab-pane fade active show" id="mysql">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">数据库</span>
+                                    <span class="input-group-text">Database</span>
                                 </div>
                                 <select class="form-control select-picker col-lg-2" data-width="auto"
                                         data-live-search="true" id="db">
@@ -41,7 +41,7 @@
                                 <div style="width: 50px;"></div>
 
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">数据表</span>
+                                    <span class="input-group-text">Data sheet</span>
                                 </div>
                                 <select class="form-control select-picker col-lg-2" data-width="auto"
                                         data-live-search="true" id="table">
@@ -57,18 +57,18 @@
                                 <div style="width: 20px;"></div>
                                 <button class="btn btn-sm btn-round btn-secondary btn-show-create">SHOW CREATE TABLE </button>
                                 <div style="width: 20px;"></div>
-                                <button class="btn btn-sm btn-round btn-secondary btn-clear">清除</button>
+                                <button class="btn btn-sm btn-round btn-secondary btn-clear">Clear</button>
                                 <div style="width: 20px;"></div>
-                                <button class="btn btn-sm btn-round btn-secondary btn-format">格式</button>
+                                <button class="btn btn-sm btn-round btn-secondary btn-format">Format</button>
                             </div>
 
                             <div class="input-group mb-3">
-                                <code>仅支持查询语句，最多支持查询 100 条数据。</code>
+                                <code>Only query statements are supported, and a maximum of 100 data items can be queried.</code>
                             </div>
 
                             <div style="float: right">
-                                <button type="button" id="btnSearch" class="btn btn-primary">查询</button>
-                                <button type="button" id="btnExplain" class="btn btn-info">分析</button>
+                                <button type="button" id="btnSearch" class="btn btn-primary">Execution</button>
+                                <button type="button" id="btnExplain" class="btn btn-info">Analysis</button>
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                     $("#db").append("<option value='" + value.db_name + "'>" + value.db_name + "</option>");
                 });
 
-                $("#db option:eq(0)").attr('selected', 'selected');//选中第一个
+                $("#db option:eq(0)").attr('selected', 'selected'); // Select the first one
                 $("#db").selectpicker('refresh');
 
                 getTables($('#db option:selected').val());
@@ -159,10 +159,10 @@
             const db = $('#db option:selected').val();
             if (db === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请选择数据库。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please select a database. ',
                 });
                 return false;
             }
@@ -170,10 +170,10 @@
             const sql = $('#sql').val();
             if (sql === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请先填写 SQL 语句。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please fill in the SQL statement first. ',
                 });
                 return false;
             }
@@ -181,10 +181,10 @@
             const table = $('#table option:selected').val();
             if (table === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请选择数据表。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please select a data sheet. ',
                 });
                 return false;
             }
@@ -196,10 +196,10 @@
             const db = $('#db option:selected').val();
             if (db === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请选择数据库。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please select a database. ',
                 });
                 return false;
             }
@@ -207,10 +207,10 @@
             const table = $('#table option:selected').val();
             if (table === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请选择数据表。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please select a data sheet. ',
                 });
                 return false;
             }
@@ -218,10 +218,10 @@
             const sql = $('#sql').val();
             if (sql === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请先填写 SQL 语句。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please fill in the SQL statement first. ',
                 });
                 return false;
             }
@@ -278,7 +278,7 @@
                         $("#table").append("<option value='" + value.table_name + "' data-subtext='" + value.table_comment + "'>" + value.table_name + "</option>");
                     });
 
-                    $("#table option:eq(0)").attr('selected', 'selected');//选中第一个
+                    $("#table option:eq(0)").attr('selected', 'selected');  // Select the first one
                     $("#table").selectpicker('refresh');
                 },
                 function (response) {

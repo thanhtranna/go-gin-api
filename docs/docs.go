@@ -206,7 +206,7 @@ var doc = `{
         },
         "/api/admin/modify_password": {
             "patch": {
-                "description": "modify password",
+                "description": "modify personal information",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -216,19 +216,19 @@ var doc = `{
                 "tags": [
                     "API.admin"
                 ],
-                "summary": "modify password",
+                "summary": "modify personal information",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "old password",
-                        "name": "old_password",
+                        "description": "nickname",
+                        "name": "nickname",
                         "in": "formData",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "new password",
-                        "name": "new_password",
+                        "description": "mobile number",
+                        "name": "mobile",
                         "in": "formData",
                         "required": true
                     }
@@ -237,7 +237,7 @@ var doc = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/admin_handler.modifyPasswordResponse"
+                            "$ref": "#/definitions/admin_handler.modifyPersonalInfoResponse"
                         }
                     },
                     "400": {

@@ -547,16 +547,16 @@ paths:
     patch:
       consumes:
       - multipart/form-data
-      description: modify password
+      description: modify personal information
       parameters:
-      - description: old password
+      - description: nickname
         in: formData
-        name: old_password
+        name: nickname
         required: true
         type: string
-      - description: new password
+      - description: mobile number
         in: formData
-        name: new_password
+        name: mobile
         required: true
         type: string
       produces:
@@ -565,12 +565,12 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/admin_handler.modifyPasswordResponse'
+            $ref: '#/definitions/admin_handler.modifyPersonalInfoResponse'
         "400":
           description: Bad Request
           schema:
             $ref: '#/definitions/code.Failure'
-      summary: modify password
+      summary: modify personal information
       tags:
       - API.admin
   /api/admin/reset_password/{id}:

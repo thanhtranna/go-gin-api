@@ -15,13 +15,13 @@
         <div class="col-lg-12">
             <div class="card">
                 <header class="card-header">
-                    <div class="card-title">如何给调用方开通 KEY 和 SECRET？</div>
+                    <div class="card-title">How to enable KEY and SECRET for the caller?</div>
                 </header>
 
                 <div class="card-body">
-                    <p>1. 新增调用方，输入调用方标识、调用方对接人、备注等信息；</p>
-                    <p>2. 授权调用方可调用的接口；</p>
-                    <p>3. 查看详情，将调用方的 <code>KEY</code>、<code>SECRET</code> 发给调用方；</p>
+                    <p>1. Add caller, enter caller ID, caller docking person, remarks and other information;</p>
+                    <p>2. Interfaces that can be called by authorized callers;</p>
+                    <p>3. For details, set the caller’s <code>KEY</code>、<code>SECRET</code> sent to the caller;</p>
                 </div>
             </div>
         </div>
@@ -29,14 +29,14 @@
         <div class="col-lg-12">
             <div class="card">
                 <header class="card-header">
-                    <div class="card-title">调用方如何传递 Token？</div>
+                    <div class="card-title">How the caller passes the token？</div>
                 </header>
 
                 <div class="card-body">
-                    <p>基于 HTTP Header 中的两个参数 <code>Authorization</code>、<code>Authorization-Date</code> 存储签名信息。</p>
-                    <p>1. Authorization 存储签名信息，格式：调用方 KEY + 空格分隔符 + 摘要(加密串)，例如：</p>
+                    <p>The signature information is stored based on the two parameters <code>Authorization</code> and <code>Authorization-Date</code> in the HTTP Header. </p>
+                    <p>1. Authorization stores signature information, format: caller KEY + space separator + abstract (encrypted string), for example:</p>
                     <pre>Authorization:blog MjJjMDE1MWFkZjMwOWFmYjFlNzViNDFjYjYwMWFlMmM=</pre>
-                    <p>2. Authorization-Date 存储时间信息，格式：0000-00-00 00:00:00，使用 <code>Asia/Shanghai</code> 时区，例如；</p>
+                    <p>2. Authorization-Date stores time information, format: 0000-00-00 00:00:00, use <code>Asia/Shanghai</code> time zone, for example;</p>
                     <pre>Authorization-Date:2021-04-03 21:12:36</pre>
                 </div>
             </div>
@@ -44,18 +44,18 @@
 
         <div class="col-lg-12">
             <div class="card">
-                <header class="card-header"><div class="card-title">不同语言生成签名的方法，供参考</div></header>
+                <header class="card-header"><div class="card-title">Methods of generating signatures in different languages for reference</div></header>
                 <div class="card-body">
 
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#go" aria-selected="true">Go 语言</a>
+                            <a class="nav-link active" data-toggle="tab" href="#go" aria-selected="true">Go Language</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#php" aria-selected="false">PHP 语言</a>
+                            <a class="nav-link" data-toggle="tab" href="#php" aria-selected="false">PHP Language</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#js" aria-selected="false">JS 语言</a>
+                            <a class="nav-link" data-toggle="tab" href="#js" aria-selected="false">JS Language</a>
                         </li>
                     </ul>
 
@@ -71,7 +71,7 @@ func New(key, secret string, ttl time.Duration) Signature {
 }
 
 // Generate
-// path 请求的路径 (不附带 querystring)
+// path the requested path (without querystring)
 func (s *signature) Generate(path string, method string, params url.Values) (authorization, date string, err error) {
 	if path == "" {
 		err = errors.New("path required")
@@ -92,14 +92,14 @@ func (s *signature) Generate(path string, method string, params url.Values) (aut
 	// Date
 	date = time_parse.CSTLayoutString()
 
-	// Encode() 方法中自带 sorted by key
+	// Encode() comes in the method sorted by key
 	sortParamsEncode, err := url.QueryUnescape(params.Encode())
 	if err != nil {
 		err = errors.Errorf("url QueryUnescape %v", err)
 		return
 	}
 
-	// 加密字符串规则
+	// Encrypted string rules
 	buffer := bytes.NewBuffer(nil)
 	buffer.WriteString(path)
 	buffer.WriteString(delimiter)
@@ -109,7 +109,7 @@ func (s *signature) Generate(path string, method string, params url.Values) (aut
 	buffer.WriteString(delimiter)
 	buffer.WriteString(date)
 
-	// 对数据进行 sha256 加密，并进行 base64 encode
+	// Perform sha256 encryption on the data and base64 encode
 	hash := hmac.New(sha256.New, []byte(s.secret))
 	hash.Write(buffer.Bytes())
 	digest := base64.StdEncoding.EncodeToString(hash.Sum(nil))
@@ -118,7 +118,7 @@ func (s *signature) Generate(path string, method string, params url.Values) (aut
 	return
 }
 
-// 模拟数据
+// Simulation data
 const (
 	key    = "blog"
 	secret = "i1ydX9RtHyuJTrw7frcu"
@@ -143,7 +143,7 @@ func TestSignature_Generate(t *testing.T) {
                         </div>
                         <div class="tab-pane fade" id="php">
                             <pre>
-// 模拟数据
+// Simulation data
 $key    = "blog";
 $secret = "i1ydX9RtHyuJTrw7frcu";
 
@@ -154,19 +154,19 @@ $params['a'] = "a1";
 $params['d'] = "d1";
 $params['c'] = "c1 c2*";
 
-// 对 params key 进行排序
+// Sort the params key
 ksort($params);
 
-// 对 sortParams 进行操作
+// Operate on sortParams
 $sortParamsEncode = rawurldecode(http_build_query($params, "", "&", PHP_QUERY_RFC3986));
 
-// 时间 使用 Asia/Shanghai 时区
+// Time uses Asia/Ho_Chi_Minh time zone
 $date = date("Y-m-d H:i:s", time());
 
-// 加密字符串规则
+// Encrypted string rules
 $encryptStr = $path."|".strtoupper($method)."|".$sortParamsEncode."|".$date;
 
-// 对数据进行 sha256 加密，并进行 base64 encode
+// Perform sha256 encryption on the data and base64 encode
 $digest = base64_encode(hash_hmac("sha256", $encryptStr, $secret, true));
 
 $authorization = $key." ".$digest;
@@ -182,12 +182,12 @@ let key = "blog";
 let secret = "i1ydX9RtHyuJTrw7frcu";
 
 let date = new Date();
-let datetime = date.getFullYear() + "-" // "年"
-    + ((date.getMonth() + 1) > 10 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1)) + "-" // "月"
-    + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " " // "日"
-    + (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":" // "小时"
-    + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) + ":" // "分钟"
-    + (date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()); // "秒"
+let datetime = date.getFullYear() + "-" // "Year"
+    + ((date.getMonth() + 1) > 10 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1)) + "-" // "Month"
+    + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " " // "Day"
+    + (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":" // "Hours"
+    + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) + ":" // "Minutes"
+    + (date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()); // "Seconds"
 
 let path = "/echo";
 let method = "POST";

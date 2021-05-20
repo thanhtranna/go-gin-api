@@ -15,28 +15,28 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">hashids 加密</div>
+                    <div class="card-title">hashids encryption</div>
                 </div>
                 <div class="card-body">
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">数字</span>
+                            <span class="input-group-text">Number</span>
                         </div>
-                        <input type="text" class="form-control" id="number" maxlength="10" placeholder="需加密的数字">
+                        <input type="text" class="form-control" id="number" maxlength="10" placeholder="Number to be encrypted">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" >密文</span>
+                            <span class="input-group-text" >Ciphertext</span>
                         </div>
                         <input type="text" class="form-control" disabled id="NumberToEncodeValue">
                     </div>
 
-                    <button type="button" id="btnEncode" class="btn btn-primary">执行</button>
+                    <button type="button" id="btnEncode" class="btn btn-primary">Execution</button>
                     <button type="button" id="btnEncodeLoading" class="btn btn-primary" disabled style="display: none">
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                        执行中...
+                        Loading...
                     </button>
 
                 </div>
@@ -46,28 +46,28 @@
         <div class="col-lg-6">
             <div class="card">
                 <header class="card-header">
-                    <div class="card-title">hashids 解密</div>
+                    <div class="card-title">hashids decrypt</div>
                 </header>
                 <div class="card-body">
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">密文</span>
+                            <span class="input-group-text">Ciphertext</span>
                         </div>
-                        <input type="text" class="form-control" id="encodeValue" placeholder="需解密的密文">
+                        <input type="text" class="form-control" id="encodeValue" placeholder="Ciphertext to be decrypted">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" >数字</span>
+                            <span class="input-group-text" >Number</span>
                         </div>
                         <input type="text" class="form-control" disabled id="DecodeValueToNumber">
                     </div>
 
-                    <button type="button" id="btnDecode" class="btn btn-primary">执行</button>
+                    <button type="button" id="btnDecode" class="btn btn-primary">Execution</button>
                     <button type="button" id="btnDecodeLoading" class="btn btn-primary" disabled style="display: none">
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                        执行中...
+                        Executing...
                     </button>
 
                 </div>
@@ -93,10 +93,10 @@
             const number = $("#number").val();
             if (number === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入需加密的数字。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please enter the number to be encrypted. ',
                 });
                 return false;
             }
@@ -126,10 +126,10 @@
             const encodeValue = $("#encodeValue").val();
             if (encodeValue === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入需解密的密文。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please enter the ciphertext to be decrypted. ',
                 });
                 return false;
             }

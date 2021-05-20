@@ -15,12 +15,12 @@
     <div class="col-md-6 col-lg-4">
       <div class="card border-secondary">
         <header class="card-header">
-          <div class="card-title">内存信息</div>
+          <div class="card-title">Memory information</div>
         </header>
         <div class="card-body">
-          <p>总量：{{ .MemTotal }}</p>
-          <p>已使用：{{ .MemUsed }}</p>
-          <p>使用率：<span class="badge
+          <p>Total: {{ .MemTotal }}</p>
+          <p>Used: {{ .MemUsed }}</p>
+          <p>Usage rate: <span class="badge
             {{if gt .MemUsedPercent 95.0}} badge-danger
             {{else if gt .MemUsedPercent 90.0 }} badge-warning
             {{else}} badge-success
@@ -32,12 +32,12 @@
     <div class="col-md-6 col-lg-4">
       <div class="card border-secondary">
         <header class="card-header">
-          <div class="card-title">硬盘信息</div>
+          <div class="card-title">Hard Disk Information</div>
         </header>
         <div class="card-body">
-          <p>总量：{{ .DiskTotal }}</p>
-          <p>已使用：{{ .DiskUsed }}</p>
-          <p>使用率：<span class="badge
+          <p>Total: {{ .DiskTotal }}</p>
+          <p>Used：{{ .DiskUsed }}</p>
+          <p>Usage rate: <span class="badge
             {{if gt .DiskUsedPercent 95.0}} badge-danger
             {{else if gt .DiskUsedPercent 90.0 }} badge-warning
             {{else}} badge-success
@@ -49,12 +49,12 @@
     <div class="col-md-6 col-lg-4">
       <div class="card border-secondary">
         <header class="card-header">
-          <div class="card-title">CPU 信息</div>
+          <div class="card-title">CPU information</div>
         </header>
         <div class="card-body">
           <p>CPU：{{ .CpuName }}</p>
-          <p>核数：{{ .CpuCores }}</p>
-          <p>CPU 使用率：<span class="badge
+          <p>Number of core: {{ .CpuCores }}</p>
+          <p>CPU Usage rate: <span class="badge
             {{if gt .CpuUsedPercent 95.0}} badge-danger
             {{else if gt .CpuUsedPercent 90.0 }} badge-warning
             {{else}} badge-success
@@ -66,17 +66,15 @@
     <div class="col-md-6 col-lg-4">
       <div class="card border-secondary">
         <header class="card-header">
-          <div class="card-title">项目信息</div>
+          <div class="card-title">Project information</div>
         </header>
         <div class="card-body">
-          <p>操作系统：{{ .GoOS }} <span class="badge badge-brown"> {{ .GoArch }} </span></p>
-          <p>项目地址：{{ .ProjectPath }}</p>
-          <p>项目域名：{{ .Host }} <span class="badge badge-secondary"> {{ .Env }} </span></p>
+          <p>Operating system: {{ .GoOS }} <span class="badge badge-brown"> {{ .GoArch }} </span></p>
+          <p>Project address：{{ .ProjectPath }}</p>
+          <p>Project domain name: {{ .Host }} <span class="badge badge-secondary"> {{ .Env }} </span></p>
           <p>GOPATH：{{ .GoPath }}</p>
           <p>Version：{{ .GoVersion }}</p>
           <p>Goroutine：{{ .Goroutine }}</p>
-
-
         </div>
       </div>
     </div>

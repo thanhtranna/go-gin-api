@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-toolbar d-flex flex-column flex-md-row">
                     <div class="toolbar-btn-action">
-                        <a class="btn btn-primary m-r-5" href="/authorized/add"><i class="mdi mdi-plus"></i> 新增</a>
+                        <a class="btn btn-primary m-r-5" href="/authorized/add"><i class="mdi mdi-plus"></i> Add</a>
                     </div>
                 </div>
 
@@ -26,13 +26,13 @@
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th>编号</th>
-                                <th>调用方</th>
-                                <th>对接人</th>
-                                <th>创建日期</th>
-                                <th>更新日期</th>
-                                <th style="text-align: center; ">状态</th>
-                                <th style="text-align: center; ">操作</th>
+                                <th>Number</th>
+                                <th>Caller</th>
+                                <th>Caller devloper</th>
+                                <th>Created date</th>
+                                <th>Updated date</th>
+                                <th style="text-align: center; ">Status</th>
+                                <th style="text-align: center; ">Operation</th>
                             </tr>
                             </thead>
                             <tbody class="tbody">
@@ -58,7 +58,7 @@
 <script type="text/javascript" src="../../bootstrap/js/jquery.pagination.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        // 加载列表页数据
+        // Load list page data
         getPageListData();
 
         function getPageListData(page = 0, page_size = 0) {
@@ -78,18 +78,18 @@
                 function () {},
                 function (data) {
                     if (data.list.length > 0) {
-                        var totalNum = data.pagination.total; //总条数
-                        var pageNum = Math.ceil(totalNum / data.pagination.pre_page_count); //分页的总页数
+                        var totalNum = data.pagination.total; // Total number
+                        var pageNum = Math.ceil(totalNum / data.pagination.pre_page_count); // Total number of pages pagination
 
                         $("#paginationDiv").pagination({
                             current: data.pagination.current_page,
                             pageCount: pageNum,
                             coping: true,
-                            homePage: '首页',
-                            endPage: '末页',
+                            homePage: 'Home page',
+                            endPage: 'Last page',
                             mode: 'fixed',
-                            prevContent: '上一页',
-                            nextContent: '下一页',
+                            prevContent: 'Previous page',
+                            nextContent: 'Next page',
                             activeCls: 'pageActive',
                             prevCls: 'pagePrev',
                             nextCls: 'pageNext',
@@ -104,13 +104,13 @@
                             var optionUsedName = "";
 
                             if (value.is_used === 1) {
-                                optionUsedName = '禁用';
-                                showUsedBadge = '<span class="badge badge-success">启用</span></td>'
+                                optionUsedName = 'Disable';
+                                showUsedBadge = '<span class="badge badge-success">Enable</span></td>'
                             }
 
                             if (value.is_used === -1) {
-                                optionUsedName = '启用';
-                                showUsedBadge = '<span class="badge badge-danger">禁用</span></td>'
+                                optionUsedName = 'Enable';
+                                showUsedBadge = '<span class="badge badge-danger">Disable</span></td>'
                             }
 
                             const tr = '<tr>\n' +
@@ -126,16 +126,16 @@
                                 '                                           data-business-key="' + value.business_key + '"' +
                                 '                                           data-business-secret="' + value.business_secret + '"' +
                                 '                                           data-remark="' + value.remark + '"' +
-                                '                                           data-toggle="tooltip" data-original-title="详情">详情</a>\n' +
+                                '                                           data-toggle="tooltip" data-original-title="Details">Details</a>\n' +
                                 '    <a class="btn btn-xs btn-default btn-option" href="#!" title=""\n' +
                                 '                                           data-id="' + value.hashid + '"' +
                                 '                                           data-is-used="' + value.is_used + '"' +
                                 '                                           data-toggle="tooltip" data-original-title="' + optionUsedName + '">' + optionUsedName + '</a>\n' +
                                 '    <a class="btn btn-xs btn-default" href="/authorized/api/'+value.hashid+'" title=""\n' +
-                                '                                           data-toggle="tooltip" data-original-title="接口">接口</a>\n' +
+                                '                                           data-toggle="tooltip" data-original-title="interface">interface</a>\n' +
                                 '    <a class="btn btn-xs btn-default btn-confirm" href="#!" title=""\n' +
                                 '                                           data-id="' + value.hashid + '"' +
-                                '                                           data-toggle="tooltip" data-original-title="删除">删除</a>\n' +
+                                '                                           data-toggle="tooltip" data-original-title="delete">Delete</a>\n' +
                                 '</div>\n' +
                                 '</td>\n' +
                                 '</tr>';
@@ -143,8 +143,8 @@
                             $(".tbody").append(tr);
                         })
                     } else {
-                        // 数据为空
-                        const tr = '<tr><td colspan="7" style="text-align: center">暂无数据</td></tr>';
+                        // Data is empty
+                        const tr = '<tr><td colspan="7" style="text-align: center">No data</td></tr>';
                         $(".tbody").append(tr);
                     }
                 },
@@ -155,34 +155,34 @@
             );
         }
 
-        // 详情
+        // Details
         $(document).on('click', '.btn-detail', function () {
             const business_key = $(this).attr('data-business-key');
             const business_secret = $(this).attr('data-business-secret');
             const business_remark = $(this).attr('data-remark');
 
             $.alert({
-                title: '详情',
-                content: '调用方 KEY ：' + business_key + '<br/>调用方 SECRET ：' + business_secret + '<br/>备注：' + business_remark,
+                title: 'Details',
+                content: 'Caller KEY:' + business_key +'<br/>Caller SECRET:' + business_secret +'<br/>Remarks:' + business_remark,
                 type: 'green',
                 animation: 'scale',
                 draggable: true,
             });
         });
 
-        // 启用/禁用
+        // Enable/Disable
         $(document).on('click', '.btn-option', function () {
             const id = $(this).attr('data-id');
             const isUsed = $(this).attr('data-is-used');
 
             var tipMessage = "";
             var wantUsed = 0;
-            if (isUsed === "1") { // 1=当前为启用状态，需要改成禁用
-                tipMessage = "禁用";
+            if (isUsed === "1") { // 1=Currently enabled, need to be changed to disabled
+                tipMessage = "Disable";
                 wantUsed = -1;
             }
-            if (isUsed === "-1") { // -1=当前为禁用状态，需要改成启用
-                tipMessage = "启用";
+            if (isUsed === "-1") { // -1=Currently disabled, need to be changed to enable
+                tipMessage = "Enable";
                 wantUsed = 1;
             }
 
@@ -192,14 +192,14 @@
             };
 
             $.confirm({
-                title: '谨慎操作',
-                content: '确认要 <strong style="color: red">' + tipMessage + '</strong> 吗？',
+                title:'Operate with caution',
+                content:'Are you sure you want to <strong style="color: red">' + tipMessage +'</strong>?',
                 icon: 'mdi mdi-alert',
                 animation: 'scale',
                 closeAnimation: 'zoom',
                 buttons: {
                     okay: {
-                        text: '确认',
+                        text: 'Confirm',
                         keys: ['enter'],
                         btnClass: 'btn-orange',
                         action: function () {
@@ -210,13 +210,13 @@
                                 function () {},
                                 function (data) {
                                     $.alert({
-                                        title: '操作成功',
+                                        title: 'Successful operation',
                                         icon: 'mdi mdi-check-decagram',
                                         type: 'green',
-                                        content: '编号：' + data.id + ' 已' + tipMessage + '。',
+                                        content: 'Number:' + data.id +'Already' + tipMessage +'.',
                                         buttons: {
                                             okay: {
-                                                text: '关闭',
+                                                text: 'Close',
                                                 action: function () {
                                                     location.reload();
                                                 }
@@ -231,26 +231,26 @@
                         }
                     },
                     cancel: {
-                        text: '取消',
+                        text: 'Cancel',
                         keys: ['ctrl', 'shift'],
                     }
                 }
             });
         });
 
-        // 删除
+        // Delete
         $(document).on('click', '.btn-confirm', function () {
             const id = $(this).attr('data-id');
 
             $.confirm({
-                title: '谨慎操作',
-                content: '确认要 <strong style="color: red">删除</strong> 吗？',
+                title:'Operate with caution',
+                content:'Are you sure you want to <strong style="color: red">delete</strong>?',
                 icon: 'mdi mdi-alert',
                 animation: 'scale',
                 closeAnimation: 'zoom',
                 buttons: {
                     okay: {
-                        text: '确认',
+                        text: 'Confirm',
                         keys: ['enter'],
                         btnClass: 'btn-orange',
                         action: function () {
@@ -261,13 +261,13 @@
                                 function () {},
                                 function (data) {
                                     $.alert({
-                                        title: '操作成功',
+                                        title: 'Successful operation',
                                         icon: 'mdi mdi-check-decagram',
                                         type: 'green',
-                                        content: '编号：' + data.id + ' 已删除。',
+                                        content: 'Number:' + data.id + 'has been deleted.',
                                         buttons: {
                                             okay: {
-                                                text: '关闭',
+                                                text: 'Close',
                                                 action: function () {
                                                     location.reload();
                                                 }
@@ -282,7 +282,7 @@
                         }
                     },
                     cancel: {
-                        text: '取消',
+                        text: 'Cancel',
                         keys: ['ctrl', 'shift'],
                     }
                 }

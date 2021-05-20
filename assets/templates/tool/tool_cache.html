@@ -15,7 +15,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">查询缓存</div>
+                    <div class="card-title">Query cache</div>
                 </div>
                 <div class="card-body">
                     <ul class="nav nav-tabs">
@@ -30,14 +30,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">KEY</span>
                                 </div>
-                                <input type="text" class="form-control" id="redis_key" placeholder="请输入 Redis Key">
+                                <input type="text" class="form-control" id="redis_key" placeholder="Please enter Redis Key">
                             </div>
 
-                            <button type="button" id="btnSearch" class="btn btn-primary">查询</button>
+                            <button type="button" id="btnSearch" class="btn btn-primary">Execution</button>
                             <button type="button" id="btnSearchLoading" class="btn btn-primary" disabled
                                     style="display: none">
                                 <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                                查询中...
+                                    Loading...
                             </button>
                         </div>
                     </div>
@@ -48,13 +48,13 @@
         <div class="col-lg-6">
             <div class="card">
                 <header class="card-header">
-                    <div class="card-title">执行结果</div>
+                    <div class="card-title">Results of the</div>
                 </header>
                 <div class="card-body">
                     <pre id="resultDiv" style="white-space: pre-wrap;word-wrap: break-word;"></pre>
                     <p><code id="ttl" style="display: none;"></code></p>
                     <button class="btn btn-label btn-warning btn-clear-cache" style="display: none;"><label><i
-                                    class="mdi mdi-delete-empty"></i></label> 清空数据
+                                    class="mdi mdi-delete-empty"></i></label> Clear data
                     </button>
                 </div>
             </div>
@@ -73,10 +73,10 @@
             const redis_key = $("#redis_key").val();
             if (redis_key === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入 Redis Key。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please enter Redis Key.',
                 });
                 return false;
             }
@@ -101,7 +101,7 @@
                     $("#resultDiv").text(data.val);
 
                     $("#ttl").show();
-                    $("#ttl").text("剩余过期时间：" + data.ttl);
+                    $("#ttl").text("Remaining expiration time:" + data.ttl);
 
                     $(".btn-clear-cache").show();
                 },
@@ -119,10 +119,10 @@
 
             if (redis_key === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入 Redis Key。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please enter Redis Key.',
                 });
                 return false;
             }
@@ -132,14 +132,14 @@
             };
 
             $.confirm({
-                title: '谨慎操作',
-                content: '确认要清空 REDIS KEY: <strong style="color: red">' + redis_key + '</strong> 的数据吗？',
+                title:'Operate with caution',
+                content:'Are you sure you want to clear the data of REDIS KEY: <strong style="color: red">' + redis_key +'</strong>?',
                 icon: 'mdi mdi-alert',
                 animation: 'scale',
                 closeAnimation: 'zoom',
                 buttons: {
                     okay: {
-                        text: '确认',
+                        text: 'Confirm',
                         keys: ['enter'],
                         btnClass: 'btn-orange',
                         action: function () {
@@ -151,13 +151,13 @@
                                 },
                                 function () {
                                     $.alert({
-                                        title: '操作成功',
+                                        title: 'Successful operation',
                                         icon: 'mdi mdi-check-decagram',
                                         type: 'green',
-                                        content: 'REDIS KEY：' + redis_key + ' 数据已清空。',
+                                        content: 'REDIS KEY：' + redis_key + ' the data has been emptied.',
                                         buttons: {
                                             okay: {
-                                                text: '关闭',
+                                                text: 'Close',
                                                 action: function () {
                                                     location.reload();
                                                 }
@@ -172,7 +172,7 @@
                         }
                     },
                     cancel: {
-                        text: '取消',
+                        text: 'Cancel',
                         keys: ['ctrl', 'shift'],
                     }
                 }

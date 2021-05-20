@@ -18,13 +18,13 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">配置菜单栏</div>
+                    <div class="card-title">Configure the menu bar</div>
                 </div>
                 <div class="card-body">
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">上级菜单</span>
+                            <span class="input-group-text">Upper level menu</span>
                         </div>
                         <select class="form-control select-picker col-lg-3" data-width="auto"
                                 data-live-search="true" id="level">
@@ -33,31 +33,31 @@
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">菜单名称</span>
+                            <span class="input-group-text">Menu name</span>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder="请输入菜单名称">
+                        <input type="text" class="form-control" id="name" placeholder="Please enter the menu name">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">菜单图标</span>
+                            <span class="input-group-text">Menu icon</span>
                         </div>
-                        <input type="text" class="form-control" id="icon" placeholder="请输入菜单图标">
+                        <input type="text" class="form-control" id="icon" placeholder="Please enter the menu icon">
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">链接地址</span>
+                            <span class="input-group-text">Link address</span>
                         </div>
-                        <input type="text" class="form-control" id="link" placeholder="请输入链接地址">
+                        <input type="text" class="form-control" id="link" placeholder="Please enter the link address">
                     </div>
 
                     <input type="hidden" id="id">
 
-                    <button type="button" id="btnOk" class="btn btn-primary">提交</button>
+                    <button type="button" id="btnOk" class="btn btn-primary">Submit</button>
                     <button type="button" id="btnLoading" class="btn btn-primary" disabled style="display: none">
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                        提交中...
+                        Submitting...
                     </button>
 
                 </div>
@@ -67,7 +67,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <header class="card-header">
-                    <div class="card-title">菜单栏列表</div>
+                    <div class="card-title">Menu bar list</div>
                 </header>
                 <div class="card-body">
                     <table class="tree-table"></table>
@@ -100,12 +100,12 @@
             function () {
             },
             function (data) {
-                $("#level").append("<option value='-1'>一级目录</option>");
+                $("#level").append("<option value='-1'>一First-level directory</option>");
                 $.each(data.list, function (index, value) {
                     $("#level").append("<option value='" + value.id + "'>" + value.name + "</option>");
                 });
 
-                $("#level option:eq(0)").attr('selected', 'selected'); //选中第一个
+                $("#level option:eq(0)").attr('selected', 'selected'); // Select the first one
                 $("#level").selectpicker('refresh');
 
                 menuData = data.list;
@@ -125,18 +125,18 @@
             columns: [
                 {
                     field: 'id',
-                    title: '编号'
+                    title: 'number'
                 },
                 {
                     field: 'name',
-                    title: '名称',
+                    title: 'name',
                     formatter: function (value, row, index) {
                         return row.name + '<i class="mdi ' + row.icon + '"></i>';
                     }
                 },
                 {
                     field: 'is_used',
-                    title: '是否启用',
+                    title: 'Whether to enable',
                     //sortable: true,
                     formatter: function (value, row, index) {
                         let is_checked;
@@ -150,11 +150,11 @@
                 },
                 {
                     field: 'link',
-                    title: '链接地址'
+                    title: 'Link address'
                 },
                 {
                     field: 'operate',
-                    title: '操作',
+                    title: 'operate',
                     align: 'center',
                     events: {
                         'click .role-add': function (e, value, row, index) {
@@ -176,24 +176,24 @@
 
             onResetView: function (menuData) {
                 $treeTable.treegrid({
-                    initialState: 'collapsed', // 所有节点都折叠
+                    initialState: 'collapsed', // All nodes are collapsed
                     treeColumn: 1,
-                    //expanderExpandedClass: 'mdi mdi-folder-open',  // 可自定义图标样式
+                    //expanderExpandedClass: 'mdi mdi-folder-open',  // Customizable icon style
                     //expanderCollapsedClass: 'mdi mdi-folder',
                 });
 
-                // 只展开树形的第一集节点
+                // Expand only the first set of nodes in the tree
                 $treeTable.treegrid('getRootNodes').treegrid('expand');
             },
 
         });
 
-        // 操作按钮
+        // Operation button
         function operateFormatter(value, row, index) {
             return [
-                '<a type="button" class="role-add btn btn-xs btn-default m-r-5" title="编辑" data-toggle="tooltip"><i class="mdi mdi-plus"></i></a>',
-                '<a type="button" class="role-edit btn btn-xs btn-default m-r-5" title="修改" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>',
-                '<a type="button" class="role-delete btn btn-xs btn-default" title="删除" data-toggle="tooltip"><i class="mdi mdi-delete"></i></a>'
+                '<a type="button" class="role-add btn btn-xs btn-default m-r-5" title="Add" data-toggle="tooltip"><i class="mdi mdi-plus"></i></a>',
+                '<a type="button" class="role-edit btn btn-xs btn-default m-r-5" title="Edit" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>',
+                '<a type="button" class="role-delete btn btn-xs btn-default" title="Delete" data-toggle="tooltip"><i class="mdi mdi-delete"></i></a>'
             ].join('');
         }
 
@@ -207,14 +207,14 @@
 
         function del(id) {
             $.confirm({
-                title: '谨慎操作',
-                content: '确认要 <strong style="color: red">删除</strong> 吗？',
+                title:'Operate with caution',
+                content:'Are you sure you want to <strong style="color: red">delete</strong>? ',
                 icon: 'mdi mdi-alert',
                 animation: 'scale',
                 closeAnimation: 'zoom',
                 buttons: {
                     okay: {
-                        text: '确认',
+                        text: 'Confirm',
                         keys: ['enter'],
                         btnClass: 'btn-orange',
                         action: function () {
@@ -226,13 +226,13 @@
                                 },
                                 function (data) {
                                     $.alert({
-                                        title: '操作成功',
-                                        icon: 'mdi mdi-check-decagram',
-                                        type: 'green',
-                                        content: '编号：' + data.id + ' 已删除。',
+                                        title:'Operation successful',
+                                        icon:'mdi mdi-check-decagram',
+                                        type:'green',
+                                        content:'Number:' + data.id + 'has been deleted. ',
                                         buttons: {
                                             okay: {
-                                                text: '关闭',
+                                                text: 'Close',
                                                 action: function () {
                                                     location.reload();
                                                 }
@@ -247,7 +247,7 @@
                         }
                     },
                     cancel: {
-                        text: '取消',
+                        text: 'Cancel',
                         keys: ['ctrl', 'shift'],
                     }
                 }
@@ -288,17 +288,17 @@
             const hashid = $(this).attr("hashid");
 
             const is_used = (state === '1') ? -1 : 1;
-            const is_used_msg = (state === '1') ? "禁用" : "启用";
+            const is_used_msg = (state === '1') ? "Disable" : "Enable";
 
             $.confirm({
-                title: '谨慎操作',
-                content: '确认要 <strong style="color: red">' + is_used_msg + '</strong> 吗？',
+                title:'Operate with caution',
+                content:'Are you sure you want to <strong style="color: red">' + is_used_msg +'</strong>? ',
                 icon: 'mdi mdi-alert',
                 animation: 'scale',
                 closeAnimation: 'zoom',
                 buttons: {
                     okay: {
-                        text: '确认',
+                        text: 'Confirm',
                         keys: ['enter'],
                         btnClass: 'btn-orange',
                         action: function () {
@@ -310,13 +310,13 @@
                                 },
                                 function (data) {
                                     $.alert({
-                                        title: '操作成功',
+                                        title: 'Successful operation',
                                         icon: 'mdi mdi-check-decagram',
                                         type: 'green',
-                                        content: '编号：' + data.id + ' 已' + is_used_msg + '。',
+                                        content:'Number:' + data.id + 'already' + is_used_msg +'. ',
                                         buttons: {
                                             okay: {
-                                                text: '关闭',
+                                                text: 'Close',
                                                 action: function () {
                                                     location.reload();
                                                 }
@@ -331,7 +331,7 @@
                         }
                     },
                     cancel: {
-                        text: '取消',
+                        text: 'Cancel',
                         keys: ['ctrl', 'shift'],
                     }
                 }
@@ -347,20 +347,20 @@
 
             if (level === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请选择上级目录。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please select the superior directory. ',
                 });
                 return false;
             }
 
             if (name === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入菜单名称。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please enter the name of the menu. ',
                 });
                 return false;
             }
@@ -386,13 +386,13 @@
                     $("#btnOk").show();
 
                     $.alert({
-                        title: '操作成功',
-                        icon: 'mdi mdi-check-decagram',
-                        type: 'green',
-                        content: '菜单：' + name + ' 创建完成。',
+                        title:'Operation successful',
+                        icon:'mdi mdi-check-decagram',
+                        type:'green',
+                        content:'Menu:' + name + 'The creation is complete. ',
                         buttons: {
                             okay: {
-                                text: '关闭',
+                                text: 'Close',
                                 action: function () {
                                     location.reload();
                                 }

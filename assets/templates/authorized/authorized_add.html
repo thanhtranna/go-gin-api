@@ -16,29 +16,29 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">新增调用方</div>
+                    <div class="card-title">Add caller</div>
                 </div>
                 <div class="card-body">
                     <form>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">调用方</label>
+                            <label for="formGroupExampleInput">Caller</label>
                             <input type="text" class="form-control" maxlength="25" id="business_key"
-                                   placeholder="请输入调用方标识">
+                                   placeholder="Please enter the caller ID">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">调用方对接人</label>
+                            <label for="formGroupExampleInput2">Caller developer</label>
                             <input type="text" class="form-control" maxlength="50" id="business_developer"
-                                   placeholder="请输入调用方对接人">
+                                   placeholder="Please enter the caller's devloper">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">备注</label>
+                            <label for="exampleFormControlTextarea1">Remarks</label>
                             <textarea class="form-control" maxlength="225" rows="3" id="remark"
-                                      placeholder="备注"></textarea>
+                                      placeholder="Remarks"></textarea>
                         </div>
-                        <button type="button" id="btnOk" class="btn btn-primary">确认</button>
+                        <button type="button" id="btnOk" class="btn btn-primary">Confirm</button>
                         <button type="button" id="btnLoading" class="btn btn-primary" disabled style="display: none">
                             <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                            执行中...
+                            Executing...
                         </button>
                     </form>
                 </div>
@@ -75,10 +75,10 @@
             const businessKey = $("#business_key").val();
             if (businessKey === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入调用方标识。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please enter the caller ID.',
                 });
                 return false;
             }
@@ -86,10 +86,10 @@
             const businessDeveloper = $("#business_developer").val();
             if (businessDeveloper === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入调用方对接人。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:"Please enter the caller's devloper",
                 });
                 return false;
             }
@@ -114,13 +114,13 @@
                     $("#btnOk").show();
 
                     $.alert({
-                        title: '操作成功',
+                        title: 'Successful operation',
                         icon: 'mdi mdi-check-decagram',
                         type: 'green',
-                        content: '编号：' + data.id + ' 创建完成。',
+                        content: 'Number:' + data.id + 'The creation is complete.',
                         buttons: {
                             okay: {
-                                text: '关闭',
+                                text: 'Close',
                                 action: function () {
                                     location.href = "/authorized/list";
                                 }

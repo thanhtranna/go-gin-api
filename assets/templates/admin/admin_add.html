@@ -16,34 +16,34 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">新增管理员</div>
+                    <div class="card-title">Add manager</div>
                 </div>
                 <div class="card-body">
                     <form>
                         <div class="form-group">
-                            <label>用户名</label>
+                            <label>Username</label>
                             <input type="text" class="form-control" maxlength="10" id="username"
-                                   placeholder="请输入用户名">
+                                   placeholder="Please enter user name">
                         </div>
                         <div class="form-group">
-                            <label>昵称</label>
+                            <label>Nickname</label>
                             <input type="text" class="form-control" maxlength="10" id="nickname"
-                                   placeholder="请输入昵称">
+                                   placeholder="Please enter a nickname">
                         </div>
                         <div class="form-group">
-                            <label>手机号</label>
+                            <label>Phone number</label>
                             <input type="text" class="form-control" maxlength="11" id="mobile"
-                                   placeholder="请输入手机号">
+                                   placeholder="Please enter phone number">
                         </div>
                         <div class="form-group">
-                            <label>密码</label>
+                            <label>Password</label>
                             <input type="password" class="form-control" maxlength="20" id="password"
-                                   placeholder="请输入密码">
+                                   placeholder="Please enter the password">
                         </div>
-                        <button type="button" id="btnOk" class="btn btn-primary">确认</button>
+                        <button type="button" id="btnOk" class="btn btn-primary">Confirm</button>
                         <button type="button" id="btnLoading" class="btn btn-primary" disabled style="display: none">
                             <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                            执行中...
+                            Executing...
                         </button>
                     </form>
                 </div>
@@ -85,10 +85,10 @@
             const username = $("#username").val();
             if (username === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入用户名。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please enter your username.',
                 });
                 return false;
             }
@@ -96,10 +96,10 @@
             const nickname = $("#nickname").val();
             if (nickname === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入昵称。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please enter a nickname.',
                 });
                 return false;
             }
@@ -107,10 +107,10 @@
             const password = $("#password").val();
             if (password === "") {
                 $.alert({
-                    title: '温馨提示',
-                    icon: 'mdi mdi-alert',
-                    type: 'orange',
-                    content: '请输入密码。',
+                    title:'Warm reminder',
+                    icon:'mdi mdi-alert',
+                    type:'orange',
+                    content:'Please enter the password.',
                 });
                 return false;
             }
@@ -136,13 +136,13 @@
                     $("#btnOk").show();
 
                     $.alert({
-                        title: '操作成功',
+                        title: 'Successful operation',
                         icon: 'mdi mdi-check-decagram',
                         type: 'green',
-                        content: '编号：' + data.id + ' 创建完成。',
+                        content:'Number:' + data.id + 'The creation is complete.',
                         buttons: {
                             okay: {
-                                text: '关闭',
+                                text: 'Close',
                                 action: function () {
                                     location.href = "/admin/list";
                                 }
